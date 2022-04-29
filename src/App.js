@@ -6,10 +6,11 @@ import {
   endsWithValidLetter,
   startsWithValidLetter,
   getSameGroup,
+  getFirstStation,
 } from "./lib/functions";
 
 function App() {
-  const firstStation = "シンカシワ";
+  const firstStation = getFirstStation();
 
   const [isGameStart, setIsGameStart] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);

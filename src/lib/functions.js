@@ -1,6 +1,13 @@
 import { STATIONS } from "../constant/station";
 import { GROUPS } from "../constant/groups";
 
+export const getFirstStation = () => {
+  const keys = Object.keys(STATIONS);
+  const key = keys[Math.floor(Math.random() * keys.length)];
+  const stations = STATIONS[key];
+  return stations[Math.floor(Math.random() * stations.length)];
+};
+
 export const isIncludedInStations = (answer) => {
   return STATIONS[answer.length].includes(answer);
 };
