@@ -21,7 +21,7 @@ export const isAnswered = (answer, answers) => {
 };
 
 export const getCandidates = (answer, answers) => {
-  const candidates = Array([]);
+  const candidates = [];
   const lastLetter = answer.slice(-1);
   for (let key in STATIONS) {
     STATIONS[key].forEach((value) => {
@@ -34,14 +34,8 @@ export const getCandidates = (answer, answers) => {
 };
 
 export const endsWithValidLetter = (answer, answers) => {
-  const lastLetter = answer.slice(-1);
-
   const candidates = getCandidates(answer, answers);
-
-  if (lastLetter === "ン") {
-    return false;
-  }
-
+  console.log(candidates);
   return candidates.length !== 0 ? true : false;
 };
 
