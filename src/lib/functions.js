@@ -10,6 +10,7 @@ export const getFirstStation = () => {
   }
   while (true) {
     firstStation = stations[Math.floor(Math.random() * stations.length)];
+
     if (
       getCandidates(firstStation, [firstStation]).length >=
       MINIMUM_INITIAL_NUMBER_OF_CANDIDATES
@@ -25,7 +26,10 @@ export const isIncludedInStations = (answer) => {
 };
 
 export const startsWithValidLetter = (answer, answers) => {
-  return isSameGroup(answers[answers.length - 1].slice(-1), answer.slice(0, 1));
+  return isSameGroup(
+    getLastLetter(answers[answers.length - 1]),
+    answer.slice(0, 1)
+  );
 };
 
 export const isAnswered = (answer, answers) => {
@@ -34,10 +38,13 @@ export const isAnswered = (answer, answers) => {
 
 export const getCandidates = (answer, answers) => {
   const candidates = [];
-  const lastLetter = answer.slice(-1);
+  console.log(getLastLetter(answer));
   for (let key in STATIONS) {
     STATIONS[key].forEach((value) => {
-      if (lastLetter === value.slice(0, 1) && !answers.includes(value)) {
+      if (
+        isSameGroup(getLastLetter(answer), value.slice(0, 1)) &&
+        !answers.includes(value)
+      ) {
         candidates.push(value);
       }
     });
@@ -47,8 +54,11 @@ export const getCandidates = (answer, answers) => {
 
 export const endsWithValidLetter = (answer, answers) => {
   const candidates = getCandidates(answer, answers);
-  console.log(candidates);
   return candidates.length !== 0 ? true : false;
+};
+
+export const getLastLetter = (answer) => {
+  return answer.slice(-1) === "ー" ? answer.slice(-2, -1) : answer.slice(-1);
 };
 
 export const getSameGroup = (a) => {

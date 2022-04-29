@@ -7,13 +7,14 @@ import {
   startsWithValidLetter,
   getSameGroup,
   getFirstStation,
+  getLastLetter,
 } from "./lib/functions";
 
 function App() {
   const [isGameStart, setIsGameStart] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [answer, setAnswer] = useState("");
-  const [answers, setAnswers] = useState([getFirstStation()]);
+  const [answers, setAnswers] = useState(() => [getFirstStation()]);
 
   const handleAnswer = () => {
     if (!answer) {
@@ -30,7 +31,7 @@ function App() {
       setAnswer("");
       alert(
         `「${getSameGroup(
-          answers[answers.length - 1].slice(-1)
+          getLastLetter(answers[answers.length - 1])
         )}」から始まる駅名を入力してください`
       );
     }
@@ -48,6 +49,7 @@ function App() {
   };
 
   const restartGame = () => {
+    console.log("restarted the game");
     setAnswers([getFirstStation()]);
     setAnswer("");
     setIsGameStart(true);
@@ -55,8 +57,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1 className="mt-4 text-3xl font-bol">駅名しりとり</h1>
+    <div className="App container h-screen">
+      <h1 className="mt-4 text-3xl font-bold">駅名しりとり</h1>
       {/* display if the game doesn't start */}
       {!(isGameStart || isGameOver) && (
         <>
@@ -74,7 +76,9 @@ function App() {
       {isGameStart && (
         <>
           <div className="mt-10">
-            <p className="text-6xl">{answers[answers.length - 1].slice(-1)}</p>
+            <p className="text-6xl">
+              {`${getSameGroup(getLastLetter(answers[answers.length - 1]))}`}
+            </p>
             <p>から始まる駅名を入力</p>
           </div>
           <div className="mt-10">
