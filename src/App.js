@@ -10,7 +10,7 @@ import {
 } from "./lib/functions";
 
 function App() {
-  const [isGameStart, setIsGameStart] = useState(true);
+  const [isGameStart, setIsGameStart] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [answer, setAnswer] = useState("");
   const [answers, setAnswers] = useState([getFirstStation()]);
@@ -92,15 +92,14 @@ function App() {
           </div>
           <div>前の回答: {answers[answers.length - 1]}</div>
           <div className="mt-10 bg-slate-100">
-            <p className="font-bold mb-2">Previous Answer</p>
-            {answers[answers.length - 1]}
-            {/* <ul>
+            <p className="font-bold mb-2">Previous Answers</p>
+            <ul>
               {answers.map((value) => (
                 <li key={value} className="text-black">
                   {value}
                 </li>
               ))}
-            </ul> */}
+            </ul>
           </div>
         </>
       )}
