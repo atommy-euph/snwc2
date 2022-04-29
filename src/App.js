@@ -45,7 +45,6 @@ function App() {
 
     setAnswers(answers.concat(answer));
     setAnswer("");
-    console.log(answers);
   };
 
   const restartGame = () => {
@@ -57,11 +56,12 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="mt-4 text-3xl font-bol">駅名しりとり</h1>
       {/* display if the game doesn't start */}
       {!(isGameStart || isGameOver) && (
         <>
           <button
-            className={`border-2 ${isGameStart ? "hidden" : ""}`}
+            className={`mt-10 border-2 ${isGameStart ? "hidden" : ""}`}
             onClick={() => {
               setIsGameStart(true);
             }}
