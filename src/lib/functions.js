@@ -1,4 +1,4 @@
-import { STATIONS } from "../constant/station";
+import { STATIONS } from "../constant/stations";
 import { GROUPS } from "../constant/groups";
 import { MINIMUM_INITIAL_NUMBER_OF_CANDIDATES } from "../constant/config";
 
@@ -21,6 +21,17 @@ export const getFirstStation = () => {
   return firstStation;
 };
 
+export const isValidLetters = (answer) => {
+  const validLetters = GROUPS.flat();
+  for (let i = 0; i < answer.length; i++) {
+    console.log(answer.slice(i, i + 1));
+    if (!validLetters.includes(answer.slice(i, i + 1))) {
+      return false;
+    }
+  }
+  return true;
+};
+
 export const isIncludedInStations = (answer) => {
   return STATIONS[answer.length].includes(answer);
 };
@@ -38,7 +49,6 @@ export const isAnswered = (answer, answers) => {
 
 export const getCandidates = (answer, answers) => {
   const candidates = [];
-  console.log(getLastLetter(answer));
   for (let key in STATIONS) {
     STATIONS[key].forEach((value) => {
       if (

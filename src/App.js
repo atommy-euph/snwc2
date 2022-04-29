@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import {
+  isValidLetters,
   isIncludedInStations,
   isAnswered,
   endsWithValidLetter,
@@ -22,11 +23,17 @@ function App() {
       alert("駅名を入力してください");
       return;
     }
-    if (!isIncludedInStations(answer)) {
+    if (!isValidLetters(answer)) {
       setAnswer("");
-      alert("その駅は存在しません");
+      alert("駅名に使われない文字が含まれています");
       return;
     }
+    // if (!isIncludedInStations(answer)) {
+    //   setAnswer("");
+    //   alert("その駅は存在しません");
+    //   return;
+    // }
+    console.log("validLetters");
     if (!startsWithValidLetter(answer, answers)) {
       setAnswer("");
       alert(
@@ -34,6 +41,7 @@ function App() {
           getLastLetter(answers[answers.length - 1])
         )}」から始まる駅名を入力してください`
       );
+      return;
     }
     if (isAnswered(answer, answers)) {
       setIsGameOver(true);
@@ -79,7 +87,7 @@ function App() {
         </>
       )}
       {/* display if the game starts */}
-      {isGameStart && (
+      {isGameStart && !isGameOver && (
         <>
           <div className="mt-10">
             <p className="text-6xl">
