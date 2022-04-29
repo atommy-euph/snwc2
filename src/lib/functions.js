@@ -1,5 +1,6 @@
 import { STATIONS } from "../constant/station";
 import { GROUPS } from "../constant/groups";
+import { MINIMUM_INITIAL_NUMBER_OF_CANDIDATES } from "../constant/config";
 
 export const getFirstStation = () => {
   let stations = [];
@@ -9,7 +10,10 @@ export const getFirstStation = () => {
   }
   while (true) {
     firstStation = stations[Math.floor(Math.random() * stations.length)];
-    if (getCandidates(firstStation, [firstStation]).length > 0) {
+    if (
+      getCandidates(firstStation, [firstStation]).length >=
+      MINIMUM_INITIAL_NUMBER_OF_CANDIDATES
+    ) {
       break;
     }
   }
