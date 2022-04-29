@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+
+import Notice from "./components/Notice";
+
 import {
   isValidLetters,
   isIncludedInStations,
@@ -28,11 +31,11 @@ function App() {
       alert("駅名に使われない文字が含まれています");
       return;
     }
-    // if (!isIncludedInStations(answer)) {
-    //   setAnswer("");
-    //   alert("その駅は存在しません");
-    //   return;
-    // }
+    if (!isIncludedInStations(answer)) {
+      setAnswer("");
+      alert("その駅は存在しません");
+      return;
+    }
     console.log("validLetters");
     if (!startsWithValidLetter(answer, answers)) {
       setAnswer("");
@@ -95,6 +98,7 @@ function App() {
             </p>
             <p>から始まる駅名を入力</p>
           </div>
+          <Notice text={"asfsafd"} level={"INFO"} />
           <div className="mt-10">
             <input
               className="border-2"
@@ -113,7 +117,7 @@ function App() {
           <div className="mt-10 bg-slate-100">
             <p className="font-bold mb-2">Previous Answers</p>
             <ul>
-              {answers.map((value) => (
+              {answers.reverse().map((value) => (
                 <li key={value} className="text-black">
                   {value}
                 </li>
