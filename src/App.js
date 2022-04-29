@@ -47,6 +47,12 @@ function App() {
     setAnswers(answers.concat(answer));
     setAnswer("");
   };
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleAnswer();
+    }
+  };
 
   const restartGame = () => {
     console.log("restarted the game");
@@ -89,6 +95,7 @@ function App() {
               onChange={(e) => {
                 setAnswer(e.target.value);
               }}
+              onKeyDown={handleEnter}
             />
             <button className="border-2 ml-2" onClick={handleAnswer}>
               回答
