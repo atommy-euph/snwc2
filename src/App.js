@@ -10,7 +10,7 @@ import {
 } from "./lib/functions";
 
 function App() {
-  const [isGameStart, setIsGameStart] = useState(false);
+  const [isGameStart, setIsGameStart] = useState(true);
   const [isGameOver, setIsGameOver] = useState(false);
   const [answer, setAnswer] = useState("");
   const [answers, setAnswers] = useState([getFirstStation()]);
@@ -21,11 +21,11 @@ function App() {
       alert("駅名を入力してください");
       return;
     }
-    // if (!isIncludedInStations(answer)) {
-    //   setAnswer("");
-    //   alert("その駅は存在しません");
-    //   return;
-    // }
+    if (!isIncludedInStations(answer)) {
+      setAnswer("");
+      alert("その駅は存在しません");
+      return;
+    }
     if (!startsWithValidLetter(answer, answers)) {
       setAnswer("");
       alert(
