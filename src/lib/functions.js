@@ -2,10 +2,18 @@ import { STATIONS } from "../constant/station";
 import { GROUPS } from "../constant/groups";
 
 export const getFirstStation = () => {
-  const keys = Object.keys(STATIONS);
-  const key = keys[Math.floor(Math.random() * keys.length)];
-  const stations = STATIONS[key];
-  return stations[Math.floor(Math.random() * stations.length)];
+  let stations = [];
+  let firstStation;
+  for (let key in STATIONS) {
+    stations = stations.concat(STATIONS[key]);
+  }
+  while (true) {
+    firstStation = stations[Math.floor(Math.random() * stations.length)];
+    if (getCandidates(firstStation, [firstStation]).length > 0) {
+      break;
+    }
+  }
+  return firstStation;
 };
 
 export const isIncludedInStations = (answer) => {

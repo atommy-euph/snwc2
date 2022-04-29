@@ -10,12 +10,10 @@ import {
 } from "./lib/functions";
 
 function App() {
-  const firstStation = getFirstStation();
-
   const [isGameStart, setIsGameStart] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [answer, setAnswer] = useState("");
-  const [answers, setAnswers] = useState([firstStation]);
+  const [answers, setAnswers] = useState([getFirstStation()]);
 
   const handleAnswer = () => {
     if (!answer) {
@@ -23,16 +21,16 @@ function App() {
       alert("駅名を入力してください");
       return;
     }
-    if (!isIncludedInStations(answer)) {
-      setAnswer("");
-      alert("その駅は存在しません");
-      return;
-    }
+    // if (!isIncludedInStations(answer)) {
+    //   setAnswer("");
+    //   alert("その駅は存在しません");
+    //   return;
+    // }
     if (!startsWithValidLetter(answer, answers)) {
       setAnswer("");
       alert(
         `「${getSameGroup(
-          lastAnswer.slice(-1)
+          answers[answers.length - 1].slice(-1)
         )}」から始まる駅名を入力してください`
       );
     }
@@ -51,13 +49,11 @@ function App() {
   };
 
   const restartGame = () => {
-    setAnswers([firstStation]);
+    setAnswers([getFirstStation()]);
     setAnswer("");
     setIsGameStart(true);
     setIsGameOver(false);
   };
-
-  const lastAnswer = answers[answers.length - 1];
 
   return (
     <div className="App">
@@ -78,7 +74,7 @@ function App() {
       {isGameStart && (
         <>
           <div className="mt-10">
-            <p className="text-6xl">{lastAnswer.slice(-1)}</p>
+            <p className="text-6xl">{answers[answers.length - 1].slice(-1)}</p>
             <p>から始まる駅名を入力</p>
           </div>
           <div className="mt-10">
@@ -94,10 +90,10 @@ function App() {
               回答
             </button>
           </div>
-          <div>前の回答: {lastAnswer}</div>
+          <div>前の回答: {answers[answers.length - 1]}</div>
           <div className="mt-10 bg-slate-100">
             <p className="font-bold mb-2">Previous Answer</p>
-            {lastAnswer}
+            {answers[answers.length - 1]}
             {/* <ul>
               {answers.map((value) => (
                 <li key={value} className="text-black">
