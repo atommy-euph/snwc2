@@ -26,7 +26,9 @@ const Alert = ({ message, type, isOpen }) => {
 
   return (
     <div className={classes}>
-      <p>{message}</p>
+      <p>
+        {icon}: {message}
+      </p>
     </div>
   );
 };
