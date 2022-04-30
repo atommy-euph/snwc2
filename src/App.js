@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import { useTimer } from "react-timer-hook";
 
 import Notice from "./components/Alert";
 import Start from "./components/Start";
