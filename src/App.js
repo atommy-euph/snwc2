@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 
 import Notice from "./components/Notice";
-
+import Start from "./components/Start";
 import {
   isValidLetters,
   isIncludedInStations,
@@ -65,6 +65,10 @@ function App() {
     }
   };
 
+  const handleGameStart = () => {
+    setIsGameStart(true);
+  };
+
   const restartGame = () => {
     console.log("restarted the game");
     setAnswers([getFirstStation()]);
@@ -74,20 +78,11 @@ function App() {
   };
 
   return (
-    <div className="App container h-screen">
-      <h1 className="mt-4 text-3xl font-bold">駅名しりとり</h1>
+    <div className="App container h-screen py-4">
+      {/* <h1 className="mt-4 text-3xl font-bold">駅名しりとり</h1> */}
       {/* display if the game doesn't start */}
       {!(isGameStart || isGameOver) && (
-        <>
-          <button
-            className={`mt-10 border-2 ${isGameStart ? "hidden" : ""}`}
-            onClick={() => {
-              setIsGameStart(true);
-            }}
-          >
-            スタート
-          </button>
-        </>
+        <Start handleGameStart={handleGameStart} isGameStart={isGameStart} />
       )}
       {/* display if the game starts */}
       {isGameStart && !isGameOver && (
