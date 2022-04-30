@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useTimer } from "react-timer-hook";
 
 import Notice from "./components/Alert";
 import Start from "./components/Start";
@@ -95,7 +94,7 @@ function App() {
   };
 
   return (
-    <div className="App container h-screen py-4">
+    <div className="flex flex-col items-center container h-screen py-4">
       {/* Alerts */}
       <div className="flex justify-center">
         <Alert
