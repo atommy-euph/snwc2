@@ -143,6 +143,14 @@ function App() {
     handleGameStart();
   };
 
+  const resetGame = () => {
+    setAnswers([{ answer: getFirstStation(), time: 0 }]);
+    setAnswer("");
+    setIsGameStart(false);
+    setIsGameOver(false);
+    setTimer(TIME_LIMIT);
+  };
+
   return (
     <div className="flex flex-col items-center container h-screen py-4 caret-transparent">
       {/* Alerts */}
@@ -222,7 +230,13 @@ function App() {
       )}
 
       {/* Game is over */}
-      {isGameOver && <GameOver answers={answers} restartGame={restartGame} />}
+      {isGameOver && (
+        <GameOver
+          answers={answers}
+          restartGame={restartGame}
+          resetGame={resetGame}
+        />
+      )}
     </div>
   );
 }
