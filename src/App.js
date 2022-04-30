@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-import Notice from "./components/Notice";
+import Notice from "./components/Alert";
 import Start from "./components/Start";
 import {
   isValidLetters,
@@ -14,36 +14,53 @@ import {
   getLastLetter,
 } from "./lib/functions";
 
+import { ALERT_TIME } from "./constant/config.js";
+import Alert from "./components/Alert";
+
 function App() {
   const [isGameStart, setIsGameStart] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [answer, setAnswer] = useState("");
   const [answers, setAnswers] = useState(() => [getFirstStation()]);
 
+  const [isEmptyAlertOpen, setIsEmptyAlertOpen] = useState(false);
+  const [isInvalidLetterAlertOpen, setIsInvalidLetterAlertOpen] =
+    useState(false);
+  const [isNoExistenceAlertOpen, setIsNoExistenceAlertOpen] = useState(false);
+  const [isNoMatchAlertOpen, setIsNoMatchAlertOpen] = useState(false);
+
   const handleAnswer = () => {
     if (!answer) {
       setAnswer("");
-      alert("駅名を入力してください");
+      setIsEmptyAlertOpen(true);
+      setTimeout(() => {
+        setIsEmptyAlertOpen(false);
+      }, ALERT_TIME);
       return;
     }
     if (!isValidLetters(answer)) {
       setAnswer("");
-      alert("駅名に使われない文字が含まれています");
+      setIsInvalidLetterAlertOpen(true);
+      setTimeout(() => {
+        setIsInvalidLetterAlertOpen(false);
+      }, ALERT_TIME);
       return;
     }
     if (!isIncludedInStations(answer)) {
       setAnswer("");
-      alert("その駅は存在しません");
+      setIsNoExistenceAlertOpen(true);
+      setTimeout(() => {
+        setIsNoExistenceAlertOpen(false);
+      }, ALERT_TIME);
       return;
     }
     console.log("validLetters");
     if (!startsWithValidLetter(answer, answers)) {
       setAnswer("");
-      alert(
-        `「${getSameGroup(
-          getLastLetter(answers[answers.length - 1])
-        )}」から始まる駅名を入力してください`
-      );
+      setIsNoMatchAlertOpen(true);
+      setTimeout(() => {
+        setIsNoMatchAlertOpen(false);
+      }, ALERT_TIME);
       return;
     }
     if (isAnswered(answer, answers)) {
@@ -79,7 +96,32 @@ function App() {
 
   return (
     <div className="App container h-screen py-4">
-      {/* <h1 className="mt-4 text-3xl font-bold">駅名しりとり</h1> */}
+      {/* Alerts */}
+      <div className="flex justify-center">
+        <Alert
+          message="駅名を入力してください"
+          type="WARNING"
+          isOpen={isEmptyAlertOpen}
+        />
+        <Alert
+          message="駅名に使われない文字が含まれています"
+          type="WARNING"
+          isOpen={isInvalidLetterAlertOpen}
+        />
+        <Alert
+          message="その駅は存在しません"
+          type="WARNING"
+          isOpen={isNoExistenceAlertOpen}
+        />
+        <Alert
+          message={`「${getSameGroup(
+            getLastLetter(answers[answers.length - 1])
+          )}」から始まる駅名を入力してください`}
+          type="WARNING"
+          isOpen={isNoMatchAlertOpen}
+        />
+      </div>
+      <h1 className="mt-4 text-3xl font-bold">駅名しりとり</h1>
       {/* display if the game doesn't start */}
       {!(isGameStart || isGameOver) && (
         <Start handleGameStart={handleGameStart} isGameStart={isGameStart} />
@@ -89,7 +131,8 @@ function App() {
         <>
           <div className="mt-10">
             <p className="text-6xl">
-              {`${getSameGroup(getLastLetter(answers[answers.length - 1]))}`}
+              {/* {`${getSameGroup(getLastLetter(answers[answers.length - 1]))}`} */}
+              {getSameGroup(getLastLetter(answers[answers.length - 1]))}
             </p>
             <p>から始まる駅名を入力</p>
           </div>
@@ -112,11 +155,13 @@ function App() {
           <div className="mt-10 bg-slate-100">
             <p className="font-bold mb-2">Previous Answers</p>
             <ul>
-              {answers.reverse().map((value) => (
-                <li key={value} className="text-black">
-                  {value}
-                </li>
-              ))}
+              {answers
+                .map((value) => (
+                  <li key={value} className="text-black">
+                    {value}
+                  </li>
+                ))
+                .reverse()}
             </ul>
           </div>
         </>

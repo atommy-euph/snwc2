@@ -1,1 +1,2 @@
 export const MINIMUM_INITIAL_NUMBER_OF_CANDIDATES = 10;
+export const ALERT_TIME = 2000;
