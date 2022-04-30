@@ -3,5 +3,95 @@
 * {
   font-family: "Noto Sans JP", sans-serif;
 }
+
+/* Headers */
+h1 {
+  @apply text-2xl font-bold mt-12 mb-8;
+}
+
+h2 {
+  @apply text-xl font-bold mt-10 mb-6;
+}
+h3 {
+  @apply text-lg font-bold my-6;
+}
+
+/* Links */
+a {
+  @apply text-blue-600 underline leading-7;
+}
+a:hover {
+  @apply decoration-dashed;
+}
+
+/* Paragraph */
+p {
+  @apply mb-4 leading-7 text-justify;
+}
+
+/* Table */
+table {
+  @apply block border-collapse my-10 overflow-x-scroll  whitespace-nowrap text-sm;
+}
+th {
+  @apply bg-slate-300 text-slate-800 font-bold text-center border-[1px] border-b-2 border-slate-500 py-2 px-5;
+}
+td {
+  @apply border-[1px] border-slate-500 py-2 px-5;
+}
+tr:nth-child(2n) {
+  @apply bg-slate-200;
+}
+
+/* Lists */
+ul,
+ol {
+  @apply mb-4 ml-5;
+}
+li > p,
+ul > li,
+ol > li {
+  @apply mb-2 leading-7 pl-1;
+}
+ol {
+  @apply list-decimal;
+}
+ul {
+  @apply list-disc;
+}
+
+/* Blockquotes */
+blockquote {
+  @apply pl-4 py-1 mx-2 my-6 bg-gray-100 border-l-4 border-gray-400 rounded-r-lg;
+}
+blockquote > p {
+  @apply mb-0 leading-7;
+}
+
+/* Horizontal line */
+
+hr {
+  @apply my-2;
+}
+
+/* Images */
+.gatsby-resp-image-wrapper {
+  @apply block my-16;
+}
+
+img {
+  @apply rounded-lg;
+}
+
+/* Code */
+:not(pre) > code {
+  @apply bg-indigo-50 p-1 font-semibold text-gray-600 rounded-lg;
+}
+
+/* Pre */
+pre {
+  @apply mx-2;
+}
+
 @tailwind components;
 @tailwind utilities;

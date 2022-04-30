@@ -202,7 +202,7 @@ function App() {
               onKeyDown={handleEnter}
             />
             <button className="border-2 ml-2" onClick={handleAnswer}>
-              回答
+              回答 [Enter]
             </button>
           </div>
           <div>前の回答: {answers[answers.length - 1].answer}</div>
