@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 
-import Notice from "./components/Alert";
 import Start from "./components/Start";
 import Standby from "./components/Standby";
 import GameOver from "./components/GameOver";
+import Alert from "./components/Alert";
 
 import {
   isValidLetters,
@@ -17,7 +17,6 @@ import {
 } from "./lib/functions";
 
 import { ALERT_TIME, TIME_LIMIT } from "./constant/config.js";
-import Alert from "./components/Alert";
 
 function App() {
   const [isGameStandby, setIsGameStandby] = useState(false);
@@ -189,9 +188,8 @@ function App() {
               {getSameGroup(getLastLetter(answers[answers.length - 1]))}
             </p>
             <p>から始まる駅名を入力</p>
-            <p>{timer}</p>
+            <p>残り: {timer} 秒</p>
           </div>
-          <Notice text={"asfsafd"} level={"INFO"} />
           <div className="mt-10">
             <input
               className="border-2"
