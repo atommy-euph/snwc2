@@ -2,15 +2,13 @@ import React from "react";
 
 const GameOver = ({ answers, restartGame }) => {
   return (
-    <>
-      <div>
-        <p className="text-red">Game Over</p>
-        <p>あなたの回答数: {answers.length - 1}</p>
-      </div>
-      <button className="border-2" onClick={restartGame}>
-        リスタート
+    <div className="caret-transparent">
+      <p className="mt-4 text-red-500">Game Over</p>
+      <p>回答数: {answers.length - 1}</p>
+      <button className="mt-4 border-2" onClick={restartGame}>
+        リスタート [Space]
       </button>
-    </>
+    </div>
   );
 };
 

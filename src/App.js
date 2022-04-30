@@ -52,6 +52,22 @@ function App() {
     }
   });
 
+  useEffect(() => {
+    document.addEventListener(
+      "keydown",
+      (e) => {
+        if (e.key === " ") {
+          if (!isGameOver) {
+            handleGameStart();
+          } else if (isGameOver) {
+            restartGame();
+          }
+        }
+      },
+      false
+    );
+  }, [isGameOver]);
+
   const inputEl = useRef(null);
 
   const handleAnswer = () => {
@@ -128,7 +144,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center container h-screen py-4">
+    <div className="flex flex-col items-center container h-screen py-4 caret-transparent">
       {/* Alerts */}
       <div className="flex justify-center">
         <Alert

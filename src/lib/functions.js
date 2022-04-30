@@ -24,7 +24,6 @@ export const getFirstStation = () => {
 export const isValidLetters = (answer) => {
   const validLetters = GROUPS.flat();
   for (let i = 0; i < answer.length; i++) {
-    console.log(answer.slice(i, i + 1));
     if (!validLetters.includes(answer.slice(i, i + 1))) {
       return false;
     }

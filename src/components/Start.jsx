@@ -1,6 +1,6 @@
 import React from "react";
 
-const Start = ({ handleGameStart, isGameStart }) => {
+const Start = ({ handleGameStart }) => {
   return (
     <div>
       {/* <div>
@@ -10,7 +10,7 @@ const Start = ({ handleGameStart, isGameStart }) => {
         </ul>
       </div> */}
       <button className="mt-10 border-2" onClick={handleGameStart}>
-        スタート
+        スタート[スペース]
       </button>
     </div>
   );
