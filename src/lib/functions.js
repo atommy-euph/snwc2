@@ -37,13 +37,13 @@ export const isIncludedInStations = (answer) => {
 
 export const startsWithValidLetter = (answer, answers) => {
   return isSameGroup(
-    getLastLetter(answers[answers.length - 1]),
+    getLastLetter(answers[answers.length - 1].answer),
     answer.slice(0, 1)
   );
 };
 
 export const isAnswered = (answer, answers) => {
-  return answers.includes(answer);
+  return answers.map((value) => value.answer).includes(answer);
 };
 
 export const getCandidates = (answer, answers) => {

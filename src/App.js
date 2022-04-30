@@ -23,7 +23,9 @@ function App() {
   const [isGameStart, setIsGameStart] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [answer, setAnswer] = useState("");
-  const [answers, setAnswers] = useState(() => [getFirstStation()]);
+  const [answers, setAnswers] = useState(() => [
+    { answer: getFirstStation(), time: 0 },
+  ]);
 
   const [isEmptyAlertOpen, setIsEmptyAlertOpen] = useState(false);
   const [isInvalidLetterAlertOpen, setIsInvalidLetterAlertOpen] =
@@ -111,7 +113,7 @@ function App() {
       return;
     }
 
-    setAnswers(answers.concat(answer));
+    setAnswers(answers.concat({ answer: answer, time: TIME_LIMIT - timer }));
     setAnswer("");
     setTimer(TIME_LIMIT);
   };
@@ -133,8 +135,7 @@ function App() {
     setIsGameOver(true);
   };
   const restartGame = () => {
-    console.log("restarted the game");
-    setAnswers([getFirstStation()]);
+    setAnswers([{ answer: getFirstStation(), time: 0 }]);
     setAnswer("");
     setIsGameStart(false);
     setIsGameOver(false);
@@ -163,7 +164,7 @@ function App() {
         />
         <Alert
           message={`「${getSameGroup(
-            getLastLetter(answers[answers.length - 1])
+            getLastLetter(answers[answers.length - 1].answer)
           )}」から始まる駅名を入力してください`}
           type="WARNING"
           isOpen={isNoMatchAlertOpen}
@@ -184,8 +185,7 @@ function App() {
         <>
           <div className="mt-10">
             <p className="text-6xl">
-              {/* {`${getSameGroup(getLastLetter(answers[answers.length - 1]))}`} */}
-              {getSameGroup(getLastLetter(answers[answers.length - 1]))}
+              {getSameGroup(getLastLetter(answers[answers.length - 1].answer))}
             </p>
             <p>から始まる駅名を入力</p>
             <p>残り: {timer} 秒</p>
@@ -205,14 +205,14 @@ function App() {
               回答
             </button>
           </div>
-          <div>前の回答: {answers[answers.length - 1]}</div>
+          <div>前の回答: {answers[answers.length - 1].answer}</div>
           <div className="mt-10 bg-slate-100">
             <p className="font-bold mb-2">Previous Answers</p>
             <ul>
               {answers
                 .map((value) => (
-                  <li key={value} className="text-black">
-                    {value}
+                  <li key={value.answer} className="text-black">
+                    {value.answer}: {value.time}s
                   </li>
                 ))
                 .reverse()}
