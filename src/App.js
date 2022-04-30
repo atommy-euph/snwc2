@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import Notice from "./components/Alert";
 import Start from "./components/Start";
@@ -45,6 +45,14 @@ function App() {
     }, 1000);
     return () => clearInterval(interval);
   }, [timer, isGameStart]);
+
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  });
+
+  const inputEl = useRef(null);
 
   const handleAnswer = () => {
     if (!answer) {
@@ -146,13 +154,16 @@ function App() {
           isOpen={isNoMatchAlertOpen}
         />
       </div>
-      <h1 className="mt-4 text-3xl font-bold">駅名しりとり:{timer}</h1>
+      <h1 className="mt-4 text-3xl font-bold">駅名しりとり</h1>
+
       {/* Before the game starts */}
       {!(isGameStart || isGameOver || isGameStandby) && (
         <Start handleGameStart={handleGameStart} isGameStart={isGameStart} />
       )}
+
       {/* Standby mode */}
       {isGameStandby && <Standby />}
+
       {/* The game is ongoing */}
       {isGameStart && !isGameOver && (
         <>
@@ -162,12 +173,14 @@ function App() {
               {getSameGroup(getLastLetter(answers[answers.length - 1]))}
             </p>
             <p>から始まる駅名を入力</p>
+            <p>{timer}</p>
           </div>
           <Notice text={"asfsafd"} level={"INFO"} />
           <div className="mt-10">
             <input
               className="border-2"
               type="text"
+              ref={inputEl}
               value={answer}
               onChange={(e) => {
                 setAnswer(e.target.value);
@@ -193,6 +206,7 @@ function App() {
           </div>
         </>
       )}
+
       {/* Game is over */}
       {isGameOver && <GameOver answers={answers} restartGame={restartGame} />}
     </div>

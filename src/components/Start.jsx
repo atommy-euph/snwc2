@@ -9,7 +9,7 @@ const Start = ({ handleGameStart, isGameStart }) => {
           <li>ルールを追加</li>
         </ul>
       </div> */}
-      <button className={`mt-10 border-2`} onClick={handleGameStart}>
+      <button className="mt-10 border-2" onClick={handleGameStart}>
         スタート
       </button>
     </div>
