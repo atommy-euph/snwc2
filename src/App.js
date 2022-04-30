@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Notice from "./components/Alert";
 import Start from "./components/Start";
+import Standby from "./components/Standby";
+import GameOver from "./components/GameOver";
+
 import {
   isValidLetters,
   isIncludedInStations,
@@ -13,10 +16,11 @@ import {
   getLastLetter,
 } from "./lib/functions";
 
-import { ALERT_TIME } from "./constant/config.js";
+import { ALERT_TIME, TIME_LIMIT } from "./constant/config.js";
 import Alert from "./components/Alert";
 
 function App() {
+  const [isGameStandby, setIsGameStandby] = useState(false);
   const [isGameStart, setIsGameStart] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [answer, setAnswer] = useState("");
@@ -27,6 +31,20 @@ function App() {
     useState(false);
   const [isNoExistenceAlertOpen, setIsNoExistenceAlertOpen] = useState(false);
   const [isNoMatchAlertOpen, setIsNoMatchAlertOpen] = useState(false);
+
+  const [timer, setTimer] = useState(TIME_LIMIT);
+
+  useEffect(() => {
+    if (!isGameStart) return;
+    const interval = setInterval(() => {
+      if (timer > 0) {
+        setTimer((c) => c - 1);
+      } else {
+        handleGameOver();
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timer, isGameStart]);
 
   const handleAnswer = () => {
     if (!answer) {
@@ -53,7 +71,6 @@ function App() {
       }, ALERT_TIME);
       return;
     }
-    console.log("validLetters");
     if (!startsWithValidLetter(answer, answers)) {
       setAnswer("");
       setIsNoMatchAlertOpen(true);
@@ -63,16 +80,17 @@ function App() {
       return;
     }
     if (isAnswered(answer, answers)) {
-      setIsGameOver(true);
+      handleGameOver();
       return;
     }
     if (!endsWithValidLetter(answer, answers)) {
-      setIsGameOver(true);
+      handleGameOver();
       return;
     }
 
     setAnswers(answers.concat(answer));
     setAnswer("");
+    setTimer(TIME_LIMIT);
   };
   const handleEnter = (e) => {
     if (e.key === "Enter") {
@@ -80,17 +98,25 @@ function App() {
       handleAnswer();
     }
   };
-
   const handleGameStart = () => {
-    setIsGameStart(true);
+    setIsGameStandby(true);
+    setTimeout(() => {
+      setIsGameStandby(false);
+      setIsGameStart(true);
+    }, 3000);
   };
-
+  const handleGameOver = () => {
+    setTimer(0);
+    setIsGameOver(true);
+  };
   const restartGame = () => {
     console.log("restarted the game");
     setAnswers([getFirstStation()]);
     setAnswer("");
-    setIsGameStart(true);
+    setIsGameStart(false);
     setIsGameOver(false);
+    setTimer(TIME_LIMIT);
+    handleGameStart();
   };
 
   return (
@@ -120,12 +146,14 @@ function App() {
           isOpen={isNoMatchAlertOpen}
         />
       </div>
-      <h1 className="mt-4 text-3xl font-bold">駅名しりとり</h1>
-      {/* display if the game doesn't start */}
-      {!(isGameStart || isGameOver) && (
+      <h1 className="mt-4 text-3xl font-bold">駅名しりとり:{timer}</h1>
+      {/* Before the game starts */}
+      {!(isGameStart || isGameOver || isGameStandby) && (
         <Start handleGameStart={handleGameStart} isGameStart={isGameStart} />
       )}
-      {/* display if the game starts */}
+      {/* Standby mode */}
+      {isGameStandby && <Standby />}
+      {/* The game is ongoing */}
       {isGameStart && !isGameOver && (
         <>
           <div className="mt-10">
@@ -165,17 +193,8 @@ function App() {
           </div>
         </>
       )}
-      {isGameOver && (
-        <>
-          <div>
-            <p className="text-red">Game Over</p>
-            <p>あなたの回答数: {answers.length}</p>
-          </div>
-          <button className="border-2" onClick={restartGame}>
-            リスタート
-          </button>
-        </>
-      )}
+      {/* Game is over */}
+      {isGameOver && <GameOver answers={answers} restartGame={restartGame} />}
     </div>
   );
 }
