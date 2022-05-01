@@ -6,6 +6,7 @@ import Alert from "./Alert";
 
 import frame from "../icons/frame.svg";
 import share from "../icons/share.svg";
+import copied from "../icons/copied.svg";
 
 import { getCandidates, randomSelect } from "../lib/functions";
 
@@ -14,6 +15,7 @@ import { ALERT_TIME, URL } from "../constant/config";
 const GameOver = ({ answers, restartGame, resetGame }) => {
   const [isListOpen, setIsListOpen] = useState(false);
   const [isShareAlertOpen, setIsShareAlertOpen] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   const total = answers
     .map((value) => value.time)
@@ -38,6 +40,7 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
       `${URL}`,
     ];
     navigator.clipboard.writeText(text.join("\n"));
+    setIsCopied(true);
   };
 
   return (
@@ -77,7 +80,7 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
         isOpen={isShareAlertOpen}
       />
       <div className="flex flex-col items-center w-full">
-        <h2 className="text-4xl mt-16 mb-12">Game Over</h2>
+        <h2 className="text-4xl mt-16 mb-12">ゲームオーバー</h2>
         <div className="relative w-72 h-80 pl-6 py-6 z-0">
           <img
             className="absolute top-0 left-0 mx-auto w-72 z-0"
@@ -116,7 +119,11 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
           }}
         >
           SHARE
-          <img className="inline w-4 pb-1 ml-1" src={share} alt="" />
+          <img
+            className="inline w-3 pb-1 ml-2"
+            src={isCopied ? copied : share}
+            alt=""
+          />
         </button>
       </div>
     </>
