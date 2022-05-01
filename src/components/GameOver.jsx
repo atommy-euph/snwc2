@@ -103,7 +103,7 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
         <Button value="リスタート" keybind="Space" onClick={restartGame} />
         <Button value="トップへ戻る" keybind="Espape" onClick={resetGame} />
         <button
-          className="mb-8 underline"
+          className="mt-8 border-2 border-black py-2 px-3 font-bold"
           onClick={() => {
             shareResult();
             setIsShareAlertOpen(true);
