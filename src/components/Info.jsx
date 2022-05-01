@@ -12,8 +12,7 @@ const Info = ({ onClose }) => {
       </h1>
       <h2>作者</h2>
       <div className="flex flex-row items-center mb-4">
-        <img className="w-8 inline mr-2" src={atommy} alt="Atommy" />
-        <span className="text-xl font-bold">Atommy</span>
+        <img className="w-44 inline mr-2" src={atommy} alt="Atommy" />
       </div>
       <ul>
         <li>
