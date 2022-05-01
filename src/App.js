@@ -156,7 +156,7 @@ function App() {
   }, [isGameOver, isGameStart, handleGameStart, restartGame, resetGame]);
 
   return (
-    <div className="flex flex-col items-center h-screen caret-transparent px-6">
+    <div className="flex flex-col items-center h-screen caret-transparent px-6 overflow-hidden">
       {/* Alerts */}
       <div className="flex justify-center">
         <Alert
@@ -193,17 +193,19 @@ function App() {
 
       {/* The game is ongoing */}
       {isGameStart && !isGameOver && (
-        <>
-          <div className="mt-10">
-            <p className="text-6xl">
-              {getSameGroup(getLastLetter(answers[answers.length - 1].answer))}
-            </p>
-            <p>から始まる駅名を入力</p>
-            <p>残り: {timer} 秒</p>
-          </div>
-          <div className="mt-10">
+        <div className="relative w-[28rem] h-[18rem] overflow-hidden pb-10">
+          {/* <p>残り: {timer} 秒</p> */}
+          <div className="top-12 -left-72 w-96 h-96 z-10 absolute border-4 border-black rounded-full"></div>
+          <div className="top-20 -left-64 w-80 h-80 z-20 absolute border-4 border-black rounded-full"></div>
+          <div className="top-56 left-[62px] w-8 h-8 rounded-full border-4 border-black absolute"></div>
+          <div className="top-32 left-[33px] w-8 h-8 rounded-full border-4 border-black absolute"></div>
+          <p className="top-32 left-[88px] font-bold text-xl absolute">
+            {answers[answers.length - 1].answer}
+          </p>
+
+          <div className="top-[214px] pl-32 absolute">
             <input
-              className="border-2"
+              className="absolute text-xl font-bold border-2 border-gray-300 h-14 w-44 pl-2 rounded-l-lg rounded-r-none focus:outline-none"
               type="text"
               ref={inputEl}
               value={answer}
@@ -212,24 +214,14 @@ function App() {
               }}
               onKeyDown={handleEnter}
             />
-            <button className="border-2 ml-2" onClick={handleAnswer}>
-              回答 [Enter]
+            <button
+              className="absolute left-[304px] leading-3 border-2 px-2 border-gray-300 border-l-0 h-14 rounded-r-lg"
+              onClick={handleAnswer}
+            >
+              Enter
             </button>
           </div>
-          <div>前の回答: {answers[answers.length - 1].answer}</div>
-          <div className="mt-10 bg-slate-100">
-            <p className="font-bold mb-2">Previous Answers</p>
-            <ul>
-              {answers
-                .map((value) => (
-                  <li key={value.answer} className="text-black">
-                    {value.answer}: {value.time}s
-                  </li>
-                ))
-                .reverse()}
-            </ul>
-          </div>
-        </>
+        </div>
       )}
 
       {/* Game is over */}

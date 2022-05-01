@@ -7,7 +7,7 @@ import Button from "./Button";
 import frame from "../icons/frame.svg";
 
 const GameOver = ({ answers, restartGame, resetGame }) => {
-  const [isListOpen, setIsListOpen] = useState(true);
+  const [isListOpen, setIsListOpen] = useState(false);
 
   const total = answers
     .map((value) => value.time)
