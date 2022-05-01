@@ -44,12 +44,12 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
           <span className="text-xl">記録</span>
           <p className="text-center">
             <span className="text-6xl pl-2">{answers.length - 1}</span>
-            <span className="text-xl">駅　</span>
+            <span className="text-xl"> 駅　</span>
           </p>
           <span className="text-xl">タイム</span>
           <p className="text-center">
             <span className="text-6xl pl-2">{total}</span>
-            <span className="text-xl">秒　</span>
+            <span className="text-xl"> 秒　</span>
           </p>
         </div>
         <button
