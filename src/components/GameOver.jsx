@@ -5,10 +5,11 @@ import Button from "./Button";
 import Alert from "./Alert";
 
 import frame from "../icons/frame.svg";
+import share from "../icons/share.svg";
 
 import { getCandidates, randomSelect } from "../lib/functions";
 
-import { ALERT_TIME } from "../constant/config";
+import { ALERT_TIME, URL } from "../constant/config";
 
 const GameOver = ({ answers, restartGame, resetGame }) => {
   const [isListOpen, setIsListOpen] = useState(false);
@@ -27,21 +28,23 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
   };
 
   const shareResult = () => {
-    navigator.clipboard.writeText(
-      `#尻鉄 | 駅名しりとり \n
-出発駅: ${answers[0].answer}
-到着駅: ${answers.slice(-1)[0].answer}
-記録　: ${answers.length - 1}駅 
-タイム: ${total}秒\n
-[url]`
-    );
+    const text = [
+      "#尻鉄 | 駅名しりとり",
+      `出発駅: ${answers[0].answer}`,
+      `到着駅: ${answers.slice(-1)[0].answer}`,
+      `記録　: ${answers.length - 1}駅 `,
+      `タイム: ${total}秒`,
+      "",
+      `${URL}`,
+    ];
+    navigator.clipboard.writeText(text.join("\n"));
   };
 
   return (
     <>
       {isListOpen && (
         <Overlay title="通過駅一覧" onClose={onClose}>
-          <div className="mt-8 h-[21rem] border-y-2 py-2 overflow-y-scroll">
+          <div className="mt-8 h-[21rem] border-y-2 py-2 overflow-y-scroll hidden-scrollbar">
             <p className="font-bold my-0 px-1">
               (<span className="inline-block w-10 text-center">発</span>)
               <span className="inline-block w-2"></span>
@@ -113,6 +116,7 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
           }}
         >
           SHARE
+          <img className="inline w-4 pb-1 ml-1" src={share} alt="" />
         </button>
       </div>
     </>

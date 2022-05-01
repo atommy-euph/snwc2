@@ -51,14 +51,14 @@ const Start = ({ handleGameStart }) => {
               setIsHelpOpen(true);
             }}
           >
-            <img className="w-10" src={help} alt="help" />
+            <img className="w-8" src={help} alt="help" />
           </button>
           <button
             onClick={() => {
               setIsInfoOpen(true);
             }}
           >
-            <img className="w-10" src={info} alt="info" />
+            <img className="w-8" src={info} alt="info" />
           </button>
         </div>
       </div>
