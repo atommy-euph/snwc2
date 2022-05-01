@@ -28,14 +28,12 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
 
   const shareResult = () => {
     navigator.clipboard.writeText(
-      `尻鉄 | 駅名しりとり \n\n
-      出発駅: ${answers[0].answer}\n
-      到着駅: ${answers[-1].answer}\n
-      記録　: ${answers.length - 1}駅 \n
-      タイム: ${{ total }}秒\n\n
-
-      [url]
-      `
+      `尻鉄 | 駅名しりとり \n
+出発駅: ${answers[0].answer}
+到着駅: ${answers.slice(-1)[0].answer}
+記録　: ${answers.length - 1}駅 
+タイム: ${total}秒\n
+[url]`
     );
   };
 
@@ -49,11 +47,15 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
               <span className="inline-block w-2"></span>
               {answers[0].answer}
             </p>
-            {candidates
+            {answers
               .map((value) => value.answer)
               .map((value, i) => (
-                <p className="font-bold my-0 px-1" key={value}>
-                  (<span className="inline-block w-10 text-center">{i}</span>)
+                <p key={i} className="font-bold my-0 px-1">
+                  (
+                  <span key={i} className="inline-block w-10 text-center">
+                    {i}
+                  </span>
+                  )<span className="inline-block w-2"></span>
                   {value}
                 </p>
               ))
@@ -61,7 +63,7 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
           </div>
           <h3 className="mt-12">続きには...</h3>
           {nextHints.length > 0 ? (
-            nextHints.map((value) => <span>{value}, </span>)
+            nextHints.map((value) => <span key={value}>{value}, </span>)
           ) : (
             <span>回答可能な候補はありませんでした。</span>
           )}
