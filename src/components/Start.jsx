@@ -42,7 +42,7 @@ const Start = ({ handleGameStart }) => {
         />
       )}
       <div className="flex flex-col items-center py-12">
-        <img className="w-64 mb-8" src={titleLogo} alt="しりてつ" />
+        <img className="w-64 mt-32 mb-8" src={titleLogo} alt="しりてつ" />
         <Button value="スタート" keybind="Space" onClick={handleGameStart} />
 
         <div className="mt-12 w-64 flex flex-row justify-center space-x-4">

@@ -25,7 +25,11 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
         <Overlay title="通過駅一覧" onClose={onClose}>
           {answers
             .map((value) => value.answer)
-            .map((value) => <li key={value}>{value}</li>)
+            .map((value) => (
+              <li className="font-bold" key={value}>
+                {value}
+              </li>
+            ))
             .slice(1)}
         </Overlay>
       )}
