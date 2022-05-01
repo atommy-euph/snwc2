@@ -13,7 +13,7 @@ const Standby = () => {
 
   return (
     <div>
-      <h2 className="mt-10 text-4xl font-bold">{count}</h2>
+      <p className="mt-64 text-6xl">{count}</p>
     </div>
   );
 };

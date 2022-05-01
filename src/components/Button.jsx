@@ -2,7 +2,7 @@ import React from "react";
 
 const Button = ({ value, keybind, onClick }) => {
   return (
-    <div className="my-1 flex flex-col items-center">
+    <div className="my-2 flex flex-col items-center">
       <p className="m-0 mb-0.5 text-sm text-gray-400">
         Press the {keybind} key
       </p>
