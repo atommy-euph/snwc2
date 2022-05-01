@@ -1,23 +1,56 @@
-import React from "react";
+import { useState } from "react";
+
+import Button from "./Button";
+import Help from "./Help";
+import Info from "./Info";
+
+import titleLogo from "../icons/logo.svg";
+import help from "../icons/help.svg";
+import info from "../icons/info.svg";
 
 const Start = ({ handleGameStart }) => {
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
+
   return (
-    <div>
-      <div>
-        <h2 className="text-lg font-bold mt-4 justify-center">ルール</h2>
-        <ul>
-          <li>「ん」で終わってはいけない</li>
-          <li>２度同じ駅を入れてはいけない</li>
-          <li>濁点、半濁点、小文字は同一視できる</li>
-          <li>伸ばし棒は無視できる</li>
-          <li>ひらがなと半角英字(大文字)と半角数字のみ使用可</li>
-          <li>判定はWikipediaの駅名一覧に準じる</li>
-        </ul>
+    <>
+      {/* Overlay */}
+      {isHelpOpen && (
+        <Help
+          onClose={() => {
+            setIsHelpOpen(false);
+          }}
+        />
+      )}
+      {isInfoOpen && (
+        <Info
+          onClose={() => {
+            setIsInfoOpen(false);
+          }}
+        />
+      )}
+      <div className="flex flex-col items-center py-12">
+        <img className="w-64 mb-8" src={titleLogo} alt="しりてつ" />
+        <Button value="スタート" keybind="Space" onClick={handleGameStart} />
+
+        <div className="mt-12 w-64 flex flex-row justify-center space-x-4">
+          <button
+            onClick={() => {
+              setIsHelpOpen(true);
+            }}
+          >
+            <img className="w-10" src={help} alt="help" />
+          </button>
+          <button
+            onClick={() => {
+              setIsInfoOpen(true);
+            }}
+          >
+            <img className="w-10" src={info} alt="help" />
+          </button>
+        </div>
       </div>
-      <button className="mt-10 border-2" onClick={handleGameStart}>
-        スタート[スペース]
-      </button>
-    </div>
+    </>
   );
 };
 

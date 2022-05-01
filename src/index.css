@@ -75,12 +75,8 @@ hr {
 }
 
 /* Images */
-.gatsby-resp-image-wrapper {
-  @apply block my-16;
-}
 
 img {
-  @apply rounded-lg;
 }
 
 /* Code */

@@ -116,6 +116,7 @@ function App() {
     setTimer(TIME_LIMIT);
   }, []);
 
+  // Timer
   useEffect(() => {
     if (!isGameStart) return;
     const interval = setInterval(() => {
@@ -128,12 +129,14 @@ function App() {
     return () => clearInterval(interval);
   }, [timer, isGameStart]);
 
+  // Auto focus
   useEffect(() => {
     if (inputEl.current) {
       inputEl.current.focus();
     }
   });
 
+  // Key bind
   useEffect(() => {
     document.addEventListener(
       "keydown",
@@ -153,7 +156,7 @@ function App() {
   }, [isGameOver, isGameStart, handleGameStart, restartGame, resetGame]);
 
   return (
-    <div className="flex flex-col items-center container h-screen py-4 caret-transparent">
+    <div className="flex flex-col items-center container h-screen caret-transparent px-6">
       {/* Alerts */}
       <div className="flex justify-center">
         <Alert
@@ -179,7 +182,6 @@ function App() {
           isOpen={isNoMatchAlertOpen}
         />
       </div>
-      <h1 className="mt-4 text-3xl font-bold">駅名しりとり</h1>
 
       {/* Before the game starts */}
       {!(isGameStart || isGameOver || isGameStandby) && (
