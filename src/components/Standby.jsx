@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { COUNTDOWN_TIME } from "../constant/config";
 
-const Standby = ({ handleGameStanby }) => {
+const Standby = () => {
   const [count, setCount] = useState(COUNTDOWN_TIME);
 
   useEffect(() => {

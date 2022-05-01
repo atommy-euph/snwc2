@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 import Start from "./components/Start";
 import Standby from "./components/Standby";
@@ -34,40 +34,6 @@ function App() {
   const [isNoMatchAlertOpen, setIsNoMatchAlertOpen] = useState(false);
 
   const [timer, setTimer] = useState(TIME_LIMIT);
-
-  useEffect(() => {
-    if (!isGameStart) return;
-    const interval = setInterval(() => {
-      if (timer > 0) {
-        setTimer((c) => c - 1);
-      } else {
-        handleGameOver();
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [timer, isGameStart]);
-
-  useEffect(() => {
-    if (inputEl.current) {
-      inputEl.current.focus();
-    }
-  });
-
-  useEffect(() => {
-    document.addEventListener(
-      "keydown",
-      (e) => {
-        if (e.key === " ") {
-          if (!isGameOver) {
-            handleGameStart();
-          } else if (isGameOver) {
-            restartGame();
-          }
-        }
-      },
-      false
-    );
-  }, [isGameOver]);
 
   const inputEl = useRef(null);
 
@@ -123,33 +89,68 @@ function App() {
       handleAnswer();
     }
   };
-  const handleGameStart = () => {
+  const handleGameStart = useCallback(() => {
     setIsGameStandby(true);
     setTimeout(() => {
       setIsGameStandby(false);
       setIsGameStart(true);
     }, 3000);
-  };
+  }, []);
   const handleGameOver = () => {
     setTimer(0);
     setIsGameOver(true);
   };
-  const restartGame = () => {
+  const restartGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
     setAnswer("");
     setIsGameStart(false);
     setIsGameOver(false);
     setTimer(TIME_LIMIT);
     handleGameStart();
-  };
-
-  const resetGame = () => {
+  }, [handleGameStart]);
+  const resetGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
     setAnswer("");
     setIsGameStart(false);
     setIsGameOver(false);
     setTimer(TIME_LIMIT);
-  };
+  }, []);
+
+  useEffect(() => {
+    if (!isGameStart) return;
+    const interval = setInterval(() => {
+      if (timer > 0) {
+        setTimer((c) => c - 1);
+      } else {
+        handleGameOver();
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timer, isGameStart]);
+
+  useEffect(() => {
+    if (inputEl.current) {
+      inputEl.current.focus();
+    }
+  });
+
+  useEffect(() => {
+    document.addEventListener(
+      "keydown",
+      (e) => {
+        if (e.key === " ") {
+          if (!isGameStart && !isGameOver) {
+            handleGameStart();
+          } else if (isGameStart && isGameOver) {
+            restartGame();
+          }
+        } else if (e.key === "Escape") {
+          resetGame();
+        }
+      },
+      false
+    );
+  }, [isGameOver, isGameStart, handleGameStart, restartGame, resetGame]);
 
   return (
     <div className="flex flex-col items-center container h-screen py-4 caret-transparent">
@@ -186,7 +187,7 @@ function App() {
       )}
 
       {/* Standby mode */}
-      {isGameStandby && <Standby />}
+      {!isGameStart && isGameStandby && <Standby />}
 
       {/* The game is ongoing */}
       {isGameStart && !isGameOver && (
