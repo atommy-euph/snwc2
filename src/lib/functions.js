@@ -13,7 +13,8 @@ export const getFirstStation = () => {
 
     if (
       getCandidates(firstStation, [firstStation]).length >=
-      MINIMUM_INITIAL_NUMBER_OF_CANDIDATES
+        MINIMUM_INITIAL_NUMBER_OF_CANDIDATES &&
+      firstStation.length <= 10
     ) {
       break;
     }

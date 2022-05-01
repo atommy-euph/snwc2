@@ -26,19 +26,24 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
     <>
       {isListOpen && (
         <Overlay title="通過駅一覧" onClose={onClose}>
-          <ul className="mt-8">
-            <li className="font-bold">(出発駅) {answers[0].answer}</li>
-            {answers
+          <div className="mt-8 h-[21rem] border-y-2 py-2 overflow-y-scroll">
+            <p className="font-bold my-0 px-1">
+              (<span className="inline-block w-10 text-center">発</span>)
+              <span className="inline-block w-2"></span>
+              {answers[0].answer}
+            </p>
+            {candidates
               .map((value) => value.answer)
               .map((value, i) => (
-                <li className="font-bold" key={value}>
-                  ({i}) {value}
-                </li>
+                <p className="font-bold my-0 px-1" key={value}>
+                  (<span className="inline-block w-10 text-center">{i}</span>)
+                  {value}
+                </p>
               ))
               .slice(1)}
-          </ul>
-          <h3 className="mt-10">続きには...</h3>
-          {candidates.length > 0 ? (
+          </div>
+          <h3 className="mt-12">続きには...</h3>
+          {nextHints.length > 0 ? (
             nextHints.map((value) => <span>{value}, </span>)
           ) : (
             <span>回答可能な候補はありませんでした。</span>

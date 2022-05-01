@@ -161,7 +161,6 @@ function App() {
     <div className="flex flex-col items-center h-screen caret-transparent px-6 overflow-hidden">
       {/* Alerts */}
       <div className="flex justify-center">
-        <Alert message="駅名を入力してください" isOpen={isEmptyAlertOpen} />
         <Alert
           message="駅名に使われない文字が含まれています"
           isOpen={isInvalidLetterAlertOpen}
@@ -173,6 +172,7 @@ function App() {
           )}」から始まる駅名を入力してください`}
           isOpen={isNoMatchAlertOpen}
         />
+        <Alert message="駅名を入力してください" isOpen={isEmptyAlertOpen} />
       </div>
 
       {/* Before the game starts */}
@@ -186,7 +186,6 @@ function App() {
       {/* The game is ongoing */}
       {isGameStart && !isGameOver && (
         <div className="relative w-[28rem] h-[18rem] overflow-hidden pb-10">
-          {/* <p>残り: {timer} 秒</p> */}
           <div className="top-12 -left-72 w-96 h-96 z-10 absolute border-4 border-black rounded-full"></div>
           <div className="top-20 -left-64 w-80 h-80 z-20 absolute border-4 border-black rounded-full"></div>
           <div className="flex justify-center items-center font-bold text-lg tracking-[-3px] pr-[3px]  top-56 left-[62px] w-8 h-8 rounded-full border-4 border-black absolute">
@@ -206,7 +205,7 @@ function App() {
           <p className="absolute top-6 right-8 text-4xl">{timer}</p>
           <div className="top-[214px] pl-32 absolute">
             <input
-              className="absolute text-xl font-bold border-2 border-gray-300 h-14 w-44 pl-2 rounded-l-lg rounded-r-none focus:outline-none"
+              className="caret-gray-300 absolute text-xl font-bold border-2 border-gray-300 h-14 w-44 pl-2 rounded-l-lg rounded-r-none focus:outline-none"
               type="text"
               ref={inputEl}
               value={answer}
