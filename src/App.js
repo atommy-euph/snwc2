@@ -181,7 +181,7 @@ function App() {
       )}
 
       {/* Standby mode */}
-      {!isGameStart && isGameStandby && <Standby />}
+      {!isGameStart && isGameStandby && <Standby answers={answers} />}
 
       {/* The game is ongoing */}
       {isGameStart && !isGameOver && (
