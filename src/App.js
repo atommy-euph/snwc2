@@ -156,7 +156,7 @@ function App() {
   }, [isGameOver, isGameStart, handleGameStart, restartGame, resetGame]);
 
   return (
-    <div className="flex flex-col items-center container h-screen caret-transparent px-6">
+    <div className="flex flex-col items-center h-screen caret-transparent px-6">
       {/* Alerts */}
       <div className="flex justify-center">
         <Alert

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Button from "./Button";
 import Help from "./Help";
@@ -11,6 +11,18 @@ import info from "../icons/info.svg";
 const Start = ({ handleGameStart }) => {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+
+  useEffect(() => {
+    document.addEventListener(
+      "keydown",
+      (e) => {
+        if (e.key === "Escape") {
+          setIsHelpOpen(false);
+        }
+      },
+      false
+    );
+  }, []);
 
   return (
     <>
@@ -46,7 +58,7 @@ const Start = ({ handleGameStart }) => {
               setIsInfoOpen(true);
             }}
           >
-            <img className="w-10" src={info} alt="help" />
+            <img className="w-10" src={info} alt="info" />
           </button>
         </div>
       </div>
