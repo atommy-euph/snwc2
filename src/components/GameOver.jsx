@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 import Overlay from "./Overlay";
-
 import Button from "./Button";
 
 import frame from "../icons/frame.svg";
+
+import { getCandidates, randomSelect } from "../lib/functions";
 
 const GameOver = ({ answers, restartGame, resetGame }) => {
   const [isListOpen, setIsListOpen] = useState(false);
@@ -14,6 +15,8 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
     .reduce((sum, element) => {
       return sum + element;
     }, 0);
+  const candidates = getCandidates(answers.slice(-1)[0].answer, answers);
+  const nextHints = randomSelect(candidates, 4);
 
   const onClose = () => {
     setIsListOpen(false);
@@ -23,14 +26,23 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
     <>
       {isListOpen && (
         <Overlay title="通過駅一覧" onClose={onClose}>
-          {answers
-            .map((value) => value.answer)
-            .map((value) => (
-              <li className="font-bold" key={value}>
-                {value}
-              </li>
-            ))
-            .slice(1)}
+          <ul className="mt-8">
+            <li className="font-bold">(出発駅) {answers[0].answer}</li>
+            {answers
+              .map((value) => value.answer)
+              .map((value, i) => (
+                <li className="font-bold" key={value}>
+                  ({i}) {value}
+                </li>
+              ))
+              .slice(1)}
+          </ul>
+          <h3 className="mt-10">続きには...</h3>
+          {candidates.length > 0 ? (
+            nextHints.map((value) => <span>{value}, </span>)
+          ) : (
+            <span>回答可能な候補はありませんでした。</span>
+          )}
         </Overlay>
       )}
       <div className="flex flex-col items-center w-full">
@@ -43,13 +55,13 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
           />
           <span className="text-xl">記録</span>
           <p className="text-center">
-            <span className="text-6xl pl-2">{answers.length - 1}</span>
-            <span className="text-xl"> 駅　</span>
+            <span className="text-6xl pl-1">{answers.length - 1}</span>
+            <span className="text-xl"> 駅 </span>
           </p>
           <span className="text-xl">タイム</span>
           <p className="text-center">
-            <span className="text-6xl pl-2">{total}</span>
-            <span className="text-xl"> 秒　</span>
+            <span className="text-6xl pl-1">{total}</span>
+            <span className="text-xl"> 秒 </span>
           </p>
         </div>
         <button

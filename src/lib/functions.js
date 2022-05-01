@@ -61,6 +61,18 @@ export const getCandidates = (answer, answers) => {
   return candidates;
 };
 
+export const randomSelect = (array, num) => {
+  let newArray = [];
+  let rand;
+  while (newArray.length < num && array.length > 0) {
+    rand = Math.floor(Math.random() * array.length);
+    newArray.push(array[rand]);
+    array.splice(rand, 1);
+  }
+
+  return newArray;
+};
+
 export const endsWithValidLetter = (answer, answers) => {
   const candidates = getCandidates(answer, answers);
   return candidates.length !== 0 ? true : false;
