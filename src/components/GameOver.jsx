@@ -2,13 +2,17 @@ import { useState } from "react";
 
 import Overlay from "./Overlay";
 import Button from "./Button";
+import Alert from "./Alert";
 
 import frame from "../icons/frame.svg";
 
 import { getCandidates, randomSelect } from "../lib/functions";
 
+import { ALERT_TIME } from "../constant/config";
+
 const GameOver = ({ answers, restartGame, resetGame }) => {
   const [isListOpen, setIsListOpen] = useState(false);
+  const [isShareAlertOpen, setIsShareAlertOpen] = useState(false);
 
   const total = answers
     .map((value) => value.time)
@@ -20,6 +24,19 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
 
   const onClose = () => {
     setIsListOpen(false);
+  };
+
+  const shareResult = () => {
+    navigator.clipboard.writeText(
+      `尻鉄 | 駅名しりとり \n\n
+      出発駅: ${answers[0].answer}\n
+      到着駅: ${answers[-1].answer}\n
+      記録　: ${answers.length - 1}駅 \n
+      タイム: ${{ total }}秒\n\n
+
+      [url]
+      `
+    );
   };
 
   return (
@@ -50,6 +67,10 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
           )}
         </Overlay>
       )}
+      <Alert
+        message="クリップボードにコピーしました"
+        isOpen={isShareAlertOpen}
+      />
       <div className="flex flex-col items-center w-full">
         <h2 className="text-4xl mt-16 mb-12">Game Over</h2>
         <div className="relative w-72 h-80 pl-6 py-6 z-0">
@@ -79,6 +100,18 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
         </button>
         <Button value="リスタート" keybind="Space" onClick={restartGame} />
         <Button value="トップへ戻る" keybind="Espape" onClick={resetGame} />
+        <button
+          className="mb-8 underline"
+          onClick={() => {
+            shareResult();
+            setIsShareAlertOpen(true);
+            setTimeout(() => {
+              setIsShareAlertOpen(false);
+            }, ALERT_TIME);
+          }}
+        >
+          SHARE
+        </button>
       </div>
     </>
   );
