@@ -21,14 +21,19 @@ const Info = ({ onClose }) => {
         <li>
           Mail: <a href="mailto:info@atommy.me">info@atommy.me</a>
         </li>
+        <li>
+          Twitter: <a href="https://twitter.com/atommy_euph">@atommy_euph</a>
+        </li>
       </ul>
-
-      <h2>プライバシーポリシー</h2>
-      <h2>クレジット</h2>
-      <h2>製作者への寄付</h2>
+      <h2>寄付</h2>
+      <p>
+        もし「尻鉄」を気に入ってもらえたら、以下のリンクよりコーヒーをおごってくださると嬉しいです！
+      </p>
       <a href="https://buymeacoffee.com/atommy">
         <img className="w-44" src={bmcButton} alt="Buy me a coffee" />
       </a>
+      <h2>プライバシーポリシー</h2>
+      <h2>クレジット</h2>
     </Overlay>
   );
 };

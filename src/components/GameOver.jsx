@@ -28,7 +28,7 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
 
   const shareResult = () => {
     navigator.clipboard.writeText(
-      `尻鉄 | 駅名しりとり \n
+      `#尻鉄 | 駅名しりとり \n
 出発駅: ${answers[0].answer}
 到着駅: ${answers.slice(-1)[0].answer}
 記録　: ${answers.length - 1}駅 
@@ -103,7 +103,7 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
         <Button value="リスタート" keybind="Space" onClick={restartGame} />
         <Button value="トップへ戻る" keybind="Espape" onClick={resetGame} />
         <button
-          className="mt-8 border-2 border-black py-2 px-3 font-bold"
+          className="mt-8 mb-6 border-2 border-black py-2 px-3 font-bold"
           onClick={() => {
             shareResult();
             setIsShareAlertOpen(true);
