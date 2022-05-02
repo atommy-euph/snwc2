@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+
 import classNames from "classnames";
 
 const Alert = ({ message, isOpen }) => {
@@ -9,7 +11,15 @@ const Alert = ({ message, isOpen }) => {
     }
   );
 
-  return <p className={classes}>{message}</p>;
+  return (
+    <motion.p
+      animate={{ opacity: [0, 1] }}
+      transition={{ duration: 1 }}
+      className={classes}
+    >
+      {message}
+    </motion.p>
+  );
 };
 
 export default Alert;
