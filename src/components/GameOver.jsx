@@ -32,6 +32,7 @@ const GameOver = ({ answers, restartGame, resetGame }) => {
   const shareResult = () => {
     const text = [
       "#尻鉄 | 駅名しりとり",
+      "",
       `出発駅: ${answers[0].answer}`,
       `到着駅: ${answers.slice(-1)[0].answer}`,
       `記録　: ${answers.length - 1}駅 `,
