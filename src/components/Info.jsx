@@ -2,6 +2,7 @@ import Overlay from "./Overlay";
 import logo from "../icons/logo_type.svg";
 import bmcButton from "../icons/bmc-button.png";
 import atommy from "../icons/atommy.svg";
+import railword from "../icons/railword.png";
 
 const Info = ({ onClose }) => {
   return (
@@ -26,10 +27,17 @@ const Info = ({ onClose }) => {
           Twitter: <a href="https://twitter.com/atommy_euph">@atommy_euph</a>
         </li>
       </ul>
-      <h2>他のRAILWORDのゲーム</h2>
+      <h2>RAILWORDのゲーム</h2>
       <ul>
         <li>
-          <a href="https://railword.com">テツドル - 駅名版Wordle</a>
+          <a href="https://railword.com">
+            <img
+              className="w-6 inline mr-2 mb-1"
+              src={railword}
+              alt="テツドル"
+            />
+            テツドル - 駅名版Wordle
+          </a>
         </li>
       </ul>
       <h2>寄付</h2>
