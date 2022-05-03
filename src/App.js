@@ -260,7 +260,7 @@ function App() {
       {/* Alerts */}
       <div className="flex justify-center">
         <Alert
-          message="駅名に使われない文字が含まれています"
+          message="無効な文字が含まれています"
           isOpen={isInvalidLetterAlertOpen}
         />
         <Alert
