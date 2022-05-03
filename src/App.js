@@ -27,7 +27,12 @@ import {
   randomSelect,
 } from "./lib/functions";
 
-import { ALERT_TIME, TIME_LIMIT, COUNTDOWN_TIME } from "./constant/config.js";
+import {
+  ALERT_TIME,
+  TIME_LIMIT,
+  COUNTDOWN_TIME,
+  GAME_URL,
+} from "./constant/config.js";
 import { STATION_DATA } from "./constant/station_data.js";
 
 function App() {
@@ -235,7 +240,7 @@ function App() {
       `記録　: ${answers.length - 1}駅 `,
       `タイム: ${totalTime}秒`,
       "",
-      `${URL}`,
+      `${GAME_URL}`,
     ];
     navigator.clipboard.writeText(text.join("\n"));
     setIsCopied(true);
@@ -475,7 +480,7 @@ function App() {
               <img
                 className="inline w-3 pb-1 ml-2"
                 src={isCopied ? copied : share}
-                alt=""
+                alt="SHARE"
               />
             </button>
           </div>
