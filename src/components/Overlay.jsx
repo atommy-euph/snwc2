@@ -16,7 +16,7 @@ const Overlay = ({ children, title, onClose }) => {
           <img className="w-5" src={close} alt="close" />
         </button>
       </div>
-      <div className="w-full max-w-xl">{children}</div>
+      <div className="w-full max-w-xl pb-12">{children}</div>
     </motion.div>
   );
 };
