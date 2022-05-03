@@ -1,13 +1,11 @@
-import { STATIONS } from "../constant/stations";
+import { STATION_DATA } from "../constant/station_data";
 import { GROUPS } from "../constant/groups";
 import { MINIMUM_INITIAL_NUMBER_OF_CANDIDATES } from "../constant/config";
 
+const stations = Object.keys(STATION_DATA);
+
 export const getFirstStation = () => {
-  let stations = [];
   let firstStation;
-  for (let key in STATIONS) {
-    stations = stations.concat(STATIONS[key]);
-  }
   while (true) {
     firstStation = stations[Math.floor(Math.random() * stations.length)];
 
@@ -33,7 +31,7 @@ export const isValidLetters = (answer) => {
 };
 
 export const isIncludedInStations = (answer) => {
-  return STATIONS[answer.length].includes(answer);
+  return stations.includes(answer);
 };
 
 export const startsWithValidLetter = (answer, answers) => {
@@ -49,16 +47,14 @@ export const isAnswered = (answer, answers) => {
 
 export const getCandidates = (answer, answers) => {
   const candidates = [];
-  for (let key in STATIONS) {
-    STATIONS[key].forEach((value) => {
-      if (
-        isSameGroup(getLastLetter(answer), value.slice(0, 1)) &&
-        !answers.includes(value)
-      ) {
-        candidates.push(value);
-      }
-    });
-  }
+  stations.forEach((value) => {
+    if (
+      isSameGroup(getLastLetter(answer), value.slice(0, 1)) &&
+      !answers.includes(value)
+    ) {
+      candidates.push(value);
+    }
+  });
   return candidates;
 };
 
