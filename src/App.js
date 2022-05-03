@@ -216,13 +216,15 @@ function App() {
   });
 
   // For result screen
-  const total = answers
+  const totalTime = answers
     .map((value) => value.time)
     .reduce((sum, element) => {
       return sum + element;
     }, 0);
-  const candidates = getCandidates(answers.slice(-1)[0].answer, answers);
-  const nextHints = randomSelect(candidates, 4);
+  const candidatesForLastAnswer = randomSelect(
+    getCandidates(answers.slice(-1)[0].answer, answers),
+    4
+  );
 
   const shareResult = () => {
     const text = [
@@ -231,7 +233,7 @@ function App() {
       `出発駅: ${answers[0].answer}`,
       `到着駅: ${answers.slice(-1)[0].answer}`,
       `記録　: ${answers.length - 1}駅 `,
-      `タイム: ${total}秒`,
+      `タイム: ${totalTime}秒`,
       "",
       `${URL}`,
     ];
@@ -407,8 +409,8 @@ function App() {
               </div>
               <h3 className="mt-12">続きには...</h3>
               <ul>
-                {nextHints.length > 0 ? (
-                  nextHints.map((value) => (
+                {candidatesForLastAnswer.length > 0 ? (
+                  candidatesForLastAnswer.map((value) => (
                     <li className="mr-2 my-0.5" key={value}>
                       {value}{" "}
                       <a
@@ -445,7 +447,7 @@ function App() {
               </p>
               <span className="text-xl">タイム</span>
               <p className="text-center">
-                <span className="text-6xl pl-1">{total}</span>
+                <span className="text-6xl pl-1">{totalTime}</span>
                 <span className="text-xl"> 秒 </span>
               </p>
             </div>
