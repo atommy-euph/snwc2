@@ -10,6 +10,9 @@ const Help = ({ onClose }) => {
         <li>入力を確定したあと、もう一度 Enter を押すと次に進めます</li>
         <li>タイムリミットは 1駅ごとに30秒です</li>
         <li>あなたの駅名知識の限界に挑戦してください</li>
+        <li>
+          終了後、回答駅一覧から駅の情報 (Wikipedia) を見ることができます。
+        </li>
       </ol>
       <h2 className="text-lg font-bold">ゲーム終了条件</h2>
       <ul>
