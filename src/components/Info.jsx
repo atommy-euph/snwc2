@@ -29,7 +29,7 @@ const Info = ({ onClose }) => {
       <h2>寄付</h2>
       <p>
         「Buy me a coffee」というサービスを利用しています。
-        作品を気に入っていただけけましたら、ぜひコーヒーをおごってください！
+        作品を気に入っていただけましたら、ぜひコーヒーをおごってください！
       </p>
       <a href="https://buymeacoffee.com/atommy">
         <img className="w-44" src={bmcButton} alt="Buy me a coffee" />

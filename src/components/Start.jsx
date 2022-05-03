@@ -12,6 +12,7 @@ const Start = ({ handleGameStart }) => {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
 
+  // Key bind
   useEffect(() => {
     document.addEventListener(
       "keydown",
@@ -23,6 +24,21 @@ const Start = ({ handleGameStart }) => {
       false
     );
   }, []);
+  // Control browser back
+  useEffect(() => {
+    window.history.pushState(null, null, window.location.href);
+    window.addEventListener("popstate", (e) => {
+      window.history.go(1);
+      if (isHelpOpen) {
+        setIsHelpOpen(false);
+        return;
+      }
+      if (isInfoOpen) {
+        setIsInfoOpen(false);
+        return;
+      }
+    });
+  });
 
   return (
     <>
