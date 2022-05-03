@@ -121,6 +121,7 @@ function App() {
     }
   };
   const handleGameStart = useCallback(() => {
+    setIsCopied(false);
     if (count === COUNTDOWN_TIME) setIsGameStandby(true);
     if (count === 1) {
       setIsGameStandby(false);
