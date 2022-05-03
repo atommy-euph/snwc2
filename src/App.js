@@ -30,6 +30,7 @@ import {
   TIME_LIMIT,
   COUNTDOWN_TIME,
   GAME_URL,
+  MISTAKE_COUNT_LIMIT,
 } from "./constant/config.js";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
   const [answers, setAnswers] = useState(() => [
     { answer: getFirstStation(), time: 0 },
   ]);
+  const [mistakeCount, setMistakeCount] = useState(0);
 
   // Count down in Standby
   const [count, setCount] = useState(COUNTDOWN_TIME);
@@ -83,6 +85,7 @@ function App() {
     }
     if (!isIncludedInStations(answer)) {
       setAnswer("");
+      setMistakeCount(mistakeCount + 1);
       setIsNoExistenceAlertOpen(true);
       setTimeout(() => {
         setIsNoExistenceAlertOpen(false);
@@ -91,6 +94,7 @@ function App() {
     }
     if (!startsWithValidLetter(answer, answers)) {
       setAnswer("");
+      setMistakeCount(mistakeCount + 1);
       setIsNoMatchAlertOpen(true);
       setTimeout(() => {
         setIsNoMatchAlertOpen(false);
@@ -109,6 +113,7 @@ function App() {
 
     setAnswers(answers.concat({ answer: answer, time: TIME_LIMIT - timer }));
     setAnswer("");
+    setMistakeCount(0);
     setTimer(TIME_LIMIT);
   };
   const handleEnter = (e) => {
@@ -119,6 +124,8 @@ function App() {
   };
   const handleGameStart = useCallback(() => {
     setIsCopied(false);
+    setMistakeCount(0);
+
     if (count === COUNTDOWN_TIME) setIsGameStandby(true);
     if (count === 1) {
       setIsGameStandby(false);
@@ -126,9 +133,9 @@ function App() {
     }
   }, [count]);
   const handleGameOver = () => {
+    setIsGameOver(true);
     setTimer(0);
     setCount(COUNTDOWN_TIME);
-    setIsGameOver(true);
   };
   const restartGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
@@ -172,6 +179,14 @@ function App() {
     }, 1000);
     return () => clearInterval(interval);
   }, [timer, isGameStart]);
+
+  // Judge game over
+  useEffect(() => {
+    if (mistakeCount === MISTAKE_COUNT_LIMIT) {
+      handleGameOver();
+      return;
+    }
+  });
 
   // Auto focus
   useEffect(() => {
@@ -248,11 +263,14 @@ function App() {
           message="駅名に使われない文字が含まれています"
           isOpen={isInvalidLetterAlertOpen}
         />
-        <Alert message="その駅は存在しません" isOpen={isNoExistenceAlertOpen} />
+        <Alert
+          message="その駅は存在しません (お手つき+1)"
+          isOpen={isNoExistenceAlertOpen}
+        />
         <Alert
           message={`「${getSameGroup(
             getLastLetter(answers[answers.length - 1].answer)
-          )}」から始まる駅名を入力してください`}
+          )}」から始まる駅名を入力してください (お手つき+1)`}
           isOpen={isNoMatchAlertOpen}
         />
         <Alert message="駅名を入力してください" isOpen={isEmptyAlertOpen} />
@@ -360,7 +378,11 @@ function App() {
               {"\u{23CE}"}
             </button>
           </div>
-          <div className="relative top-[35rem]">
+          <p className="relative text-center text-sm top-[333px]">
+            お手つき <br />
+            <span className="text-2xl">{mistakeCount}/3</span>
+          </p>
+          <div className="relative top-[32rem]">
             <Button
               keybind="Escape"
               value="ギブアップ"
