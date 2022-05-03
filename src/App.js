@@ -77,6 +77,7 @@ function App() {
       return;
     }
     if (!endsWithValidLetter(answer, answers)) {
+      setAnswers(answers.concat({ answer: answer, time: TIME_LIMIT - timer }));
       handleGameOver();
       return;
     }

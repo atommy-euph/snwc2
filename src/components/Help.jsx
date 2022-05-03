@@ -3,6 +3,14 @@ import Overlay from "./Overlay";
 const Help = ({ onClose }) => {
   return (
     <Overlay title="Help" onClose={onClose}>
+      <h2 className="text-lg font-bold">遊び方</h2>
+      <ol>
+        <li>スタートを押します</li>
+        <li>出発駅が表示されるので駅名でしりとりをしてください</li>
+        <li>入力を確定したあと、もう一度 Enter を押すと次に進めます</li>
+        <li>タイムリミットは 1駅ごとに30秒です</li>
+        <li>あなたの駅名知識の限界に挑戦してください</li>
+      </ol>
       <h2 className="text-lg font-bold">ゲーム終了条件</h2>
       <ul>
         <li>次に回答可能な駅が無くなった場合</li>
