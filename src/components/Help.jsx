@@ -16,7 +16,7 @@ const Help = ({ onClose }) => {
         <li>タイムリミットは 1駅ごとに{TIME_LIMIT}秒です</li>
         <li>あなたの駅名知識の限界に挑戦してください</li>
         <li>
-          終了後、回答駅一覧から駅の情報 (Wikipedia) を見ることができます。
+          終了後、停車駅一覧から駅の情報 (Wikipedia) を見ることができます。
         </li>
       </ol>
       <h2 className="text-lg font-bold">ゲーム終了条件</h2>

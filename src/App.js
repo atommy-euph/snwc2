@@ -433,7 +433,7 @@ function App() {
                 setIsListOpen(true);
               }}
             >
-              通過駅一覧
+              停車駅一覧
             </button>
             <Button value="リスタート" keybind="Space" onClick={restartGame} />
             <Button value="トップへ戻る" keybind="Escape" onClick={resetGame} />
