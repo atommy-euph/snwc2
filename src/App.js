@@ -380,7 +380,10 @@ function App() {
           </div>
           <p className="relative text-center text-sm top-[333px]">
             お手つき <br />
-            <span className="text-2xl">{mistakeCount}/3</span>
+            <span className="text-2xl">
+              {mistakeCount}
+              <span className="text-base mx-0.5">/</span>3
+            </span>
           </p>
           <div className="relative top-[32rem]">
             <Button
