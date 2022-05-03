@@ -10,6 +10,7 @@ const Info = ({ onClose }) => {
         <img className="w-14 inline mr-1" src={logo} alt="尻鉄" />
         <span className="inline-block pt-3">について</span>
       </h1>
+
       <h2>作者</h2>
       <div className="flex flex-row items-center mb-4">
         <img className="w-44 inline mr-2" src={atommy} alt="Atommy" />
@@ -27,13 +28,31 @@ const Info = ({ onClose }) => {
       </ul>
       <h2>寄付</h2>
       <p>
-        もし「尻鉄」を気に入ってもらえたら、以下のリンクよりコーヒーをおごってくださると嬉しいです！
+        「Buy me a coffee」というサービスを利用しています。
+        作品を気に入っていただけけましたら、ぜひコーヒーをおごってください！
       </p>
       <a href="https://buymeacoffee.com/atommy">
         <img className="w-44" src={bmcButton} alt="Buy me a coffee" />
       </a>
-      <h2>プライバシーポリシー</h2>
-      <h2>クレジット</h2>
+      <h2>推奨ブラウザ</h2>
+      <ul>
+        <li>Google Chorme</li>
+        <li>Safari</li>
+        <li>Microsoft Edge</li>
+        <li>Firefox</li>
+      </ul>
+      <h2>バージョン情報</h2>
+      <ul>
+        <li>v1.0.0</li>
+      </ul>
+      <h2>機能追加予定</h2>
+      <ul>
+        <li>ログイン機能</li>
+        <li>ランキング表示機能</li>
+        <li>ハードモード</li>
+      </ul>
+      {/* <h2>プライバシーポリシー</h2> */}
+      {/* <h2>クレジット</h2> */}
     </Overlay>
   );
 };
