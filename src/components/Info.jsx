@@ -26,6 +26,12 @@ const Info = ({ onClose }) => {
           Twitter: <a href="https://twitter.com/atommy_euph">@atommy_euph</a>
         </li>
       </ul>
+      <h2>他のRAILWORDのゲーム</h2>
+      <ul>
+        <li>
+          <a href="https://railword.com">テツドル - 駅名版Wordle</a>
+        </li>
+      </ul>
       <h2>寄付</h2>
       <p>
         「Buy me a coffee」というサービスを利用しています。
