@@ -30,7 +30,7 @@ const Help = ({ onClose }) => {
           <a href="https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E9%89%84%E9%81%93%E9%A7%85%E4%B8%80%E8%A6%A7">
             Wikipedia「日本の鉄道駅一覧」
           </a>
-          に2022年2月16日の時点で掲載されているものに準じます。
+          に2022年5月3日の時点で掲載されているものに準じます。
         </li>
       </ul>
     </Overlay>
