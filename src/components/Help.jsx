@@ -1,5 +1,7 @@
 import Overlay from "./Overlay";
 
+import { TIME_LIMIT, MISTAKE_COUNT_LIMIT } from "../constant/config";
+
 const Help = ({ onClose }) => {
   return (
     <Overlay title="Help" onClose={onClose}>
@@ -11,7 +13,7 @@ const Help = ({ onClose }) => {
         <li>
           存在しない駅名と前の駅名の最後の文字を入れるとお手つきとなります
         </li>
-        <li>タイムリミットは 1駅ごとに30秒です</li>
+        <li>タイムリミットは 1駅ごとに{TIME_LIMIT}秒です</li>
         <li>あなたの駅名知識の限界に挑戦してください</li>
         <li>
           終了後、回答駅一覧から駅の情報 (Wikipedia) を見ることができます。
@@ -22,7 +24,7 @@ const Help = ({ onClose }) => {
         <li>次に回答可能な駅が無くなった場合</li>
         <li>２度同じ駅を入力した場合</li>
         <li>制限時間をオーバーした場合</li>
-        <li>同ターンに3回お手つきをした場合</li>
+        <li>同ターンに{MISTAKE_COUNT_LIMIT}回お手つきをした場合</li>
       </ul>
       <h2 className="text-lg font-bold">ルール</h2>
       <ul>
