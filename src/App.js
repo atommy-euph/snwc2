@@ -316,7 +316,7 @@ function App() {
 
       {/* The game is ongoing */}
       {isGameStart && !isGameOver && (
-        <div className="relative w-full h-full overflow-hidden pb-10">
+        <div className="relative w-full max-w-xl h-full overflow-hidden pb-10">
           <div className="relative top-4 -left-4">
             <div className="top-12 -left-72 w-96 h-96 z-10 absolute border-4 border-black rounded-full"></div>
             <div className="top-20 -left-64 w-80 h-80 z-20 absolute border-4 border-black rounded-full"></div>
