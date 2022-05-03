@@ -460,7 +460,7 @@ function App() {
               通過駅一覧
             </button>
             <Button value="リスタート" keybind="Space" onClick={restartGame} />
-            <Button value="トップへ戻る" keybind="Espape" onClick={resetGame} />
+            <Button value="トップへ戻る" keybind="Escape" onClick={resetGame} />
             <button
               className="mt-8 mb-6 border-2 border-black py-2 px-3 font-bold"
               onClick={() => {
