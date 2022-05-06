@@ -1,0 +1,17 @@
+{
+  "name": "尻鉄 | 駅名しりとり",
+  "short_name": "尻鉄",
+  "description": "しりとりで知る鉄道駅 - 「尻鉄」はしりとりを通じて全国の駅名に詳しくなれるタイムアタックゲームです",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
