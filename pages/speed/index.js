@@ -35,7 +35,7 @@ import {
   RANDOM_RANGE_MAX,
 } from "../../constant/config_speed.js";
 
-export default function Endless() {
+export default function Speed() {
   // For controling screens
   const [isGameStandby, setIsGameStandby] = useState(false);
   const [isGameStart, setIsGameStart] = useState(false);
@@ -260,12 +260,13 @@ export default function Endless() {
             restartGame();
           }
         } else if (e.key === "Escape") {
-          resetGame();
+          if (isGameStart && !isGameOver) handleGameOver();
+          else router.push("/");
         }
       },
       false
     );
-  }, [isGameOver, isGameStart, handleGameStart, restartGame, resetGame]);
+  }, [isGameOver, isGameStart, handleGameStart, restartGame, router]);
 
   // For showing length range
   const rangeText = rr[0] === rr[1] ? `${rr[0]}` : `${rr[0]}-${rr[1]}`;
