@@ -1,8 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import titleLogo from "../public/icons/logo.svg";
 import info from "../public/icons/info.svg";
-import Link from "next/link";
 
 export default function Home() {
   return (
