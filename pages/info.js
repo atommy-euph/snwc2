@@ -1,22 +1,23 @@
-import Overlay from "./Overlay";
-import logo from "../icons/logo_type.svg";
-import bmcButton from "../icons/bmc-button.png";
-import atommy from "../icons/atommy.svg";
-import railword from "../icons/railword.png";
+import Image from "next/image";
 
-const Info = ({ onClose }) => {
+import Page from "../components/Page";
+
+import logo from "../public/icons/logo_type.svg";
+import bmcButton from "../public/icons/bmc-button.png";
+import atommy from "../public/icons/atommy.svg";
+import railword from "../public/icons/railword.png";
+
+export default function Info() {
   return (
-    <Overlay title="About this game" onClose={onClose}>
+    <Page title="About this game">
       <h1 className="flex flex-row font-bold items-center">
-        <img className="w-14 inline mr-1" src={logo} alt="尻鉄" />
-        <span className="inline-block pt-3">について</span>
+        <Image width={52} height={40} src={logo} alt="尻鉄" />
+        <span className="inline-block pl-1 pt-3">について</span>
       </h1>
 
       <h2>作者</h2>
-      <div className="flex flex-row items-center mb-4">
-        <img className="w-44 inline mr-2" src={atommy} alt="Atommy" />
-      </div>
-      <ul>
+      <Image width={150} height={60} src={atommy} alt="Atommy" />
+      <ul className="mt-2">
         <li>
           Website: <a href="https://atommy.me">atommy.me</a>
         </li>
@@ -28,14 +29,10 @@ const Info = ({ onClose }) => {
         </li>
       </ul>
       <h2>RAILWORDのゲーム</h2>
-      <ul>
-        <li>
-          <a href="https://railword.com">
-            <img
-              className="w-6 inline mr-2 mb-1"
-              src={railword}
-              alt="テツドル"
-            />
+      <ul className="ml-0">
+        <li className="flex items-center">
+          <Image width={22} height={22} src={railword} alt="テツドル" />
+          <a className="inline-block ml-1" href="https://railword.com">
             テツドル - 駅名版Wordle
           </a>
         </li>
@@ -45,8 +42,8 @@ const Info = ({ onClose }) => {
         「Buy me a coffee」というサービスを利用しています。
         作品を気に入っていただけましたら、ぜひコーヒーをおごってください！
       </p>
-      <a href="https://buymeacoffee.com/atommy">
-        <img className="w-44" src={bmcButton} alt="Buy me a coffee" />
+      <a className="w-2 h-2" href="https://buymeacoffee.com/atommy">
+        <Image width={182} height={51} src={bmcButton} alt="Buy me a coffee" />
       </a>
       <h2>推奨ブラウザ</h2>
       <ul>
@@ -69,8 +66,6 @@ const Info = ({ onClose }) => {
       </ul>
       {/* <h2>プライバシーポリシー</h2> */}
       {/* <h2>クレジット</h2> */}
-    </Overlay>
+    </Page>
   );
-};
-
-export default Info;
+}

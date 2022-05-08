@@ -18,7 +18,7 @@ h3 {
 
 /* Links */
 a {
-  @apply text-blue-600 underline leading-7 tracking-wide;
+  @apply text-blue-600 underline leading-7 tracking-wide cursor-pointer;
 }
 a:hover {
   @apply decoration-dashed;
@@ -91,6 +91,10 @@ pre {
 
 @tailwind components;
 @tailwind utilities;
+
+.link-button {
+  @apply font-bold text-2xl text-black no-underline text-center w-64 border-black border-2 py-2 shadow-md;
+}
 
 @layer utilities {
   .hidden-scrollbar {

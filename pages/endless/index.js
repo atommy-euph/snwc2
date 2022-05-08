@@ -1,19 +1,17 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 import Alert from "../../components/Alert";
 import Button from "../../components/Button.jsx";
-// import Help from "../../components/Help";
-// import Info from "../../components/Info";
 import AnsweredList from "../../components/AnsweredList";
 
 import logo from "../../public/icons/logo_type.svg";
 import frame from "../../public/icons/frame.svg";
+import help from "../../public/icons/help.svg";
 import share from "../../public/icons/share.svg";
 import copied from "../../public/icons/copied.svg";
-import help from "../../public/icons/help.svg";
-import info from "../../public/icons/info.svg";
-import titleLogo from "../../public/icons/logo.svg";
 
 import {
   isValidLetters,
@@ -56,8 +54,6 @@ export default function Endless() {
     useState(false);
   const [isNoExistenceAlertOpen, setIsNoExistenceAlertOpen] = useState(false);
   const [isNoMatchAlertOpen, setIsNoMatchAlertOpen] = useState(false);
-  const [isHelpOpen, setIsHelpOpen] = useState(false);
-  const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [timer, setTimer] = useState(TIME_LIMIT);
 
   // For result screen
@@ -65,7 +61,11 @@ export default function Endless() {
   const [isShareAlertOpen, setIsShareAlertOpen] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
+  // Focus input tag
   const inputEl = useRef(null);
+
+  // Router
+  const router = useRouter();
 
   const handleAnswer = () => {
     if (!answer) {
@@ -154,6 +154,9 @@ export default function Endless() {
     setTimer(TIME_LIMIT);
     setCount(COUNTDOWN_TIME);
   }, []);
+  const backToTop = () => {
+    router.push("/");
+  };
 
   // Count down in Standby
   useEffect(() => {
@@ -215,25 +218,6 @@ export default function Endless() {
     );
   }, [isGameOver, isGameStart, handleGameStart, restartGame, resetGame]);
 
-  // Control browser back
-  useEffect(() => {
-    window.history.pushState(null, null, window.location.href);
-    window.addEventListener("popstate", (e) => {
-      if (isListOpen) {
-        setIsListOpen(false);
-        return;
-      }
-      if (isHelpOpen) {
-        setIsHelpOpen(false);
-        return;
-      }
-      if (isInfoOpen) {
-        setIsInfoOpen(false);
-        return;
-      }
-    });
-  });
-
   // For result screen
   const totalTime = answers
     .map((value) => value.time)
@@ -242,18 +226,20 @@ export default function Endless() {
     }, 0);
 
   const shareResult = () => {
-    const text = [
-      "#尻鉄 | 駅名しりとり",
-      "",
-      `出発駅: ${answers[0].answer}`,
-      `到着駅: ${answers.slice(-1)[0].answer}`,
-      `記録　: ${answers.length - 1}駅 `,
-      `タイム: ${totalTime}秒`,
-      "",
-      `${GAME_URL}`,
-    ];
-    navigator.clipboard.writeText(text.join("\n"));
-    setIsCopied(true);
+    if (typeof navigator !== "undefined") {
+      const text = [
+        "#尻鉄 | 駅名しりとり",
+        "",
+        `出発駅: ${answers[0].answer}`,
+        `到着駅: ${answers.slice(-1)[0].answer}`,
+        `記録　: ${answers.length - 1}駅`,
+        `タイム: ${totalTime}秒`,
+        "",
+        `${GAME_URL}`,
+      ];
+      navigator.clipboard.writeText(text.join("\n"));
+      setIsCopied(true);
+    }
   };
 
   return (
@@ -279,51 +265,18 @@ export default function Endless() {
 
       {/* Before the game starts */}
       {!(isGameStart || isGameOver || isGameStandby) && (
-        <>
-          {/* Overlay */}
-          {isHelpOpen && (
-            <div></div>
-            // <Help
-            //   onClose={() => {
-            //     setIsHelpOpen(false);
-            //   }}
-            // />
-          )}
-          {isInfoOpen && (
-            <div></div>
-            // <Info
-            //   onClose={() => {
-            //     setIsInfoOpen(false);
-            //   }}
-            // />
-          )}
-          <div className="flex flex-col items-center py-12">
-            <p className="mt-28 text-[1.62rem]">しりとりで知る鉄道駅</p>
-            <Image width={260} height={260} src={titleLogo} alt="しりてつ" />
-            <div className="h-8"></div>
-            <Button
-              value="スタート"
-              keybind="Space"
-              onClick={handleGameStart}
-            />
-            <div className="mt-12 w-64 flex flex-row justify-center space-x-4">
-              {/* <button
-                onClick={() => {
-                  setIsHelpOpen(true);
-                }}
-              >
-                <Image width={30} height={30} src={help} alt="help" />
-              </button>
-              <button
-                onClick={() => {
-                  setIsInfoOpen(true);
-                }}
-              >
-                <Image width={30} height={30} src={info} alt="info" />
-              </button> */}
-            </div>
-          </div>
-        </>
+        <div className="flex flex-col justify-center items-center h-screen">
+          <h1 className="border-y-2 border-black py-3 mb-10 w-64 text-center">
+            エンドレス
+          </h1>
+          <Link href="/endless/help">
+            <a>
+              <Image width={30} height={30} src={help} alt="help" />
+            </a>
+          </Link>
+          <div className="h-12"></div>
+          <Button value="スタート" keybind="Space" onClick={handleGameStart} />
+        </div>
       )}
 
       {/* Standby mode */}
@@ -433,7 +386,7 @@ export default function Endless() {
               停車駅一覧
             </button>
             <Button value="リスタート" keybind="Space" onClick={restartGame} />
-            <Button value="トップへ戻る" keybind="Escape" onClick={resetGame} />
+            <Button value="トップへ戻る" keybind="Escape" onClick={backToTop} />
             <button
               className="flex items-center justify-between w-[6.2rem] mt-8 mb-6 border-2 border-black py-2 px-3 font-bold"
               onClick={() => {
