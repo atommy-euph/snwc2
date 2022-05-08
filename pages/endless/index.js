@@ -103,7 +103,6 @@ export default function Endless() {
       return;
     }
     if (isAnswered(answer, answers)) {
-      console.log("GameOver: isAnswered");
       handleGameOver();
       return;
     }
@@ -111,7 +110,6 @@ export default function Endless() {
       setAnswers(
         answers.concat({ answer: answer, time: TIME_LIMIT_ENDLESS - timer })
       );
-      console.log("GameOver: !endsWithValidletter");
       handleGameOver();
       return;
     }
@@ -140,7 +138,6 @@ export default function Endless() {
     }
   }, [count]);
   const handleGameOver = () => {
-    console.log("GameOver: inside function");
     setIsGameOver(true);
     setTimer(0);
     setCount(COUNTDOWN_TIME);
@@ -185,7 +182,6 @@ export default function Endless() {
       if (timer > 1) {
         setTimer((c) => c - 1);
       } else {
-        console.log("GameOver: Time up");
         handleGameOver();
       }
     }, 1000);
@@ -195,7 +191,6 @@ export default function Endless() {
   // Judge game over
   useEffect(() => {
     if (mistakeCount === MISTAKE_COUNT_LIMIT) {
-      console.log("GameOver: MISTAKE_COUNT_LIMIT");
       handleGameOver();
       return;
     }
