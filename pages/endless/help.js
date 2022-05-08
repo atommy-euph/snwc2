@@ -1,6 +1,6 @@
 import Page from "../../components/Page";
 
-import { TIME_LIMIT, MISTAKE_COUNT_LIMIT } from "../../constant/config";
+import { TIME_LIMIT_ENDLESS, MISTAKE_COUNT_LIMIT } from "../../constant/config";
 
 export default function Help() {
   return (
@@ -13,7 +13,7 @@ export default function Help() {
         <li>
           「存在しない駅名」と「前の駅名の最後の文字で始まらない駅名」を入れるとお手つきとなります
         </li>
-        <li>タイムリミットは 1駅ごとに{TIME_LIMIT}秒です</li>
+        <li>タイムリミットは 1駅ごとに{TIME_LIMIT_ENDLESS}秒です</li>
         <li>あなたの駅名知識の限界に挑戦してください</li>
         <li>
           終了後、停車駅一覧から駅の情報 (Wikipedia) を見ることができます。
