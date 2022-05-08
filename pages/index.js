@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
+    <div>
       <div className="flex flex-col items-center py-12">
         <p className="mt-8 text-[1.62rem]">しりとりで知る鉄道駅</p>
         <Image width={256} height={256} src={titleLogo} alt="しりてつ" />
@@ -34,6 +34,6 @@ export default function Home() {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }
