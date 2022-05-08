@@ -17,7 +17,7 @@ export default function Home() {
           <a className="link-button">エンドレス</a>
         </Link>
         {/* inactive */}
-        <Link href="">
+        <Link href="#">
           <a className="link-button opacity-50">
             スピード
             <br />
