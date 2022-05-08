@@ -11,13 +11,7 @@ export default function Home() {
         <p className="mt-8 text-[1.62rem]">しりとりで知る鉄道駅</p>
         <Image width={256} height={256} src={titleLogo} alt="しりてつ" />
         <div className="h-12"></div>
-        <div className="mb-12 w-64 flex flex-row justify-center space-x-4">
-          <Link href="info">
-            <a>
-              <Image width={30} height={30} src={info} alt="info" />
-            </a>
-          </Link>
-        </div>
+
         <h3>モード選択</h3>
         <div className="flex flex-col justify-between items-center space-y-4">
           <Link href="/endless/">
@@ -29,6 +23,13 @@ export default function Home() {
               スピード
               <br />
               (Coming Soon)
+            </a>
+          </Link>
+        </div>
+        <div className="mt-12 w-64 flex flex-row justify-center space-x-4">
+          <Link href="info">
+            <a>
+              <Image width={30} height={30} src={info} alt="info" />
             </a>
           </Link>
         </div>
