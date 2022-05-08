@@ -1,6 +1,9 @@
 import Page from "../../components/Page";
 
-import { TIME_LIMIT_ENDLESS, MISTAKE_COUNT_LIMIT } from "./config_endless";
+import {
+  TIME_LIMIT_ENDLESS,
+  MISTAKE_COUNT_LIMIT,
+} from "../../constant/config_endless";
 
 export default function Help() {
   return (

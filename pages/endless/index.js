@@ -22,7 +22,7 @@ import {
   getSameGroup,
   getFirstStation,
   getLastLetter,
-} from "../../lib/functions";
+} from "../../lib/functions.js";
 
 import { ALERT_TIME, COUNTDOWN_TIME, GAME_URL } from "../../constant/config.js";
 
