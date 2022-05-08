@@ -57,6 +57,7 @@ export default function Info() {
       <ul>
         <li>v1.0.0 - リリース</li>
         <li>v1.1.0 - お手つきルールの追加</li>
+        <li>v2.0.0 - 追加モードの準備</li>
       </ul>
       <h2>機能追加予定</h2>
       <ul>
