@@ -24,13 +24,12 @@ import {
   getLastLetter,
 } from "../../lib/functions";
 
+import { ALERT_TIME, COUNTDOWN_TIME, GAME_URL } from "../../constant/config.js";
+
 import {
-  ALERT_TIME,
-  TIME_LIMIT_ENDLESS,
-  COUNTDOWN_TIME,
-  GAME_URL,
   MISTAKE_COUNT_LIMIT,
-} from "../../constant/config.js";
+  TIME_LIMIT_ENDLESS,
+} from "../../constant/config_endless.js";
 
 export default function Endless() {
   // For controling screens
@@ -337,7 +336,7 @@ export default function Endless() {
               {"\u{23CE}"}
             </button>
           </div>
-          <p className="relative w-[3.6rem] text-center mx-auto top-[333px]">
+          <p className="relative w-[3.6rem] text-center mx-auto  top-[0.75rem]">
             <span className="text-sm">お手つき</span>
             <br />
             <span className="text-2xl flex flex-row justify-around items-center">

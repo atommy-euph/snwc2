@@ -4,10 +4,12 @@ import Overlay from "./Overlay";
 import { getCandidates, randomSelect } from "../lib/functions";
 import { STATION_DATA } from "../constant/station_data.js";
 
-const AnsweredList = ({ answers, onClose }) => {
+const AnsweredList = ({ answers, onClose, range = [1, 31] }) => {
   const candidatesForLastAnswer = randomSelect(
-    getCandidates(answers.slice(-1)[0].answer, answers),
-    4
+    getCandidates(answers.slice(-1)[0].answer, answers).filter((value) => {
+      return range[0] <= value.length && value.length <= range[1];
+    }),
+    5
   );
 
   return (

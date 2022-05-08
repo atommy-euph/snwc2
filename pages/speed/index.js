@@ -16,21 +16,24 @@ import copied from "../../public/icons/copied.svg";
 import {
   isValidLetters,
   isIncludedInStations,
+  isInLengthRange,
   isAnswered,
   endsWithValidLetter,
   startsWithValidLetter,
   getSameGroup,
   getFirstStation,
   getLastLetter,
+  getRandomRange,
 } from "../../lib/functions";
 
+import { ALERT_TIME, COUNTDOWN_TIME, GAME_URL } from "../../constant/config.js";
+
 import {
-  ALERT_TIME,
-  TIME_LIMIT,
-  COUNTDOWN_TIME,
-  GAME_URL,
+  TIME_LIMIT_SPEED,
   MISTAKE_COUNT_LIMIT,
-} from "../../constant/config.js";
+  RANDOM_RANGE_MIN,
+  RANDOM_RANGE_MAX,
+} from "../../constant/config_speed.js";
 
 export default function Endless() {
   // For controling screens
@@ -44,6 +47,14 @@ export default function Endless() {
     { answer: getFirstStation(), time: 0 },
   ]);
   const [mistakeCount, setMistakeCount] = useState(0);
+  const [rr, setRR] = useState(() =>
+    getRandomRange(
+      RANDOM_RANGE_MIN,
+      RANDOM_RANGE_MAX,
+      answers.slice(-1)[0].answer,
+      answers
+    )
+  );
 
   // Count down in Standby
   const [count, setCount] = useState(COUNTDOWN_TIME);
@@ -54,7 +65,10 @@ export default function Endless() {
     useState(false);
   const [isNoExistenceAlertOpen, setIsNoExistenceAlertOpen] = useState(false);
   const [isNoMatchAlertOpen, setIsNoMatchAlertOpen] = useState(false);
-  const [timer, setTimer] = useState(TIME_LIMIT);
+  const [isOutOfRangeAlertOpen, setIsOutOfRangeAlertOpen] = useState(false);
+
+  // Timer
+  const [timer, setTimer] = useState(TIME_LIMIT_SPEED);
 
   // For result screen
   const [isListOpen, setIsListOpen] = useState(false);
@@ -84,6 +98,14 @@ export default function Endless() {
       }, ALERT_TIME);
       return;
     }
+    if (!isInLengthRange(answer, rr)) {
+      setAnswer("");
+      setIsOutOfRangeAlertOpen(true);
+      setTimeout(() => {
+        setIsOutOfRangeAlertOpen(false);
+      }, ALERT_TIME);
+      return;
+    }
     if (!isIncludedInStations(answer)) {
       setAnswer("");
       setMistakeCount(mistakeCount + 1);
@@ -107,15 +129,26 @@ export default function Endless() {
       return;
     }
     if (!endsWithValidLetter(answer, answers)) {
-      setAnswers(answers.concat({ answer: answer, time: TIME_LIMIT - timer }));
+      setAnswers(
+        answers.concat({
+          answer: answer,
+          time: TIME_LIMIT_SPEED - timer - totalTime,
+        })
+      );
       handleGameOver();
       return;
     }
 
-    setAnswers(answers.concat({ answer: answer, time: TIME_LIMIT - timer }));
+    setAnswers(
+      answers.concat({
+        answer: answer,
+        time: TIME_LIMIT_SPEED - timer - totalTime,
+      })
+    );
+    console.log(answers);
+    setRR(getRandomRange(RANDOM_RANGE_MIN, RANDOM_RANGE_MAX, answer, answers));
     setAnswer("");
     setMistakeCount(0);
-    setTimer(TIME_LIMIT);
   };
   const handleEnter = (e) => {
     if (e.key === "Enter") {
@@ -141,19 +174,35 @@ export default function Endless() {
   const restartGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
     setAnswer("");
+    setRR(
+      getRandomRange(
+        RANDOM_RANGE_MIN,
+        RANDOM_RANGE_MAX,
+        answers.slice(-1)[0].answer,
+        answers
+      )
+    );
     setIsGameStart(false);
     setIsGameOver(false);
-    setTimer(TIME_LIMIT);
+    setTimer(TIME_LIMIT_SPEED);
     handleGameStart();
-  }, [handleGameStart]);
+  }, [handleGameStart, answers]);
   const resetGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
     setAnswer("");
+    setRR(
+      getRandomRange(
+        RANDOM_RANGE_MIN,
+        RANDOM_RANGE_MAX,
+        answers.slice(-1)[0].answer,
+        answers
+      )
+    );
     setIsGameStart(false);
     setIsGameOver(false);
-    setTimer(TIME_LIMIT);
+    setTimer(TIME_LIMIT_SPEED);
     setCount(COUNTDOWN_TIME);
-  }, []);
+  }, [answers]);
   const backToTop = () => {
     router.push("/");
   };
@@ -225,15 +274,22 @@ export default function Endless() {
       return sum + element;
     }, 0);
 
+  const totalLength = answers
+    .slice(1)
+    .map((value) => value.answer.length)
+    .reduce((sum, element) => {
+      return sum + element;
+    }, 0);
+
   const shareResult = () => {
     if (typeof navigator !== "undefined") {
       const text = [
-        "#尻鉄 | 駅名しりとり",
+        "#尻鉄 | スピード",
         "",
         `出発駅: ${answers[0].answer}`,
         `到着駅: ${answers.slice(-1)[0].answer}`,
         `記録　: ${answers.length - 1}駅`,
-        `タイム: ${totalTime}秒`,
+        `文字数: ${totalLength}秒`,
         "",
         `${GAME_URL}`,
       ];
@@ -259,19 +315,19 @@ export default function Endless() {
             )}」から始まる駅名を入力してください (お手つき+1)`}
           />
         )}
-
         {isEmptyAlertOpen && <Alert message="駅名を入力してください" />}
+        {isOutOfRangeAlertOpen && <Alert message="指定の文字数の範囲外です" />}
       </div>
 
       {/* Before the game starts */}
       {!(isGameStart || isGameOver || isGameStandby) && (
         <div className="flex flex-col justify-center items-center h-screen">
           <h2 className="border-y-2 border-black py-3 mb-10 w-64 text-center text-3xl">
-            エンドレス
+            スピード
           </h2>
           <Button value="スタート" keybind="Space" onClick={handleGameStart} />
           <div className="h-12"></div>
-          <Link href="/endless/help">
+          <Link href="/speed/help">
             <a>
               <Image width={30} height={30} src={help} alt="help" />
             </a>
@@ -321,6 +377,7 @@ export default function Endless() {
               type="text"
               ref={inputEl}
               value={answer}
+              placeholder={`${rr[0]} - ${rr[1]}文字`}
               onChange={(e) => {
                 setAnswer(e.target.value);
               }}
@@ -332,16 +389,20 @@ export default function Endless() {
             >
               {"\u{23CE}"}
             </button>
+            <span className="absolute top-[3.8rem] pl-0.5 text-gray-400 text-sm font-bold">
+              現在 <span className="text-md">{answer.length}</span> 文字
+            </span>
           </div>
-          <p className="relative w-[3.6rem] text-center mx-auto top-[333px]">
+          <p className="relative w-[3.6rem] text-center mx-auto top-[0.75rem]">
             <span className="text-sm">お手つき</span>
             <br />
             <span className="text-2xl flex flex-row justify-around items-center">
               {mistakeCount}
-              <span className="text-sm">/</span>3
+              <span className="text-sm">/</span>
+              {MISTAKE_COUNT_LIMIT}
             </span>
           </p>
-          <div className="relative top-[32rem]">
+          <div className="relative top-[25rem]">
             <Button
               keybind="Escape"
               value="ギブアップ"
@@ -358,6 +419,7 @@ export default function Endless() {
             <AnsweredList
               answers={answers}
               onClose={() => setIsListOpen(false)}
+              range={rr}
             />
           )}
           {isShareAlertOpen && (
@@ -366,7 +428,7 @@ export default function Endless() {
           <div className="flex flex-col items-center w-full">
             <h2 className="text-4xl mt-10">ゲームオーバー</h2>
             <h2 className="border-y-2 border-black py-2 my-6 w-64 text-center text-2xl">
-              エンドレス
+              スピード
             </h2>
             <div className="relative w-64 h-64 z-0 py-8 px-6 mb-10">
               <div className="absolute top-0 left-0 mx-auto w- h-72 z-0">
@@ -375,12 +437,12 @@ export default function Endless() {
               <span className="text-md">記録</span>
               <p className="text-center">
                 <span className="text-5xl pl-1">{answers.length - 1}</span>
-                <span className="text-xl">駅 </span>
+                <span className="text-xl">駅</span>
               </p>
-              <span className="text-md">タイム</span>
+              <span className="text-md">総文字数</span>
               <p className="text-center">
-                <span className="text-5xl pl-1">{totalTime}</span>
-                <span className="text-xl">秒 </span>
+                <span className="text-5xl pl-1">{totalLength}</span>
+                <span className="text-xl">字</span>
               </p>
             </div>
             <button

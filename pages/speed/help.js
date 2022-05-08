@@ -1,6 +1,9 @@
 import Page from "../../components/Page";
 
-import { TIME_LIMIT_SPEED, MISTAKE_COUNT_LIMIT } from "../../constant/config";
+import {
+  TIME_LIMIT_SPEED,
+  MISTAKE_COUNT_LIMIT,
+} from "../../constant/config_speed.js";
 
 export default function Help() {
   return (
