@@ -266,16 +266,16 @@ export default function Endless() {
       {/* Before the game starts */}
       {!(isGameStart || isGameOver || isGameStandby) && (
         <div className="flex flex-col justify-center items-center h-screen">
-          <h1 className="border-y-2 border-black py-3 mb-10 w-64 text-center">
+          <h1 className="border-y-2 border-black py-3 mb-10 w-64 text-center text-3xl">
             エンドレス
           </h1>
+          <Button value="スタート" keybind="Space" onClick={handleGameStart} />
+          <div className="h-12"></div>
           <Link href="/endless/help">
             <a>
               <Image width={30} height={30} src={help} alt="help" />
             </a>
           </Link>
-          <div className="h-12"></div>
-          <Button value="スタート" keybind="Space" onClick={handleGameStart} />
         </div>
       )}
 
