@@ -394,7 +394,7 @@ export default function Endless() {
               / {rangeText} 文字
             </span>
           </div>
-          <p className="relative w-[3.6rem] text-center mx-auto top-[0.75rem]">
+          <p className="relative w-[4rem] text-center mx-auto top-[0.75rem]">
             <span className="text-sm">お手つき</span>
             <br />
             <span className="text-2xl flex flex-row justify-around items-center">
