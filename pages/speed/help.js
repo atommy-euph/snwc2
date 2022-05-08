@@ -1,10 +1,10 @@
 import Page from "../../components/Page";
 
-import { TIME_LIMIT, MISTAKE_COUNT_LIMIT } from "../../constant/config";
+import { TIME_LIMIT_SPEED, MISTAKE_COUNT_LIMIT } from "../../constant/config";
 
 export default function Help() {
   return (
-    <Page title="ヘルプ (エンドレス)">
+    <Page title="ヘルプ (スピード)">
       <h2 className="text-lg font-bold">遊び方</h2>
       <ol>
         <li>スタートを押します</li>
@@ -13,7 +13,7 @@ export default function Help() {
         <li>
           「存在しない駅名」と「前の駅名の最後の文字で始まらない駅名」を入れるとお手つきとなります
         </li>
-        <li>タイムリミットは 1駅ごとに{TIME_LIMIT}秒です</li>
+        <li>制限時間は{TIME_LIMIT_SPEED}秒です</li>
         <li>あなたの駅名知識の限界に挑戦してください</li>
         <li>
           終了後、停車駅一覧から駅の情報 (Wikipedia) を見ることができます。
@@ -23,7 +23,7 @@ export default function Help() {
       <ul>
         <li>次に回答可能な駅が無くなった場合</li>
         <li>２度同じ駅を入力した場合</li>
-        <li>制限時間をオーバーした場合</li>
+        <li>制限時間を使い果たした場合</li>
         <li>同ターンに{MISTAKE_COUNT_LIMIT}回お手つきをした場合</li>
       </ul>
       <h2 className="text-lg font-bold">ルール</h2>

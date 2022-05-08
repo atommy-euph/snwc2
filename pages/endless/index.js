@@ -26,7 +26,7 @@ import {
 
 import {
   ALERT_TIME,
-  TIME_LIMIT,
+  TIME_LIMIT_ENDLESS,
   COUNTDOWN_TIME,
   GAME_URL,
   MISTAKE_COUNT_LIMIT,
@@ -54,7 +54,7 @@ export default function Endless() {
     useState(false);
   const [isNoExistenceAlertOpen, setIsNoExistenceAlertOpen] = useState(false);
   const [isNoMatchAlertOpen, setIsNoMatchAlertOpen] = useState(false);
-  const [timer, setTimer] = useState(TIME_LIMIT);
+  const [timer, setTimer] = useState(TIME_LIMIT_ENDLESS);
 
   // For result screen
   const [isListOpen, setIsListOpen] = useState(false);
@@ -103,19 +103,25 @@ export default function Endless() {
       return;
     }
     if (isAnswered(answer, answers)) {
+      console.log("GameOver: isAnswered");
       handleGameOver();
       return;
     }
     if (!endsWithValidLetter(answer, answers)) {
-      setAnswers(answers.concat({ answer: answer, time: TIME_LIMIT - timer }));
+      setAnswers(
+        answers.concat({ answer: answer, time: TIME_LIMIT_ENDLESS - timer })
+      );
+      console.log("GameOver: !endsWithValidletter");
       handleGameOver();
       return;
     }
 
-    setAnswers(answers.concat({ answer: answer, time: TIME_LIMIT - timer }));
+    setAnswers(
+      answers.concat({ answer: answer, time: TIME_LIMIT_ENDLESS - timer })
+    );
     setAnswer("");
     setMistakeCount(0);
-    setTimer(TIME_LIMIT);
+    setTimer(TIME_LIMIT_ENDLESS);
   };
   const handleEnter = (e) => {
     if (e.key === "Enter") {
@@ -134,6 +140,7 @@ export default function Endless() {
     }
   }, [count]);
   const handleGameOver = () => {
+    console.log("GameOver: inside function");
     setIsGameOver(true);
     setTimer(0);
     setCount(COUNTDOWN_TIME);
@@ -143,7 +150,7 @@ export default function Endless() {
     setAnswer("");
     setIsGameStart(false);
     setIsGameOver(false);
-    setTimer(TIME_LIMIT);
+    setTimer(TIME_LIMIT_ENDLESS);
     handleGameStart();
   }, [handleGameStart]);
   const resetGame = useCallback(() => {
@@ -151,7 +158,7 @@ export default function Endless() {
     setAnswer("");
     setIsGameStart(false);
     setIsGameOver(false);
-    setTimer(TIME_LIMIT);
+    setTimer(TIME_LIMIT_ENDLESS);
     setCount(COUNTDOWN_TIME);
   }, []);
   const backToTop = () => {
@@ -178,6 +185,7 @@ export default function Endless() {
       if (timer > 1) {
         setTimer((c) => c - 1);
       } else {
+        console.log("GameOver: Time up");
         handleGameOver();
       }
     }, 1000);
@@ -187,6 +195,7 @@ export default function Endless() {
   // Judge game over
   useEffect(() => {
     if (mistakeCount === MISTAKE_COUNT_LIMIT) {
+      console.log("GameOver: MISTAKE_COUNT_LIMIT");
       handleGameOver();
       return;
     }
@@ -338,7 +347,8 @@ export default function Endless() {
             <br />
             <span className="text-2xl flex flex-row justify-around items-center">
               {mistakeCount}
-              <span className="text-sm">/</span>3
+              <span className="text-sm">/</span>
+              {MISTAKE_COUNT_LIMIT}
             </span>
           </p>
           <div className="relative top-[32rem]">
