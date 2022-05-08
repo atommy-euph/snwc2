@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="icon" type="image/png" href="/icon-192x192.png" />
         {/* GA */}
-        {/* <>
+        <>
           <Script
             strategy="afterInteractive"
             src="https://www.googletagmanager.com/gtag/js?id=G-VNDTTRH2BT"
@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }) {
       gtag("config", "G-VNDTTRH2BT");
       `}
           </Script>
-        </> */}
+        </>
         {/* <!-- OGP setting --> */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://shiritetsu.railword.com" />

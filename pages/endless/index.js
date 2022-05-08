@@ -295,10 +295,10 @@ export default function Endless() {
             <div className="top-12 -left-72 w-96 h-96 z-10 absolute border-4 border-black rounded-full"></div>
             <div className="top-20 -left-64 w-80 h-80 z-20 absolute border-4 border-black rounded-full"></div>
             <div className="flex justify-center items-center font-bold text-lg tracking-[-3px] pr-[3px] top-32 left-[33px] w-8 h-8 rounded-full border-4 border-black absolute">
-              <p>{answers.length - 1}</p>
+              {answers.length - 1}
             </div>
             <div className="flex justify-center items-center font-bold text-lg tracking-[-3px] pr-[3px]  top-56 left-[62px] w-8 h-8 rounded-full border-4 border-black absolute">
-              <p>{answers.length}</p>
+              {answers.length}
             </div>
             <div className="flex justify-center items-center font-bold text-lg tracking-[-3px] pr-[3px] top-80 left-[33px] w-8 h-8 rounded-full border-4 border-black opacity-50 absolute"></div>
             <p className="top-32 left-[88px] font-bold text-xl absolute">
@@ -333,10 +333,13 @@ export default function Endless() {
               {"\u{23CE}"}
             </button>
           </div>
-          <p className="relative text-center text-sm top-[333px]">
-            お手つき <br />
-            <span className="text-2xl">{mistakeCount}</span>
-            <span className="text-2xl mx-0.5">/ 3</span>
+          <p className="relative w-[3.6rem] text-center mx-auto top-[333px]">
+            <span className="text-sm">お手つき</span>
+            <br />
+            <span className="text-2xl flex flex-row justify-around items-center">
+              {mistakeCount}
+              <span className="text-sm">/</span>3
+            </span>
           </p>
           <div className="relative top-[32rem]">
             <Button

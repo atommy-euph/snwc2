@@ -5,7 +5,7 @@ import { TIME_LIMIT, MISTAKE_COUNT_LIMIT } from "../../constant/config";
 export default function Help() {
   return (
     <Page title="ヘルプ">
-      <h2 className="text-lg font-bold">遊び方</h2>
+      <h2 className="text-lg font-bold">遊び方 (エンドレス)</h2>
       <ol>
         <li>スタートを押します</li>
         <li>出発駅が表示されるので、駅名でしりとりをしてください</li>
