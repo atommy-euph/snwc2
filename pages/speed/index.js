@@ -267,6 +267,9 @@ export default function Endless() {
     );
   }, [isGameOver, isGameStart, handleGameStart, restartGame, resetGame]);
 
+  // For showing length range
+  const rangeText = rr[0] === rr[1] ? `${rr[0]}` : `${rr[0]}-${rr[1]}`;
+
   // For result screen
   const totalTime = answers
     .map((value) => value.time)
@@ -377,7 +380,7 @@ export default function Endless() {
               type="text"
               ref={inputEl}
               value={answer}
-              placeholder={`${rr[0]} - ${rr[1]}文字`}
+              placeholder={`${rangeText} 文字`}
               onChange={(e) => {
                 setAnswer(e.target.value);
               }}
@@ -389,8 +392,10 @@ export default function Endless() {
             >
               {"\u{23CE}"}
             </button>
-            <span className="absolute top-[3.8rem] pl-0.5 text-gray-400 text-sm font-bold">
-              現在 <span className="text-md">{answer.length}</span> 文字
+            <span className="absolute top-[3.8rem] w-48 pl-0.5 text-gray-400 text-sm">
+              現在{" "}
+              <span className="text-lg pl-0.5 font-bold">{answer.length}</span>{" "}
+              / {rangeText} 文字
             </span>
           </div>
           <p className="relative w-[3.6rem] text-center mx-auto top-[0.75rem]">
