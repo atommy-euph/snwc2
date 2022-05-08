@@ -16,7 +16,7 @@ export default function Home() {
         <Link href="/endless/">
           <a className="link-button">エンドレス</a>
         </Link>
-        <Link href="#">
+        <Link href="/speed/">
           <a className="link-button">スピード</a>
         </Link>
         {/* inactive */}
