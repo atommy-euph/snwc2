@@ -266,9 +266,9 @@ export default function Endless() {
       {/* Before the game starts */}
       {!(isGameStart || isGameOver || isGameStandby) && (
         <div className="flex flex-col justify-center items-center h-screen">
-          <h1 className="border-y-2 border-black py-3 mb-10 w-64 text-center text-3xl">
+          <h2 className="border-y-2 border-black py-3 mb-10 w-64 text-center text-3xl">
             エンドレス
-          </h1>
+          </h2>
           <Button value="スタート" keybind="Space" onClick={handleGameStart} />
           <div className="h-12"></div>
           <Link href="/endless/help">
@@ -364,20 +364,23 @@ export default function Endless() {
             <Alert message="クリップボードにコピーしました" />
           )}
           <div className="flex flex-col items-center w-full">
-            <h2 className="text-4xl mt-16 mb-12">ゲームオーバー</h2>
-            <div className="relative w-72 h-80 pl-6 py-6 z-0">
-              <div className="absolute top-0 left-0 mx-auto w-72 z-0">
-                <Image src={frame} alt="frame" />
+            <h2 className="text-4xl mt-10">ゲームオーバー</h2>
+            <h2 className="border-y-2 border-black py-2 my-6 w-64 text-center text-2xl">
+              エンドレス
+            </h2>
+            <div className="relative w-64 h-64 z-0 py-8 px-6 mb-10">
+              <div className="absolute top-0 left-0 mx-auto w- h-72 z-0">
+                <Image width={256} height={256} src={frame} alt="frame" />
               </div>
-              <span className="text-xl">記録</span>
+              <span className="text-md">記録</span>
               <p className="text-center">
-                <span className="text-6xl pl-1">{answers.length - 1}</span>
-                <span className="text-xl"> 駅 </span>
+                <span className="text-5xl pl-1">{answers.length - 1}</span>
+                <span className="text-xl">駅 </span>
               </p>
-              <span className="text-xl">タイム</span>
+              <span className="text-md">タイム</span>
               <p className="text-center">
-                <span className="text-6xl pl-1">{totalTime}</span>
-                <span className="text-xl"> 秒 </span>
+                <span className="text-5xl pl-1">{totalTime}</span>
+                <span className="text-xl">秒 </span>
               </p>
             </div>
             <button
