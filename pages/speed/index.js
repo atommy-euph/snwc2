@@ -35,7 +35,7 @@ import {
   RANDOM_RANGE_MAX,
 } from "../../constant/config_speed.js";
 
-export default function Speed() {
+export default function Endless() {
   // For controling screens
   const [isGameStandby, setIsGameStandby] = useState(false);
   const [isGameStart, setIsGameStart] = useState(false);
@@ -250,23 +250,18 @@ export default function Speed() {
 
   // Key bind
   useEffect(() => {
-    document.addEventListener(
-      "keydown",
-      (e) => {
-        if (e.key === " ") {
-          if (!isGameStart && !isGameOver) {
-            handleGameStart();
-          } else if (isGameStart && isGameOver) {
-            restartGame();
-          }
-        } else if (e.key === "Escape") {
-          if (isGameStart && !isGameOver) handleGameOver();
-          else router.push("/");
+    document.addEventListener("keydown", (e) => {
+      if (e.key === " ") {
+        if (!isGameStart && !isGameOver) {
+          handleGameStart();
+        } else if (isGameStart && isGameOver) {
+          restartGame();
         }
-      },
-      false
-    );
-  }, [isGameOver, isGameStart, handleGameStart, restartGame, router]);
+      } else if (e.key === "Escape") {
+        resetGame();
+      }
+    });
+  }, [isGameOver, isGameStart, handleGameStart, restartGame, resetGame]);
 
   // For showing length range
   const rangeText = rr[0] === rr[1] ? `${rr[0]}` : `${rr[0]}-${rr[1]}`;

@@ -336,7 +336,7 @@ export default function Endless() {
               {"\u{23CE}"}
             </button>
           </div>
-          <p className="relative w-[3.6rem] text-center mx-auto  top-[0.75rem]">
+          <p className="relative w-[3.6rem] text-center mx-auto top-[333px]">
             <span className="text-sm">お手つき</span>
             <br />
             <span className="text-2xl flex flex-row justify-around items-center">
@@ -345,7 +345,7 @@ export default function Endless() {
               {MISTAKE_COUNT_LIMIT}
             </span>
           </p>
-          <div className="relative top-[32rem]">
+          <div className="relative top-[25rem]">
             <Button
               keybind="Escape"
               value="ギブアップ"

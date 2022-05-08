@@ -16,14 +16,17 @@ export default function Home() {
         <Link href="/endless/">
           <a className="link-button">エンドレス</a>
         </Link>
-        {/* inactive */}
         <Link href="#">
+          <a className="link-button">スピード</a>
+        </Link>
+        {/* inactive */}
+        {/* <Link href="#">
           <a className="link-button opacity-50">
             スピード
             <br />
             (Coming Soon)
           </a>
-        </Link>
+        </Link> */}
       </div>
       <div className="mt-12 w-64 flex flex-row justify-center space-x-4">
         <Link href="info">
