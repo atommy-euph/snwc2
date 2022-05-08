@@ -228,7 +228,7 @@ export default function Endless() {
   const shareResult = () => {
     if (typeof navigator !== "undefined") {
       const text = [
-        "#尻鉄 | エンドレス",
+        "#尻鉄 | 駅名しりとり",
         "",
         `出発駅: ${answers[0].answer}`,
         `到着駅: ${answers.slice(-1)[0].answer}`,
