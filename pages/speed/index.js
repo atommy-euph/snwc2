@@ -288,7 +288,7 @@ export default function Endless() {
         `出発駅: ${answers[0].answer}`,
         `到着駅: ${answers.slice(-1)[0].answer}`,
         `記録　: ${answers.length - 1}駅`,
-        `文字数: ${totalLength}秒`,
+        `文字数: ${totalLength}字`,
         "",
         `${GAME_URL}`,
       ];
