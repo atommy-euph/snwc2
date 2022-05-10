@@ -29,17 +29,21 @@ function MyApp({ Component, pageProps }) {
             strategy="afterInteractive"
             src="https://www.googletagmanager.com/gtag/js?id=G-VNDTTRH2BT"
           />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+          <Script
+            id="google-analytics"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {dataLayer.push(arguments);}
+                gtag("js", new Date());
 
-      gtag("config", "G-VNDTTRH2BT");
-      `}
-          </Script>
+                gtag("config", "G-VNDTTRH2BT",{
+                  page_path: window.location.pathname,
+                });
+              `,
+            }}
+          />
         </>
         {/* <!-- OGP setting --> */}
         <meta property="og:type" content="website" />
