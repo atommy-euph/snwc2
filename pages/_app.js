@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Head from "next/head";
 import Script from "next/script";
+import { GA_ID } from "../lib/gtag";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -23,28 +24,6 @@ function MyApp({ Component, pageProps }) {
           href="/apple-touch-icon-180x180.png"
         />
         <link rel="icon" type="image/png" href="/icon-192x192.png" />
-        {/* GA */}
-        <>
-          <Script
-            strategy="afterInteractive"
-            src="https://www.googletagmanager.com/gtag/js?id=G-VNDTTRH2BT"
-          />
-          <Script
-            id="google-analytics"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag() {dataLayer.push(arguments);}
-                gtag("js", new Date());
-
-                gtag("config", "G-VNDTTRH2BT",{
-                  page_path: window.location.pathname,
-                });
-              `,
-            }}
-          />
-        </>
         {/* <!-- OGP setting --> */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://shiritetsu.railword.com" />
