@@ -145,7 +145,6 @@ export default function Endless() {
         time: TIME_LIMIT_SPEED - timer - totalTime,
       })
     );
-    console.log(answers);
     setRR(getRandomRange(RANDOM_RANGE_MIN, RANDOM_RANGE_MAX, answer, answers));
     setAnswer("");
     setMistakeCount(0);
