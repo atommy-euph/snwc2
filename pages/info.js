@@ -6,6 +6,7 @@ import logo from "../public/icons/logo_type.svg";
 import bmcButton from "../public/icons/bmc-button.png";
 import atommy from "../public/icons/atommy.svg";
 import railword from "../public/icons/railword.png";
+import Head from "next/head";
 
 export default function Info() {
   return (

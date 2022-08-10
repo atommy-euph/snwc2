@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 
 import Alert from "../../components/Alert";
@@ -298,6 +299,9 @@ export default function Endless() {
 
   return (
     <div className="flex flex-col items-center h-screen caret-transparent px-6 overflow-y-scroll">
+      <Head>
+        <title>エンドレス | 尻鉄</title>
+      </Head>
       {/* Alerts */}
       <div className="flex justify-center">
         {isInvalidLetterAlertOpen && (

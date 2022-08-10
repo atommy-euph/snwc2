@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 
 import titleLogo from "../public/icons/logo.svg";
 import info from "../public/icons/info.svg";
@@ -7,6 +8,9 @@ import info from "../public/icons/info.svg";
 export default function Home() {
   return (
     <div className="flex flex-col items-center py-12">
+      <Head>
+        <title>尻鉄 | しりとりで知る鉄道駅</title>
+      </Head>
       <p className="mt-8 text-[1.62rem]">しりとりで知る鉄道駅</p>
       <Image width={256} height={256} src={titleLogo} alt="しりてつ" />
       <div className="h-12"></div>
