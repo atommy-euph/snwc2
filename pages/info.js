@@ -39,10 +39,6 @@ export default function Info() {
         </li>
       </ul>
       <h2>寄付</h2>
-      <p>
-        「Buy me a coffee」というサービスを利用しています。
-        作品を気に入っていただけましたら、ぜひコーヒーをおごってください！
-      </p>
       <a className="w-2 h-2" href="https://buymeacoffee.com/atommy">
         <Image width={182} height={51} src={bmcButton} alt="Buy me a coffee" />
       </a>
