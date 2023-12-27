@@ -2,7 +2,7 @@ import React from "react";
 
 import Overlay from "./Overlay";
 import { getCandidates, randomSelect } from "../lib/functions";
-import { STATION_DATA } from "../constant/station_data.js";
+import { STATION_DATA } from "../constant/station_names_hiragana.js";
 
 const AnsweredList = ({ answers, onClose }) => {
   const candidatesForLastAnswer = randomSelect(
