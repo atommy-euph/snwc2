@@ -1727,10 +1727,10 @@ export const STATION_DATA = {
       title: "浅水駅",
     },
   ],
-  あそしもだじょうふれあいおんせん: [
+  あそしもだじょう: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E9%98%BF%E8%98%87%E4%B8%8B%E7%94%B0%E5%9F%8E%E3%81%B5%E3%82%8C%E3%81%82%E3%81%84%E6%B8%A9%E6%B3%89%E9%A7%85",
-      title: "阿蘇下田城ふれあい温泉駅",
+      url: "https://ja.wikipedia.org/wiki/%E9%98%BF%E8%98%87%E4%B8%8B%E7%94%B0%E5%9F%8E%E9%A7%85",
+      title: "阿蘇下田城駅",
     },
   ],
   あそしらかわ: [
@@ -1837,6 +1837,18 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E7%86%B1%E7%94%B0%E9%A7%85",
       title: "熱田駅",
+    },
+  ],
+  あつたじんぐうてんまちょう: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E7%86%B1%E7%94%B0%E7%A5%9E%E5%AE%AE%E4%BC%9D%E9%A6%AC%E7%94%BA%E9%A7%85",
+      title: "熱田神宮伝馬町駅",
+    },
+  ],
+  あつたじんぐうにし: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E7%86%B1%E7%94%B0%E7%A5%9E%E5%AE%AE%E8%A5%BF%E9%A7%85",
+      title: "熱田神宮西駅",
     },
   ],
   あつない: [
@@ -2949,12 +2961,6 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E9%A3%AF%E6%A3%AE%E9%A7%85",
       title: "飯森駅",
-    },
-  ],
-  いいもりこうげん: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E5%BE%A1%E5%B2%B3%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4#御岳ロープウェイ",
-      title: "飯森高原駅",
     },
   ],
   いいやま: [
@@ -6703,10 +6709,22 @@ export const STATION_DATA = {
       title: "宇都宮駅",
     },
   ],
+  うつのみやえきひがしぐち: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E5%AE%87%E9%83%BD%E5%AE%AE%E9%A7%85%E6%9D%B1%E5%8F%A3%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "宇都宮駅東口停留場",
+    },
+  ],
   うつのみやかもつたーみなる: [
     {
       url: "https://ja.wikipedia.org/wiki/%E5%AE%87%E9%83%BD%E5%AE%AE%E8%B2%A8%E7%89%A9%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E9%A7%85",
       title: "宇都宮貨物ターミナル駅",
+    },
+  ],
+  うつのみやだいがくようとうきゃんぱす: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E5%AE%87%E9%83%BD%E5%AE%AE%E5%A4%A7%E5%AD%A6%E9%99%BD%E6%9D%B1%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "宇都宮大学陽東キャンパス停留場",
     },
   ],
   うつぶな: [
@@ -6927,13 +6945,13 @@ export const STATION_DATA = {
   ],
   うみのえきとうようちょう: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E9%98%BF%E4%BD%90%E6%B5%B7%E5%B2%B8%E9%89%84%E9%81%93#バス路線",
+      url: "https://ja.wikipedia.org/wiki/%E9%98%BF%E4%BD%90%E6%B5%B7%E5%B2%B8%E9%89%84%E9%81%93#路線バス",
       title: "海の駅東洋町停留場",
     },
   ],
   うみのえきとろむ: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E9%98%BF%E4%BD%90%E6%B5%B7%E5%B2%B8%E9%89%84%E9%81%93#バス路線",
+      url: "https://ja.wikipedia.org/wiki/%E9%98%BF%E4%BD%90%E6%B5%B7%E5%B2%B8%E9%89%84%E9%81%93#路線バス",
       title: "海の駅とろむ停留場",
     },
   ],
@@ -7209,6 +7227,12 @@ export const STATION_DATA = {
       title: "漆山駅",
     },
   ],
+  うれしのおんせん: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E5%AC%89%E9%87%8E%E6%B8%A9%E6%B3%89%E9%A7%85",
+      title: "嬉野温泉駅",
+    },
+  ],
   うわごろも: [
     {
       url: "https://ja.wikipedia.org/wiki/%E4%B8%8A%E6%8C%99%E6%AF%8D%E9%A7%85",
@@ -7329,6 +7353,12 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E6%81%B5%E6%88%91%E3%83%8E%E8%8D%98%E9%A7%85",
       title: "恵我ノ荘駅",
+    },
+  ],
+  えきひがしこうえんまえ: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E9%A7%85%E6%9D%B1%E5%85%AC%E5%9C%92%E5%89%8D%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "駅東公園前停留場",
     },
   ],
   えきまえ: [
@@ -7633,12 +7663,6 @@ export const STATION_DATA = {
       title: "越前竹原駅",
     },
   ],
-  えちぜんたけふ: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E8%B6%8A%E5%89%8D%E6%AD%A6%E7%94%9F%E9%A7%85",
-      title: "越前武生駅",
-    },
-  ],
   えちぜんたの: [
     {
       url: "https://ja.wikipedia.org/wiki/%E8%B6%8A%E5%89%8D%E7%94%B0%E9%87%8E%E9%A7%85",
@@ -7875,12 +7899,6 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E6%B5%B7%E8%80%81%E6%B1%9F%E9%A7%85",
       title: "海老江駅",
-    },
-  ],
-  えびしま: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E6%81%B5%E6%AF%94%E5%B3%B6%E9%A7%85",
-      title: "恵比島駅",
     },
   ],
   えびす: [
@@ -8139,12 +8157,6 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E6%89%87%E5%A4%A7%E6%A9%8B%E9%A7%85",
       title: "扇大橋駅",
-    },
-  ],
-  おうぎさわ: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E6%89%87%E6%B2%A2%E9%A7%85",
-      title: "扇沢駅",
     },
   ],
   おうぎた: [
@@ -9574,6 +9586,12 @@ export const STATION_DATA = {
       title: "大村駅 (長崎県)",
     },
   ],
+  おおむらしゃりょうきち: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%9D%91%E8%BB%8A%E4%B8%A1%E5%9F%BA%E5%9C%B0%E9%A7%85",
+      title: "大村車両基地駅",
+    },
+  ],
   おおもと: [
     {
       url: "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%85%83%E9%A7%85",
@@ -9687,10 +9705,6 @@ export const STATION_DATA = {
     },
   ],
   おおわだ: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%92%8C%E7%94%B0%E9%A7%85_(%E5%8C%97%E6%B5%B7%E9%81%93)",
-      title: "大和田駅 (北海道)",
-    },
     {
       url: "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%92%8C%E7%94%B0%E9%A7%85_(%E5%9F%BC%E7%8E%89%E7%9C%8C)",
       title: "大和田駅 (埼玉県)",
@@ -11680,6 +11694,12 @@ export const STATION_DATA = {
       title: "賢島駅",
     },
   ],
+  かしのもりこうえんまえ: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E3%81%8B%E3%81%97%E3%81%AE%E6%A3%AE%E5%85%AC%E5%9C%92%E5%89%8D%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "かしの森公園前停留場",
+    },
+  ],
   かしはらじんぐうにしぐち: [
     {
       url: "https://ja.wikipedia.org/wiki/%E6%A9%BF%E5%8E%9F%E7%A5%9E%E5%AE%AE%E8%A5%BF%E5%8F%A3%E9%A7%85",
@@ -13392,12 +13412,6 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E4%B8%8A%E3%83%8E%E5%A4%AA%E5%AD%90%E9%A7%85",
       title: "上ノ太子駅",
-    },
-  ],
-  かみのだい: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E5%B1%B1%E5%BD%A2%E8%94%B5%E7%8E%8B%E6%B8%A9%E6%B3%89%E3%82%B9%E3%82%AD%E3%83%BC%E5%A0%B4",
-      title: "上ノ台駅",
     },
   ],
   かみのちょう: [
@@ -16783,6 +16797,12 @@ export const STATION_DATA = {
       title: "清音駅",
     },
   ],
+  きよはらちくしみんせんたーまえ: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E6%B8%85%E5%8E%9F%E5%9C%B0%E5%8C%BA%E5%B8%82%E6%B0%91%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E5%89%8D%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "清原地区市民センター前停留場",
+    },
+  ],
   きよみずごじょう: [
     {
       url: "https://ja.wikipedia.org/wiki/%E6%B8%85%E6%B0%B4%E4%BA%94%E6%9D%A1%E9%A7%85",
@@ -17332,6 +17352,12 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E6%AB%9B%E7%94%B0%E9%A7%85",
       title: "櫛田駅",
+    },
+  ],
+  くしだじんじゃまえ: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E6%AB%9B%E7%94%B0%E7%A5%9E%E7%A4%BE%E5%89%8D%E9%A7%85",
+      title: "櫛田神社前駅",
     },
   ],
   くしま: [
@@ -18183,12 +18209,6 @@ export const STATION_DATA = {
       title: "黒部平駅",
     },
   ],
-  くろべだむ: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E9%BB%92%E9%83%A8%E3%83%80%E3%83%A0%E9%A7%85",
-      title: "黒部ダム駅",
-    },
-  ],
   くろまつ: [
     {
       url: "https://ja.wikipedia.org/wiki/%E9%BB%92%E6%9D%BE%E9%A7%85_(%E5%AE%AE%E5%9F%8E%E7%9C%8C)",
@@ -18315,6 +18335,12 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%97%E3%83%A9%E3%82%B6%E5%89%8D%E5%81%9C%E7%95%99%E5%A0%B4",
       title: "グランドプラザ前停留場",
+    },
+  ],
+  ぐりーんすたじあむまえ: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E3%82%B0%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%A2%E3%83%A0%E5%89%8D%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "グリーンスタジアム前停留場",
     },
   ],
   ぐんちゅう: [
@@ -19539,8 +19565,12 @@ export const STATION_DATA = {
   ],
   こうほく: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E6%B1%9F%E5%8C%97%E9%A7%85",
-      title: "江北駅",
+      url: "https://ja.wikipedia.org/wiki/%E6%B1%9F%E5%8C%97%E9%A7%85_(%E4%BD%90%E8%B3%80%E7%9C%8C)",
+      title: "江北駅 (佐賀県)",
+    },
+    {
+      url: "https://ja.wikipedia.org/wiki/%E6%B1%9F%E5%8C%97%E9%A7%85_(%E6%9D%B1%E4%BA%AC%E9%83%BD)",
+      title: "江北駅 (東京都)",
     },
     {
       url: "https://ja.wikipedia.org/wiki/%E6%B8%AF%E5%8C%97%E9%A7%85",
@@ -19635,12 +19665,8 @@ export const STATION_DATA = {
   ],
   こうらくえん: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%BF%E3%83%9F%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4#路線データ",
-      title: "後楽園駅 (静岡県)",
-    },
-    {
       url: "https://ja.wikipedia.org/wiki/%E5%BE%8C%E6%A5%BD%E5%9C%92%E9%A7%85",
-      title: "後楽園駅 (東京都)",
+      title: "後楽園駅",
     },
   ],
   こうりえん: [
@@ -21220,10 +21246,10 @@ export const STATION_DATA = {
       title: "西大寺駅",
     },
   ],
-  さいだいじちょう: [
+  さいだいじちょうおかやまげいじゅつそうぞうげきじょうはれのわまえ: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%A4%A7%E5%AF%BA%E7%94%BA%E5%81%9C%E7%95%99%E5%A0%B4",
-      title: "西大寺町停留場",
+      url: "https://ja.wikipedia.org/wiki/%E8%A5%BF%E5%A4%A7%E5%AF%BA%E7%94%BA%E3%83%BB%E5%B2%A1%E5%B1%B1%E8%8A%B8%E8%A1%93%E5%89%B5%E9%80%A0%E5%8A%87%E5%A0%B4%E3%83%8F%E3%83%AC%E3%83%8E%E3%83%AF%E5%89%8D%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "西大寺町・岡山芸術創造劇場ハレノワ前停留場",
     },
   ],
   さいち: [
@@ -21808,6 +21834,12 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E6%A1%9C%E7%94%B0%E9%96%80%E9%A7%85",
       title: "桜田門駅",
+    },
+  ],
+  さくらなみき: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E6%A1%9C%E4%B8%A6%E6%9C%A8%E9%A7%85",
+      title: "桜並木駅",
     },
   ],
   さくらのみや: [
@@ -22633,11 +22665,7 @@ export const STATION_DATA = {
       title: "山頂駅 (広島県)",
     },
     {
-      url: "https://ja.wikipedia.org/wiki/%E5%90%89%E9%A6%99%E5%85%AC%E5%9C%92#施設",
-      title: "山頂駅 (山口県)",
-    },
-    {
-      url: "https://ja.wikipedia.org/wiki/%E5%AF%8C%E8%89%AF%E9%87%8E%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B9%E3%83%9B%E3%83%86%E3%83%AB#富良野ロープウェー",
+      url: "https://ja.wikipedia.org/wiki/%E5%AF%8C%E8%89%AF%E9%87%8E%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B9%E3%83%9B%E3%83%86%E3%83%AB#その他施設",
       title: "山頂駅 (北海道富良野市)",
     },
     {
@@ -22927,11 +22955,7 @@ export const STATION_DATA = {
       title: "山麓駅 (広島県)",
     },
     {
-      url: "https://ja.wikipedia.org/wiki/%E5%90%89%E9%A6%99%E5%85%AC%E5%9C%92#施設",
-      title: "山麓駅 (山口県)",
-    },
-    {
-      url: "https://ja.wikipedia.org/wiki/%E5%AF%8C%E8%89%AF%E9%87%8E%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B9%E3%83%9B%E3%83%86%E3%83%AB#富良野ロープウェー",
+      url: "https://ja.wikipedia.org/wiki/%E5%AF%8C%E8%89%AF%E9%87%8E%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B9%E3%83%9B%E3%83%86%E3%83%AB#その他施設",
       title: "山麓駅 (北海道富良野市)",
     },
     {
@@ -24128,12 +24152,6 @@ export const STATION_DATA = {
       title: "清水町停留場",
     },
   ],
-  しみんかいかん: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E5%B8%82%E6%B0%91%E4%BC%9A%E9%A4%A8%E5%81%9C%E7%95%99%E5%A0%B4",
-      title: "市民会館停留場",
-    },
-  ],
   しみんこうえんまえ: [
     {
       url: "https://ja.wikipedia.org/wiki/%E5%B8%82%E6%B0%91%E5%85%AC%E5%9C%92%E5%89%8D%E9%A7%85",
@@ -24768,8 +24786,8 @@ export const STATION_DATA = {
   ],
   しやくしょ: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E5%B8%82%E5%BD%B9%E6%89%80%E9%A7%85",
-      title: "市役所駅",
+      url: "https://ja.wikipedia.org/wiki/%E5%B8%82%E5%BD%B9%E6%89%80%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "市役所停留場",
     },
   ],
   しやくしょまえ: [
@@ -25582,6 +25600,12 @@ export const STATION_DATA = {
       title: "新大牟田駅",
     },
   ],
+  しんおおむら: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E6%96%B0%E5%A4%A7%E6%9D%91%E9%A7%85",
+      title: "新大村駅",
+    },
+  ],
   しんおかちまち: [
     {
       url: "https://ja.wikipedia.org/wiki/%E6%96%B0%E5%BE%A1%E5%BE%92%E7%94%BA%E9%A7%85",
@@ -26190,6 +26214,12 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E6%96%B0%E6%B4%A5%E7%94%B0%E6%B2%BC%E9%A7%85",
       title: "新津田沼駅",
+    },
+  ],
+  しんつなしま: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E6%96%B0%E7%B6%B1%E5%B3%B6%E9%A7%85",
+      title: "新綱島駅",
     },
   ],
   しんつるば: [
@@ -27078,12 +27108,6 @@ export const STATION_DATA = {
       title: "神宮寺駅",
     },
   ],
-  じんぐうにし: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E7%A5%9E%E5%AE%AE%E8%A5%BF%E9%A7%85",
-      title: "神宮西駅",
-    },
-  ],
   じんぐうまえ: [
     {
       url: "https://ja.wikipedia.org/wiki/%E7%A5%9E%E5%AE%AE%E5%89%8D%E9%A7%85",
@@ -27965,6 +27989,12 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E6%B8%85%E6%B5%81%E3%81%BF%E3%81%AF%E3%82%89%E3%81%97%E9%A7%85",
       title: "清流みはらし駅",
+    },
+  ],
+  せいりょうこうこうまえ: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E6%B8%85%E9%99%B5%E9%AB%98%E6%A0%A1%E5%89%8D%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "清陵高校前停留場",
     },
   ],
   せいわがくえんまえ: [
@@ -28893,10 +28923,16 @@ export const STATION_DATA = {
       title: "体験坑道駅",
     },
   ],
+  たいこうどおり: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E5%A4%AA%E9%96%A4%E9%80%9A%E9%A7%85",
+      title: "太閤通駅",
+    },
+  ],
   たいさんじ: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B1%B1%E5%AF%BA%E9%A7%85",
-      title: "大山寺駅",
+      url: "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%B1%B1%E5%AF%BA%E9%A7%85_(%E6%84%9B%E7%9F%A5%E7%9C%8C)",
+      title: "大山寺駅 (愛知県)",
     },
   ],
   たいしどう: [
@@ -30034,6 +30070,12 @@ export const STATION_DATA = {
       title: "武生駅",
     },
   ],
+  たけふしん: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E3%81%9F%E3%81%91%E3%81%B5%E6%96%B0%E9%A7%85",
+      title: "たけふ新駅",
+    },
+  ],
   たけべ: [
     {
       url: "https://ja.wikipedia.org/wiki/%E5%BB%BA%E9%83%A8%E9%A7%85",
@@ -31044,6 +31086,12 @@ export const STATION_DATA = {
       title: "大安寺駅",
     },
   ],
+  だいいちいんしんみなとくろすべいまえ: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%B8%80%E3%82%A4%E3%83%B3%E6%96%B0%E6%B9%8A_%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%99%E3%82%A4%E5%89%8D%E9%A7%85",
+      title: "第一イン新湊 クロスベイ前駅",
+    },
+  ],
   だいいちどおり: [
     {
       url: "https://ja.wikipedia.org/wiki/%E7%AC%AC%E4%B8%80%E9%80%9A%E3%82%8A%E9%A7%85",
@@ -31803,12 +31851,14 @@ export const STATION_DATA = {
   ],
   ちゃやま: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E8%8C%B6%E5%B1%B1%E9%A7%85_(%E4%BA%AC%E9%83%BD%E5%BA%9C)",
-      title: "茶山駅 (京都府)",
-    },
-    {
       url: "https://ja.wikipedia.org/wiki/%E8%8C%B6%E5%B1%B1%E9%A7%85_(%E7%A6%8F%E5%B2%A1%E7%9C%8C)",
-      title: "茶山駅 (福岡県)",
+      title: "茶山駅",
+    },
+  ],
+  ちゃやまきょうとげいじゅつだいがく: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E8%8C%B6%E5%B1%B1%E3%83%BB%E4%BA%AC%E9%83%BD%E8%8A%B8%E8%A1%93%E5%A4%A7%E5%AD%A6%E9%A7%85",
+      title: "茶山・京都芸術大学駅",
     },
   ],
   ちゃやまち: [
@@ -33206,10 +33256,6 @@ export const STATION_DATA = {
   ],
   てんまちょう: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E4%BC%9D%E9%A6%AC%E7%94%BA%E9%A7%85",
-      title: "伝馬町駅",
-    },
-    {
       url: "https://ja.wikipedia.org/wiki/%E5%A4%A9%E6%BA%80%E7%94%BA%E5%81%9C%E7%95%99%E5%A0%B4",
       title: "天満町停留場",
     },
@@ -33478,12 +33524,6 @@ export const STATION_DATA = {
   ],
   とうげ: [
     { url: "https://ja.wikipedia.org/wiki/%E5%B3%A0%E9%A7%85", title: "峠駅" },
-  ],
-  とうげした: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E5%B3%A0%E4%B8%8B%E9%A7%85",
-      title: "峠下駅",
-    },
   ],
   とうげのゆ: [
     {
@@ -34343,6 +34383,12 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E9%A3%9B%E7%94%B0%E7%B5%A6%E9%A7%85",
       title: "飛田給駅",
+    },
+  ],
+  とびやまじょうあと: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E9%A3%9B%E5%B1%B1%E5%9F%8E%E8%B7%A1%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "飛山城跡停留場",
     },
   ],
   とふがうらかいがん: [
@@ -35751,12 +35797,6 @@ export const STATION_DATA = {
       title: "中村駅",
     },
   ],
-  なかむらくやくしょ: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%BD%B9%E6%89%80%E9%A7%85",
-      title: "中村区役所駅",
-    },
-  ],
   なかむらこうえん: [
     {
       url: "https://ja.wikipedia.org/wiki/%E4%B8%AD%E6%9D%91%E5%85%AC%E5%9C%92%E9%A7%85",
@@ -36319,6 +36359,12 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E5%90%8D%E5%8F%A4%E5%B1%8B%E6%B8%AF%E9%A7%85_(%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%96%B6%E5%9C%B0%E4%B8%8B%E9%89%84)",
       title: "名古屋港駅 (名古屋市営地下鉄)",
+    },
+  ],
+  なごやじょう: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%9F%8E%E9%A7%85",
+      title: "名古屋城駅",
     },
   ],
   なごやだいがく: [
@@ -37807,12 +37853,6 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%96%B0%E7%94%BA%E9%A7%85",
       title: "西新町駅",
-    },
-  ],
-  にししんみなと: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%96%B0%E6%B9%8A%E9%A7%85",
-      title: "西新湊駅",
     },
   ],
   にしじま: [
@@ -39701,6 +39741,24 @@ export const STATION_DATA = {
       title: "波川駅",
     },
   ],
+  はがたかねざわこうぎょうだんち: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E8%8A%B3%E8%B3%80%E3%83%BB%E9%AB%98%E6%A0%B9%E6%B2%A2%E5%B7%A5%E6%A5%AD%E5%9B%A3%E5%9C%B0%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "芳賀・高根沢工業団地停留場",
+    },
+  ],
+  はがだい: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E8%8A%B3%E8%B3%80%E5%8F%B0%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "芳賀台停留場",
+    },
+  ],
+  はがまちこうぎょうだんちかんりせんたーまえ: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E8%8A%B3%E8%B3%80%E7%94%BA%E5%B7%A5%E6%A5%AD%E5%9B%A3%E5%9C%B0%E7%AE%A1%E7%90%86%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E5%89%8D%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "芳賀町工業団地管理センター前停留場",
+    },
+  ],
   はき: [
     {
       url: "https://ja.wikipedia.org/wiki/%E8%91%89%E6%9C%A8%E9%A7%85",
@@ -40745,12 +40803,6 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E6%B5%9C%E5%B4%8E%E9%A7%85",
       title: "浜崎駅",
-    },
-  ],
-  はまたうら: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E6%B5%9C%E7%94%B0%E6%B5%A6%E9%A7%85",
-      title: "浜田浦駅",
     },
   ],
   はまだ: [
@@ -41844,6 +41896,12 @@ export const STATION_DATA = {
       title: "東静岡駅",
     },
   ],
+  ひがししゅくごう: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E6%9D%B1%E5%AE%BF%E9%83%B7%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "東宿郷停留場",
+    },
+  ],
   ひがししろいし: [
     {
       url: "https://ja.wikipedia.org/wiki/%E6%9D%B1%E7%99%BD%E7%9F%B3%E9%A7%85",
@@ -42900,12 +42958,6 @@ export const STATION_DATA = {
       title: "肥前麓駅",
     },
   ],
-  ひぜんやまぐち: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E8%82%A5%E5%89%8D%E5%B1%B1%E5%8F%A3%E9%A7%85",
-      title: "肥前山口駅",
-    },
-  ],
   ひぜんりゅうおう: [
     {
       url: "https://ja.wikipedia.org/wiki/%E8%82%A5%E5%89%8D%E7%AB%9C%E7%8E%8B%E9%A7%85",
@@ -43449,6 +43501,18 @@ export const STATION_DATA = {
       title: "平井駅 (東京都)",
     },
   ],
+  ひらいし: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E5%B9%B3%E7%9F%B3%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "平石停留場",
+    },
+  ],
+  ひらいしちゅうおうしょうがっこうまえ: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E5%B9%B3%E7%9F%B3%E4%B8%AD%E5%A4%AE%E5%B0%8F%E5%AD%A6%E6%A0%A1%E5%89%8D%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "平石中央小学校前停留場",
+    },
+  ],
   ひらいずみ: [
     {
       url: "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%B3%89%E9%A7%85",
@@ -43568,12 +43632,6 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E5%B9%B3%E5%A1%9A%E9%A7%85",
       title: "平塚駅",
-    },
-  ],
-  ひらつと: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%B4%A5%E6%88%B8%E9%A7%85",
-      title: "平津戸駅",
     },
   ],
   ひらとばし: [
@@ -44818,10 +44876,6 @@ export const STATION_DATA = {
   ],
   ふじみちょう: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E3%80%9C%E6%B2%B3%E5%8F%A3%E6%B9%96%E3%80%9C_%E5%AF%8C%E5%A3%AB%E5%B1%B1%E3%83%91%E3%83%8E%E3%83%A9%E3%83%9E%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4",
-      title: "富士見町駅 (山梨県)",
-    },
-    {
       url: "https://ja.wikipedia.org/wiki/%E5%AF%8C%E5%A3%AB%E8%A6%8B%E7%94%BA%E9%A7%85_(%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C)",
       title: "富士見町駅 (神奈川県)",
     },
@@ -44834,12 +44888,6 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E3%81%B5%E3%81%98%E3%81%BF%E9%87%8E%E9%A7%85",
       title: "ふじみ野駅",
-    },
-  ],
-  ふじやま: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E8%97%A4%E5%B1%B1%E9%A7%85",
-      title: "藤山駅",
     },
   ],
   ふじやました: [
@@ -46293,12 +46341,6 @@ export const STATION_DATA = {
       title: "甫嶺駅",
     },
   ],
-  ほろぬか: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E5%B9%8C%E7%B3%A0%E9%A7%85",
-      title: "幌糠駅",
-    },
-  ],
   ほろのべ: [
     {
       url: "https://ja.wikipedia.org/wiki/%E5%B9%8C%E5%BB%B6%E9%A7%85",
@@ -46681,6 +46723,12 @@ export const STATION_DATA = {
       title: "前川駅 (新潟県)",
     },
   ],
+  まえがた: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E5%89%8D%E6%BD%9F%E9%A7%85",
+      title: "前潟駅",
+    },
+  ],
   まえごう: [
     {
       url: "https://ja.wikipedia.org/wiki/%E5%89%8D%E9%83%B7%E9%A7%85",
@@ -46844,6 +46892,12 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E5%B9%95%E5%BC%B5%E9%A7%85",
       title: "幕張駅",
+    },
+  ],
+  まくはりとよすな: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E5%B9%95%E5%BC%B5%E8%B1%8A%E7%A0%82%E9%A7%85",
+      title: "幕張豊砂駅",
     },
   ],
   まくはりほんごう: [
@@ -47020,12 +47074,6 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E6%9D%BE%E4%BB%BB%E9%A7%85",
       title: "松任駅",
-    },
-  ],
-  まっぷ: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E7%9C%9F%E5%B8%83%E9%A7%85",
-      title: "真布駅",
     },
   ],
   まついだ: [
@@ -49532,6 +49580,10 @@ export const STATION_DATA = {
   ],
   みね: [
     {
+      url: "https://ja.wikipedia.org/wiki/%E5%B3%B0%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "峰停留場",
+    },
+    {
       url: "https://ja.wikipedia.org/wiki/%E7%BE%8E%E7%A5%A2%E9%A7%85",
       title: "美祢駅",
     },
@@ -50782,7 +50834,7 @@ export const STATION_DATA = {
   ],
   むろとせかいじおぱーくせんたー: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E9%98%BF%E4%BD%90%E6%B5%B7%E5%B2%B8%E9%89%84%E9%81%93#バス路線",
+      url: "https://ja.wikipedia.org/wiki/%E9%98%BF%E4%BD%90%E6%B5%B7%E5%B2%B8%E9%89%84%E9%81%93#路線バス",
       title: "室戸世界ジオパークセンター停留場",
     },
   ],
@@ -50794,7 +50846,7 @@ export const STATION_DATA = {
   ],
   むろとみさき: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E9%98%BF%E4%BD%90%E6%B5%B7%E5%B2%B8%E9%89%84%E9%81%93#バス路線",
+      url: "https://ja.wikipedia.org/wiki/%E9%98%BF%E4%BD%90%E6%B5%B7%E5%B2%B8%E9%89%84%E9%81%93#路線バス",
       title: "室戸岬停留場",
     },
   ],
@@ -52275,12 +52327,6 @@ export const STATION_DATA = {
       title: "八幡駅 (福岡県)",
     },
   ],
-  やはたさん: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%BF%E3%83%9F%E3%83%AD%E3%83%BC%E3%83%97%E3%82%A6%E3%82%A7%E3%82%A4#路線データ",
-      title: "八幡山駅",
-    },
-  ],
   やはば: [
     {
       url: "https://ja.wikipedia.org/wiki/%E7%9F%A2%E5%B9%85%E9%A7%85",
@@ -52819,6 +52865,24 @@ export const STATION_DATA = {
       title: "由比ヶ浜駅",
     },
   ],
+  ゆいのもりちゅうおう: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E3%82%86%E3%81%84%E3%81%AE%E6%9D%9C%E4%B8%AD%E5%A4%AE%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "ゆいの杜中央停留場",
+    },
+  ],
+  ゆいのもりにし: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E3%82%86%E3%81%84%E3%81%AE%E6%9D%9C%E8%A5%BF%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "ゆいの杜西停留場",
+    },
+  ],
+  ゆいのもりひがし: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E3%82%86%E3%81%84%E3%81%AE%E6%9D%9C%E6%9D%B1%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "ゆいの杜東停留場",
+    },
+  ],
   ゆう: [
     {
       url: "https://ja.wikipedia.org/wiki/%E7%94%B1%E5%AE%87%E9%A7%85",
@@ -53161,10 +53225,6 @@ export const STATION_DATA = {
   ],
   ゆもと: [
     {
-      url: "https://ja.wikipedia.org/wiki/%E5%A4%A9%E5%85%83%E5%8F%B0%E9%AB%98%E5%8E%9F",
-      title: "湯元駅",
-    },
-    {
       url: "https://ja.wikipedia.org/wiki/%E6%B9%AF%E6%9C%AC%E9%A7%85",
       title: "湯本駅",
     },
@@ -53257,6 +53317,12 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E9%A4%8A%E9%B1%92%E5%85%AC%E5%9C%92%E9%A7%85",
       title: "養鱒公園駅",
+    },
+  ],
+  ようとうさんちょうめ: [
+    {
+      url: "https://ja.wikipedia.org/wiki/%E9%99%BD%E6%9D%B13%E4%B8%81%E7%9B%AE%E5%81%9C%E7%95%99%E5%A0%B4",
+      title: "陽東3丁目停留場",
     },
   ],
   ようど: [
@@ -54315,12 +54381,6 @@ export const STATION_DATA = {
     {
       url: "https://ja.wikipedia.org/wiki/%E7%95%99%E8%BE%BA%E8%98%82%E9%A7%85",
       title: "留辺蘂駅",
-    },
-  ],
-  るもい: [
-    {
-      url: "https://ja.wikipedia.org/wiki/%E7%95%99%E8%90%8C%E9%A7%85",
-      title: "留萌駅",
     },
   ],
   れいきゅうこうえんたいいくかん: [
