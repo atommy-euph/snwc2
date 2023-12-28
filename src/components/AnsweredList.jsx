@@ -25,14 +25,17 @@ const AnsweredList = ({ answers, onClose }) => {
                 {value}
                 <span className="text-black font-normal text-sm ml-2">
                   (
-                  {STATION_DATA[value].map((station) => (
-                    <a
-                      key={station.title}
-                      className="font-normal italic text-sm mx-0.5"
-                      href={station.url}
-                    >
-                      {station.title},
-                    </a>
+                  {STATION_DATA[value].map((station, i) => (
+                    <>
+                      <a
+                        key={station.title}
+                        className="font-normal italic text-sm mx-0.5"
+                        href={station.url}
+                      >
+                        {station.title}
+                      </a>
+                      {STATION_DATA[value].length === i + 1 ? "" : ", "}
+                    </>
                   ))}
                   )
                 </span>
@@ -49,7 +52,6 @@ const AnsweredList = ({ answers, onClose }) => {
               <a className="italic text-sm" href={STATION_DATA[value][0].url}>
                 ({STATION_DATA[value][0].title})
               </a>
-              ,
             </li>
           ))
         ) : (
