@@ -216,6 +216,8 @@ export default function Endless() {
       date: new Date(),
       count: answers.length - 1,
       letter: totalLength,
+      start: answers[0].answer,
+      end: answers.slice(-1)[0].answer,
     };
     const records = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_SPEED));
     if (records) {
