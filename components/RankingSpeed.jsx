@@ -39,7 +39,7 @@ const RankingSpeed = () => {
       {recordsSpeed
         .sort((a, b) => {
           if (a.count === b.count) {
-            return b.letter - b.letter;
+            return b.letter - a.letter;
           }
           return b.count - a.count;
         })
