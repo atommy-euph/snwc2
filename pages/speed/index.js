@@ -261,7 +261,7 @@ export default function Endless() {
       handleGameOver();
       return;
     }
-  });
+  }, [mistakeCount]);
 
   // Auto focus
   useEffect(() => {
