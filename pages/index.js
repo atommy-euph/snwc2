@@ -4,6 +4,7 @@ import Head from "next/head";
 
 import titleLogo from "../public/icons/logo.svg";
 import info from "../public/icons/info.svg";
+import records from "../public/icons/records.svg";
 
 export default function Home() {
   return (
@@ -23,19 +24,16 @@ export default function Home() {
         <Link href="/speed/">
           <a className="link-button">スピード</a>
         </Link>
-        {/* inactive */}
-        {/* <Link href="#">
-          <a className="link-button opacity-50">
-            スピード
-            <br />
-            (Coming Soon)
-          </a>
-        </Link> */}
       </div>
       <div className="mt-12 w-64 flex flex-row justify-center space-x-4">
         <Link href="info">
           <a>
             <Image width={30} height={30} src={info} alt="info" />
+          </a>
+        </Link>
+        <Link href="records">
+          <a>
+            <Image width={30} height={30} src={records} alt="records" />
           </a>
         </Link>
       </div>

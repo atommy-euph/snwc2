@@ -6,7 +6,6 @@ import logo from "../public/icons/logo_type.svg";
 import bmcButton from "../public/icons/bmc-button.png";
 import atommy from "../public/icons/atommy.svg";
 import railword from "../public/icons/railword.png";
-import Head from "next/head";
 
 export default function Info() {
   return (
@@ -58,11 +57,12 @@ export default function Info() {
         <li>v2.1.0 - スピードモードを追加</li>
         <li>v2.1.1 - スピードモードを微易化</li>
         <li>v2.1.2 - 駅名データの更新 (2023/12/28)</li>
+        <li>v2.2.0 - 個人ランキング機能の追加</li>
       </ul>
       <h2>機能追加予定</h2>
       <ul>
         <li>ログイン機能</li>
-        <li>ランキング表示機能</li>
+        <li>総合ランキング表示機能</li>
         <li>ハードモード</li>
       </ul>
       {/* <h2>プライバシーポリシー</h2> */}

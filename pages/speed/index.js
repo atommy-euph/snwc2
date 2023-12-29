@@ -7,12 +7,14 @@ import { useRouter } from "next/router";
 import Alert from "../../components/Alert";
 import Button from "../../components/Button.jsx";
 import AnsweredList from "../../components/AnsweredList";
+import Ranking from "../../components/Ranking";
 
 import logo from "../../public/icons/logo_type.svg";
 import frame from "../../public/icons/frame.svg";
 import help from "../../public/icons/help.svg";
 import share from "../../public/icons/share.svg";
 import copied from "../../public/icons/copied.svg";
+import records from "../../public/icons/records.svg";
 
 import {
   isValidLetters,
@@ -34,6 +36,7 @@ import {
   MISTAKE_COUNT_LIMIT,
   RANDOM_RANGE_MIN,
   RANDOM_RANGE_MAX,
+  LOCAL_STORAGE_KEY_SPEED,
 } from "../../constant/config_speed.js";
 
 export default function Endless() {
@@ -73,6 +76,7 @@ export default function Endless() {
 
   // For result screen
   const [isListOpen, setIsListOpen] = useState(false);
+  const [isRankingOpen, setIsRankingOpen] = useState(false);
   const [isShareAlertOpen, setIsShareAlertOpen] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
@@ -170,6 +174,7 @@ export default function Endless() {
     setIsGameOver(true);
     setTimer(0);
     setCount(COUNTDOWN_TIME);
+    saveRecordToLocalStorage();
   };
   const restartGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
@@ -206,32 +211,49 @@ export default function Endless() {
   const backToTop = () => {
     router.push("/");
   };
+  const saveRecordToLocalStorage = () => {
+    const record = {
+      date: new Date(),
+      count: answers.length - 1,
+      letter: totalLength,
+    };
+    const records = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_SPEED));
+    if (records) {
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY_SPEED,
+        JSON.stringify(records.concat(record))
+      );
+    } else {
+      localStorage.setItem(LOCAL_STORAGE_KEY_SPEED, JSON.stringify([record]));
+    }
+  };
 
   // Count down in Standby
   useEffect(() => {
     if (!isGameStandby) return;
-    const interval = setInterval(() => {
+    const countID = setInterval(() => {
       if (count > 1) {
         setCount((c) => c - 1);
       } else {
         handleGameStart();
       }
     }, 1000);
-    return () => clearInterval(interval);
+    return () => clearInterval(countID);
   }, [count, isGameStandby, handleGameStart]);
 
   // Time limit for Answer
   useEffect(() => {
-    if (!isGameStart) return;
-    const interval = setInterval(() => {
+    if (!isGameStart || isGameOver) return;
+    const timerID = setInterval(() => {
       if (timer > 1) {
         setTimer((c) => c - 1);
       } else {
+        clearInterval(timerID);
         handleGameOver();
       }
     }, 1000);
-    return () => clearInterval(interval);
-  }, [timer, isGameStart]);
+    return () => clearInterval(timerID);
+  }, [timer, isGameStart, isGameOver]);
 
   // Judge game over
   useEffect(() => {
@@ -426,10 +448,13 @@ export default function Endless() {
               range={rr}
             />
           )}
+          {isRankingOpen && (
+            <Ranking mode={"speed"} onClose={() => setIsRankingOpen(false)} />
+          )}
           {isShareAlertOpen && (
             <Alert message="クリップボードにコピーしました" />
           )}
-          <div className="flex flex-col items-center w-full">
+          <div className="flex flex-col items-center w-full pb-16">
             <h2 className="text-4xl mt-10">ゲームオーバー</h2>
             <h2 className="border-y-2 border-black py-2 my-6 w-64 text-center text-2xl">
               スピード
@@ -449,8 +474,37 @@ export default function Endless() {
                 <span className="text-xl">字</span>
               </p>
             </div>
+            <div className="flex items-center justify-center w-full space-x-2">
+              <button
+                className="flex items-center justify-between w-[9rem] mt- mb-6 border-2 border-black py-2 px-3 font-bold"
+                onClick={() => {
+                  shareResult();
+                  setIsShareAlertOpen(true);
+                  setTimeout(() => {
+                    setIsShareAlertOpen(false);
+                  }, ALERT_TIME);
+                }}
+              >
+                結果をシェア
+                <Image
+                  height={15}
+                  width={15}
+                  src={isCopied ? copied : share}
+                  alt="SHARE"
+                />
+              </button>
+              <button
+                className="flex items-center justify-between w-[8.2rem] mt- mb-6 border-2 border-black py-2 px-3 font-bold"
+                onClick={() => {
+                  setIsRankingOpen(true);
+                }}
+              >
+                ランキング
+                <Image height={17} width={17} src={records} alt="RECORD" />
+              </button>
+            </div>
             <button
-              className="mb-8 underline"
+              className="mb-5 underline"
               onClick={() => {
                 setIsListOpen(true);
               }}
@@ -459,24 +513,6 @@ export default function Endless() {
             </button>
             <Button value="リスタート" keybind="Space" onClick={restartGame} />
             <Button value="トップへ戻る" keybind="Escape" onClick={backToTop} />
-            <button
-              className="flex items-center justify-between w-[6.2rem] mt-8 mb-6 border-2 border-black py-2 px-3 font-bold"
-              onClick={() => {
-                shareResult();
-                setIsShareAlertOpen(true);
-                setTimeout(() => {
-                  setIsShareAlertOpen(false);
-                }, ALERT_TIME);
-              }}
-            >
-              SHARE
-              <Image
-                height={15}
-                width={15}
-                src={isCopied ? copied : share}
-                alt="SHARE"
-              />
-            </button>
           </div>
         </>
       )}
