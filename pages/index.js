@@ -12,6 +12,11 @@ export default function Home() {
       <Head>
         <title>尻鉄 | しりとりで知る鉄道駅</title>
       </Head>
+      <div className="absolute top-5 right-5 flex items-center space-x-3">
+        <Link href="/signin">
+          <button>ログイン</button>
+        </Link>
+      </div>
       <p className="mt-8 text-[1.62rem]">しりとりで知る鉄道駅</p>
       <Image width={256} height={256} src={titleLogo} alt="しりてつ" />
       <div className="h-12"></div>
