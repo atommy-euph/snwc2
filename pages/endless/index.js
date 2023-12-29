@@ -189,7 +189,6 @@ export default function Endless() {
         start: answers[0].answer,
         end: inputEl.current.value,
       };
-      console.log("not endedWithValidLetter", record);
       localStorage.setItem(
         LOCAL_STORAGE_KEY_ENDLESS,
         JSON.stringify(records.concat(record))

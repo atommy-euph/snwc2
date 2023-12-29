@@ -140,7 +140,7 @@ export default function Endless() {
           time: TIME_LIMIT_SPEED - timer - totalTime,
         })
       );
-      handleGameOver();
+      handleGameOver(false);
       return;
     }
 
@@ -170,11 +170,11 @@ export default function Endless() {
       setIsGameStart(true);
     }
   }, [count]);
-  const handleGameOver = () => {
+  const handleGameOver = (endedWithValidLetter = true) => {
     setIsGameOver(true);
     setTimer(0);
     setCount(COUNTDOWN_TIME);
-    saveRecordToLocalStorage();
+    saveRecordToLocalStorage(endedWithValidLetter);
   };
   const restartGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
@@ -211,16 +211,29 @@ export default function Endless() {
   const backToTop = () => {
     router.push("/");
   };
-  const saveRecordToLocalStorage = () => {
-    const record = {
-      date: new Date(),
-      count: answers.length - 1,
-      letter: totalLength,
-      start: answers[0].answer,
-      end: answers.slice(-1)[0].answer,
-    };
+  const saveRecordToLocalStorage = (endsWithValidLetter) => {
     const records = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_SPEED));
-    if (records) {
+    if (records && endsWithValidLetter) {
+      const record = {
+        date: new Date(),
+        count: answers.length - 1,
+        letter: totalLength,
+        start: answers[0].answer,
+        end: answers.slice(-1)[0].answer,
+      };
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY_SPEED,
+        JSON.stringify(records.concat(record))
+      );
+    } else if (records && !endsWithValidLetter) {
+      const record = {
+        date: new Date(),
+        count: answers.length - 1 + 1,
+        letter: totalTime + inputEl.current.value.length,
+        start: answers[0].answer,
+        end: inputEl.current.value,
+      };
+      console.log("not endedWithValidLetter", record);
       localStorage.setItem(
         LOCAL_STORAGE_KEY_SPEED,
         JSON.stringify(records.concat(record))
