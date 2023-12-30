@@ -34,9 +34,8 @@ import { ALERT_TIME, COUNTDOWN_TIME, GAME_URL } from "../../constant/config.js";
 import {
   TIME_LIMIT_SPEED,
   MISTAKE_COUNT_LIMIT,
-  RANDOM_RANGE_MIN,
-  RANDOM_RANGE_MAX,
   LOCAL_STORAGE_KEY_SPEED,
+  ALPHA,
 } from "../../constant/config_speed.js";
 
 export default function Endless() {
@@ -52,12 +51,7 @@ export default function Endless() {
   ]);
   const [mistakeCount, setMistakeCount] = useState(0);
   const [rr, setRR] = useState(() =>
-    getRandomRange(
-      RANDOM_RANGE_MIN,
-      RANDOM_RANGE_MAX,
-      answers.slice(-1)[0].answer,
-      answers
-    )
+    getRandomRange(answers.slice(-1)[0].answer, answers, ALPHA)
   );
 
   // Count down in Standby
@@ -150,7 +144,7 @@ export default function Endless() {
         time: TIME_LIMIT_SPEED - timer - totalTime,
       })
     );
-    setRR(getRandomRange(RANDOM_RANGE_MIN, RANDOM_RANGE_MAX, answer, answers));
+    setRR(getRandomRange(answer, answers, ALPHA));
     setAnswer("");
     setMistakeCount(0);
   };
@@ -179,14 +173,7 @@ export default function Endless() {
   const restartGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
     setAnswer("");
-    setRR(
-      getRandomRange(
-        RANDOM_RANGE_MIN,
-        RANDOM_RANGE_MAX,
-        answers.slice(-1)[0].answer,
-        answers
-      )
-    );
+    setRR(getRandomRange(answers.slice(-1)[0].answer, answers, ALPHA));
     setIsGameStart(false);
     setIsGameOver(false);
     setTimer(TIME_LIMIT_SPEED);
@@ -195,15 +182,7 @@ export default function Endless() {
   const resetGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
     setAnswer("");
-    setRR(
-      getRandomRange(
-        RANDOM_RANGE_MIN,
-        RANDOM_RANGE_MAX,
-        answers.slice(-1)[0].answer,
-        answers
-      )
-    );
-    setIsGameStart(false);
+    setRR(getRandomRange(answers.slice(-1)[0].answer, answers, ALPHA));
     setIsGameOver(false);
     setTimer(TIME_LIMIT_SPEED);
     setCount(COUNTDOWN_TIME);
@@ -233,7 +212,6 @@ export default function Endless() {
         start: answers[0].answer,
         end: inputEl.current.value,
       };
-      console.log("not endedWithValidLetter", record);
       localStorage.setItem(
         LOCAL_STORAGE_KEY_SPEED,
         JSON.stringify(records.concat(record))

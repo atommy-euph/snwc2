@@ -14,7 +14,6 @@ export default function Records() {
     const recordsSpeed = localStorage.getItem(LOCAL_STORAGE_KEY_SPEED);
     if (recordsSpeed) {
       setRecordsSpeed(JSON.parse(recordsSpeed));
-      console.log("setRecords");
     } else {
       setRecordsSpeed([]);
     }
