@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { auth } from "../lib/firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../lib/firebase.js";
 
 const AuthContext = createContext();
 
@@ -19,7 +19,6 @@ export function AuthProvider({ children }) {
         await auth.signOut();
         user = null;
       }
-
       setCurrentUser(user);
       setLoading(false);
     });
