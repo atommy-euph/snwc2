@@ -111,10 +111,10 @@ export default function Endless() {
       return;
     }
     if (!endsWithValidLetter(answer, answers)) {
-      setAnswers(
-        answers.concat({ answer: answer, time: TIME_LIMIT_ENDLESS - timer })
+      setAnswers((a) =>
+        a.concat({ answer: answer, time: TIME_LIMIT_ENDLESS - timer })
       );
-      handleGameOver();
+      handleGameOver(false);
       return;
     }
 
@@ -141,11 +141,11 @@ export default function Endless() {
       setIsGameStart(true);
     }
   }, [count]);
-  const handleGameOver = () => {
+  const handleGameOver = (endsWithValidLetter = true) => {
     setIsGameOver(true);
     setTimer(0);
     setCount(COUNTDOWN_TIME);
-    saveRecordToLocalStorage();
+    saveRecordToLocalStorage(endsWithValidLetter);
   };
   const restartGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
@@ -167,21 +167,40 @@ export default function Endless() {
     router.push("/");
   };
 
-  const saveRecordToLocalStorage = () => {
-    const record = {
-      date: new Date(),
-      count: answers.length - 1,
-      time: totalTime,
-      start: answers[0].answer,
-      end: answers.slice(-1)[0].answer,
-    };
+  const saveRecordToLocalStorage = (endsWithValidLetter) => {
     const records = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_ENDLESS));
-    if (records) {
+    if (records && endsWithValidLetter) {
+      const record = {
+        date: new Date(),
+        count: answers.length - 1,
+        time: totalTime,
+        start: answers[0].answer,
+        end: answers.slice(-1)[0].answer,
+      };
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY_ENDLESS,
+        JSON.stringify(records.concat(record))
+      );
+    } else if (records && !endsWithValidLetter) {
+      const record = {
+        date: new Date(),
+        count: answers.length - 1 + 1,
+        time: totalTime + TIME_LIMIT_ENDLESS - timer,
+        start: answers[0].answer,
+        end: inputEl.current.value,
+      };
       localStorage.setItem(
         LOCAL_STORAGE_KEY_ENDLESS,
         JSON.stringify(records.concat(record))
       );
     } else {
+      const record = {
+        date: new Date(),
+        count: answers.length - 1,
+        time: totalTime,
+        start: answers[0].answer,
+        end: answers.slice(-1)[0].answer,
+      };
       localStorage.setItem(LOCAL_STORAGE_KEY_ENDLESS, JSON.stringify([record]));
     }
   };

@@ -34,9 +34,8 @@ import { ALERT_TIME, COUNTDOWN_TIME, GAME_URL } from "../../constant/config.js";
 import {
   TIME_LIMIT_SPEED,
   MISTAKE_COUNT_LIMIT,
-  RANDOM_RANGE_MIN,
-  RANDOM_RANGE_MAX,
   LOCAL_STORAGE_KEY_SPEED,
+  ALPHA,
 } from "../../constant/config_speed.js";
 
 export default function Speed() {
@@ -52,12 +51,7 @@ export default function Speed() {
   ]);
   const [mistakeCount, setMistakeCount] = useState(0);
   const [rr, setRR] = useState(() =>
-    getRandomRange(
-      RANDOM_RANGE_MIN,
-      RANDOM_RANGE_MAX,
-      answers.slice(-1)[0].answer,
-      answers
-    )
+    getRandomRange(answers.slice(-1)[0].answer, answers, ALPHA)
   );
 
   // Count down in Standby
@@ -140,7 +134,7 @@ export default function Speed() {
           time: TIME_LIMIT_SPEED - timer - totalTime,
         })
       );
-      handleGameOver();
+      handleGameOver(false);
       return;
     }
 
@@ -150,7 +144,7 @@ export default function Speed() {
         time: TIME_LIMIT_SPEED - timer - totalTime,
       })
     );
-    setRR(getRandomRange(RANDOM_RANGE_MIN, RANDOM_RANGE_MAX, answer, answers));
+    setRR(getRandomRange(answer, answers, ALPHA));
     setAnswer("");
     setMistakeCount(0);
   };
@@ -170,23 +164,16 @@ export default function Speed() {
       setIsGameStart(true);
     }
   }, [count]);
-  const handleGameOver = () => {
+  const handleGameOver = (endedWithValidLetter = true) => {
     setIsGameOver(true);
     setTimer(0);
     setCount(COUNTDOWN_TIME);
-    saveRecordToLocalStorage();
+    saveRecordToLocalStorage(endedWithValidLetter);
   };
   const restartGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
     setAnswer("");
-    setRR(
-      getRandomRange(
-        RANDOM_RANGE_MIN,
-        RANDOM_RANGE_MAX,
-        answers.slice(-1)[0].answer,
-        answers
-      )
-    );
+    setRR(getRandomRange(answers.slice(-1)[0].answer, answers, ALPHA));
     setIsGameStart(false);
     setIsGameOver(false);
     setTimer(TIME_LIMIT_SPEED);
@@ -195,15 +182,7 @@ export default function Speed() {
   const resetGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
     setAnswer("");
-    setRR(
-      getRandomRange(
-        RANDOM_RANGE_MIN,
-        RANDOM_RANGE_MAX,
-        answers.slice(-1)[0].answer,
-        answers
-      )
-    );
-    setIsGameStart(false);
+    setRR(getRandomRange(answers.slice(-1)[0].answer, answers, ALPHA));
     setIsGameOver(false);
     setTimer(TIME_LIMIT_SPEED);
     setCount(COUNTDOWN_TIME);
@@ -211,16 +190,28 @@ export default function Speed() {
   const backToTop = () => {
     router.push("/");
   };
-  const saveRecordToLocalStorage = () => {
-    const record = {
-      date: new Date(),
-      count: answers.length - 1,
-      letter: totalLength,
-      start: answers[0].answer,
-      end: answers.slice(-1)[0].answer,
-    };
+  const saveRecordToLocalStorage = (endsWithValidLetter) => {
     const records = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_SPEED));
-    if (records) {
+    if (records && endsWithValidLetter) {
+      const record = {
+        date: new Date(),
+        count: answers.length - 1,
+        letter: totalLength,
+        start: answers[0].answer,
+        end: answers.slice(-1)[0].answer,
+      };
+      localStorage.setItem(
+        LOCAL_STORAGE_KEY_SPEED,
+        JSON.stringify(records.concat(record))
+      );
+    } else if (records && !endsWithValidLetter) {
+      const record = {
+        date: new Date(),
+        count: answers.length - 1 + 1,
+        letter: totalTime + inputEl.current.value.length,
+        start: answers[0].answer,
+        end: inputEl.current.value,
+      };
       localStorage.setItem(
         LOCAL_STORAGE_KEY_SPEED,
         JSON.stringify(records.concat(record))
