@@ -2,21 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 
+import Header from "../components/Header.jsx";
+
 import titleLogo from "../public/icons/logo.svg";
 import info from "../public/icons/info.svg";
 import records from "../public/icons/records.svg";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center py-12">
+    <div className="flex flex-col items-center  pb-12">
       <Head>
         <title>尻鉄 | しりとりで知る鉄道駅</title>
       </Head>
-      <div className="absolute top-5 right-5 flex items-center space-x-3">
-        <Link href="/signin">
-          <button>ログイン</button>
-        </Link>
-      </div>
+      <Header />
+
       <p className="mt-8 text-[1.62rem]">しりとりで知る鉄道駅</p>
       <Image width={256} height={256} src={titleLogo} alt="しりてつ" />
       <div className="h-12"></div>

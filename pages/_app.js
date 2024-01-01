@@ -1,5 +1,6 @@
-import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { AuthProvider } from "../context/AuthContext";
 import "../styles/globals.css";
 import Head from "next/head";
 
@@ -18,7 +19,7 @@ function MyApp({ Component, pageProps }) {
     };
   }, [router.events]);
   return (
-    <>
+    <AuthProvider>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -51,7 +52,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:card" content="summary" />
       </Head>
       <Component {...pageProps} />
-    </>
+    </AuthProvider>
   );
 }
 

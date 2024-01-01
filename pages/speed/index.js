@@ -39,7 +39,7 @@ import {
   LOCAL_STORAGE_KEY_SPEED,
 } from "../../constant/config_speed.js";
 
-export default function Endless() {
+export default function Speed() {
   // For controling screens
   const [isGameStandby, setIsGameStandby] = useState(false);
   const [isGameStart, setIsGameStart] = useState(false);
