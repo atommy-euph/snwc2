@@ -4,6 +4,12 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import { useAuth } from "../../context/AuthContext.js";
+import { useDb } from "../../context/DbContext.js";
+
+import { db } from "../../lib/firebase.js";
+import { doc, setDoc, collection } from "firebase/firestore";
+
 import Alert from "../../components/Alert";
 import Button from "../../components/Button.jsx";
 import AnsweredList from "../../components/AnsweredList";
@@ -67,6 +73,12 @@ export default function Endless() {
 
   // Focus input tag
   const inputEl = useRef(null);
+
+  // Auth
+  const { currentUser } = useAuth();
+
+  // Db
+  const { userData } = useDb();
 
   // Router
   const router = useRouter();
@@ -146,6 +158,7 @@ export default function Endless() {
     setTimer(0);
     setCount(COUNTDOWN_TIME);
     saveRecordToLocalStorage(endsWithValidLetter);
+    saveRecordToFirestore(endsWithValidLetter);
   };
   const restartGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
@@ -169,39 +182,70 @@ export default function Endless() {
 
   const saveRecordToLocalStorage = (endsWithValidLetter) => {
     const records = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_ENDLESS));
-    if (records && endsWithValidLetter) {
+    if (endsWithValidLetter) {
       const record = {
-        date: new Date(),
+        date: new Date().toLocaleDateString(),
         count: answers.length - 1,
         time: totalTime,
         start: answers[0].answer,
         end: answers.slice(-1)[0].answer,
       };
-      localStorage.setItem(
-        LOCAL_STORAGE_KEY_ENDLESS,
-        JSON.stringify(records.concat(record))
-      );
-    } else if (records && !endsWithValidLetter) {
+      if (records) {
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY_ENDLESS,
+          JSON.stringify(records.concat(record))
+        );
+      } else {
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY_ENDLESS,
+          JSON.stringify([record])
+        );
+      }
+    } else {
       const record = {
-        date: new Date(),
+        date: new Date().toLocaleDateString(),
         count: answers.length - 1 + 1,
         time: totalTime + TIME_LIMIT_ENDLESS - timer,
         start: answers[0].answer,
         end: inputEl.current.value,
       };
-      localStorage.setItem(
-        LOCAL_STORAGE_KEY_ENDLESS,
-        JSON.stringify(records.concat(record))
-      );
-    } else {
-      const record = {
-        date: new Date(),
+      if (records) {
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY_ENDLESS,
+          JSON.stringify(records.concat(record))
+        );
+      } else {
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY_ENDLESS,
+          JSON.stringify([record])
+        );
+      }
+    }
+  };
+
+  const saveRecordToFirestore = async (endsWithValidLetter) => {
+    if (!currentUser) return;
+    const addDataRef = doc(collection(db, "records_endless"));
+    if (endsWithValidLetter) {
+      await setDoc(addDataRef, {
+        date: new Date().toLocaleDateString(),
         count: answers.length - 1,
         time: totalTime,
         start: answers[0].answer,
         end: answers.slice(-1)[0].answer,
-      };
-      localStorage.setItem(LOCAL_STORAGE_KEY_ENDLESS, JSON.stringify([record]));
+        name: userData.name,
+        uid: currentUser.uid,
+      });
+    } else {
+      await setDoc(addDataRef, {
+        date: new Date().toLocaleDateString(),
+        count: answers.length - 1 + 1,
+        time: totalTime + TIME_LIMIT_ENDLESS - timer,
+        start: answers[0].answer,
+        end: inputEl.current.value,
+        name: userData.name,
+        uid: currentUser.uid,
+      });
     }
   };
 

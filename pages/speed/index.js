@@ -4,6 +4,11 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
+import { doc, setDoc, collection } from "firebase/firestore";
+import { db } from "../../lib/firebase.js";
+import { useAuth } from "../../context/AuthContext.js";
+import { useDb } from "../../context/DbContext.js";
+
 import Alert from "../../components/Alert";
 import Button from "../../components/Button.jsx";
 import AnsweredList from "../../components/AnsweredList";
@@ -73,6 +78,12 @@ export default function Speed() {
   const [isRankingOpen, setIsRankingOpen] = useState(false);
   const [isShareAlertOpen, setIsShareAlertOpen] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+
+  // Auth
+  const { currentUser } = useAuth();
+
+  // Db
+  const { userData } = useDb();
 
   // Focus input tag
   const inputEl = useRef(null);
@@ -169,6 +180,7 @@ export default function Speed() {
     setTimer(0);
     setCount(COUNTDOWN_TIME);
     saveRecordToLocalStorage(endedWithValidLetter);
+    saveRecordToFirestore(endedWithValidLetter);
   };
   const restartGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
@@ -192,32 +204,63 @@ export default function Speed() {
   };
   const saveRecordToLocalStorage = (endsWithValidLetter) => {
     const records = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_SPEED));
-    if (records && endsWithValidLetter) {
+    if (endsWithValidLetter) {
       const record = {
-        date: new Date(),
+        date: new Date().toLocaleDateString(),
         count: answers.length - 1,
         letter: totalLength,
         start: answers[0].answer,
         end: answers.slice(-1)[0].answer,
       };
-      localStorage.setItem(
-        LOCAL_STORAGE_KEY_SPEED,
-        JSON.stringify(records.concat(record))
-      );
-    } else if (records && !endsWithValidLetter) {
+      if (records) {
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY_SPEED,
+          JSON.stringify(records.concat(record))
+        );
+      } else {
+        localStorage.setItem(LOCAL_STORAGE_KEY_SPEED, JSON.stringify([record]));
+      }
+    } else {
       const record = {
-        date: new Date(),
+        date: new Date().toLocaleDateString(),
         count: answers.length - 1 + 1,
-        letter: totalTime + inputEl.current.value.length,
+        letter: totalLength + inputEl.current.value.length,
         start: answers[0].answer,
         end: inputEl.current.value,
       };
-      localStorage.setItem(
-        LOCAL_STORAGE_KEY_SPEED,
-        JSON.stringify(records.concat(record))
-      );
+      if (records) {
+        localStorage.setItem(
+          LOCAL_STORAGE_KEY_SPEED,
+          JSON.stringify(records.concat(record))
+        );
+      } else {
+        localStorage.setItem(LOCAL_STORAGE_KEY_SPEED, JSON.stringify([record]));
+      }
+    }
+  };
+  const saveRecordToFirestore = async (endsWithValidLetter) => {
+    if (!currentUser) return;
+    const addDataRef = doc(collection(db, "records_speed"));
+    if (endsWithValidLetter) {
+      await setDoc(addDataRef, {
+        date: new Date().toLocaleDateString(),
+        count: answers.length - 1,
+        letter: totalLength,
+        start: answers[0].answer,
+        end: answers.slice(-1)[0].answer,
+        name: userData.name,
+        uid: currentUser.uid,
+      });
     } else {
-      localStorage.setItem(LOCAL_STORAGE_KEY_SPEED, JSON.stringify([record]));
+      await setDoc(addDataRef, {
+        date: new Date().toLocaleDateString(),
+        count: answers.length - 1 + 1,
+        letter: totalLength + inputEl.current.value.length,
+        start: answers[0].answer,
+        end: inputEl.current.value,
+        name: userData.name,
+        uid: currentUser.uid,
+      });
     }
   };
 
