@@ -21,7 +21,7 @@ export default function SignUp() {
 
   const router = useRouter();
   const actionCodeSettings = {
-    url: "http://localhost:3000/signin",
+    url: "https://gregarious-faun-97653c.netlify.app/signin",
     handleCodeInApp: false,
   };
   const register = async () => {
