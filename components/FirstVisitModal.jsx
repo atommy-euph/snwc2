@@ -4,7 +4,7 @@ import "@splidejs/splide/css";
 import Image from "next/image";
 
 import logo from "../public/icons/logo.svg";
-import rule1 from "../public/icons/rule1.jpg";
+import rule1 from "../public/icons/rule1.png";
 import ranking from "../public/icons/ranking.png";
 
 const FirstVisitModal = ({ onClose }) => {
