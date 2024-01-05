@@ -10,7 +10,7 @@ export default function Records() {
 
   return (
     <Page title="ランキング">
-      <div className="flex justify-end mt-2">
+      <div className="flex justify-end mt-5">
         <button
           className={`px-4 py-2 ${
             which === "endless"
@@ -32,7 +32,7 @@ export default function Records() {
           スピード
         </button>
       </div>
-      <div className="pt-4">
+      <div className="pt-0">
         {which == "endless" && <RankingEndless />}
         {which == "speed" && <RankingSpeed />}
       </div>

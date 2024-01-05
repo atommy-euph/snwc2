@@ -24,7 +24,6 @@ export function DbProvider({ children }) {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       setUserData(docSnap.data());
-      console.log("Document data:", docSnap.data());
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");

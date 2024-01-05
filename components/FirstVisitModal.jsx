@@ -9,6 +9,7 @@ import logo from "../public/icons/logo.svg";
 import rule1 from "../public/icons/rule1.png";
 import ranking from "../public/icons/ranking.png";
 import close from "../public/icons/close.svg";
+import answeredList from "../public/icons/answeredList.png";
 
 Splide.defaults = {
   type: "loop",
@@ -18,9 +19,9 @@ Splide.defaults = {
 const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
   return (
     <div className="fixed w-full h-screen z-10 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="w-4/5 h-2/3 text-sm bg-white rounded-lg flex flex-col justify-center items-center">
+      <div className="relative w-4/5 h-4/5 text-sm bg-white rounded-lg flex flex-col justify-center items-center">
         <button
-          className="z-50 absolute flex items-center justify-center top-32 right-20 border-black border-2 p-1"
+          className="z-50 absolute flex items-center justify-center top-6 right-6 border-black border-2 p-1"
           onClick={() => onClose()}
         >
           <Image width={25} height={25} src={close} alt="Close Button" />
@@ -50,7 +51,7 @@ const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
             </div>
           </SplideSlide>
           <SplideSlide>
-            <div className="flex flex-col items-center w-full h-full px-10 text-center">
+            <div className="flex flex-col items-center w-full h-full px-3 text-center">
               <h2>ルール 2</h2>
 
               <p className="mb-0">
@@ -93,7 +94,21 @@ const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
             </div>
           </SplideSlide>
           <SplideSlide>
-            <div className="flex flex-col items-center w-full h-full px-10 text-center">
+            <div className="flex flex-col items-center w-full h-full px-3 text-center">
+              <h2>Wikipediaで駅を知る</h2>
+              <Image
+                width={589 / 2.3}
+                height={423 / 2.3}
+                src={answeredList}
+                alt="回答駅のリンクからWikipediaの記事を見ることができます"
+              />
+              <p className="mt-5 leading-snug">
+                停車駅一覧画面の回答駅のリンクからWikipediaの記事を見ることができます
+              </p>
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className="flex flex-col items-center w-full h-full px-3 text-center">
               <h2>ランキング</h2>
               <Image
                 width={551 / 2}
@@ -101,11 +116,10 @@ const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
                 src={ranking}
                 alt="ランキング"
               />
-              <p className="leading-snug mt-6">
+              <p className="leading-snug mt-6 mb-0">
                 個人ランキングが記録されます。また、ログインすると総合ランキングに参加できます。
               </p>
-              {/* 今後表示するかチェックボックスをクリックすると、次回から表示されなくなります。 */}
-              <div className="mt-2">
+              <div className="mt-1">
                 <input
                   type="checkbox"
                   checked={isChecked}
