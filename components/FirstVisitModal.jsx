@@ -6,11 +6,18 @@ import Image from "next/image";
 import logo from "../public/icons/logo.svg";
 import rule1 from "../public/icons/rule1.png";
 import ranking from "../public/icons/ranking.png";
+import close from "../public/icons/close.svg";
 
 const FirstVisitModal = ({ onClose }) => {
   return (
     <div className="fixed w-full h-screen z-10 bg-black bg-opacity-50 flex items-center justify-center">
       <div className="w-4/5 h-5/6 text-sm bg-white rounded-lg flex flex-col justify-center items-center">
+        <button
+          className="absolute flex items-center justify-center top-20 right-20 border-black border-2 p-1"
+          onClick={() => onClose()}
+        >
+          <Image width={25} height={25} src={close} />
+        </button>
         <Splide aria-label="尻鉄の紹介">
           <SplideSlide>
             <div className="flex flex-col items-center w-full h-full px-3 text-center">
@@ -98,9 +105,6 @@ const FirstVisitModal = ({ onClose }) => {
               </button>
             </div>
           </SplideSlide>
-          <div className="splide__progress">
-            <div className="splide__progress__bar" />
-          </div>
         </Splide>
       </div>
     </div>
