@@ -13,24 +13,29 @@ import records from "../public/icons/records.svg";
 import FirstVisitModal from "../components/FirstVisitModal.jsx";
 
 export default function Home() {
-  const [isFirstVisit, setIsFirstVisit] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalChecked, setIsModalChecked] = useState(false);
 
   // ブラウザ環境でのみ実行
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if (localStorage.getItem("firstVisit") === "true") return;
+      if (localStorage.getItem("isModalChecked") === "true") return;
       else {
-        setIsFirstVisit(true);
-        localStorage.setItem("firstVisit", "true");
+        setIsModalOpen(true);
+        localStorage.setItem("isModalChecked", isModalChecked);
         return;
       }
     }
-  }, []);
+  }, [isModalChecked]);
 
   return (
     <>
-      {isFirstVisit && (
-        <FirstVisitModal onClose={() => setIsFirstVisit(false)} />
+      {isModalOpen && (
+        <FirstVisitModal
+          onClose={() => setIsModalOpen(false)}
+          onChange={() => setIsModalChecked((i) => !i)}
+          isChecked={isModalChecked}
+        />
       )}
       <div className="flex flex-col items-center  pb-12">
         <Head>
