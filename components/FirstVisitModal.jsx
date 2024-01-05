@@ -16,7 +16,7 @@ const FirstVisitModal = ({ onClose }) => {
             <div className="flex flex-col items-center w-full h-full px-3 text-center">
               <h2>はじめに</h2>
               <p></p>
-              <Image width={150} height={150} src={logo} />
+              <Image width={150} height={150} src={logo} alt="ロゴ" />
               <p></p>
               <p></p>
               <p className="mt-8">「尻鉄」は鉄道駅のしりとりゲームです</p>
@@ -25,7 +25,12 @@ const FirstVisitModal = ({ onClose }) => {
           <SplideSlide>
             <div className="flex flex-col items-center w-full h-full px-3 text-center">
               <h2>ルール 1</h2>
-              <Image width={529 / 3} height={607 / 3} src={rule1} />
+              <Image
+                width={529 / 3}
+                height={607 / 3}
+                src={rule1}
+                alt="前の駅の最後の文字で始まる駅を入力"
+              />
               <p className="mt-8">前の駅の最後の文字で始まる駅を入力します</p>
               <p></p>
             </div>
@@ -76,7 +81,12 @@ const FirstVisitModal = ({ onClose }) => {
           <SplideSlide>
             <div className="flex flex-col items-center w-full h-full px-3 text-center">
               <h2>ランキング</h2>
-              <Image width={551 / 2} height={310 / 2} src={ranking} />
+              <Image
+                width={551 / 2}
+                height={310 / 2}
+                src={ranking}
+                alt="ランキング"
+              />
               <p className="leading-snug mt-6">
                 個人ランキングが記録されます。また、ログインすると総合ランキングに参加できます。
               </p>
