@@ -32,6 +32,7 @@ import {
   getFirstStation,
   getLastLetter,
   getRandomRange,
+  getDateString,
 } from "../../lib/functions";
 
 import { ALERT_TIME, COUNTDOWN_TIME, GAME_URL } from "../../constant/config.js";
@@ -206,7 +207,7 @@ export default function Speed() {
     const records = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_SPEED));
     if (endsWithValidLetter) {
       const record = {
-        date: new Date().toLocaleDateString(),
+        date: getDateString(),
         count: answers.length - 1,
         letter: totalLength,
         start: answers[0].answer,
@@ -215,14 +216,24 @@ export default function Speed() {
       if (records) {
         localStorage.setItem(
           LOCAL_STORAGE_KEY_SPEED,
-          JSON.stringify(records.concat(record))
+          JSON.stringify(
+            records
+              .sort((a, b) => {
+                if (a.count === b.count) {
+                  return b.letter - a.letter;
+                }
+                return b.count - a.count;
+              })
+              .slice(0, 10)
+              .concat(record)
+          )
         );
       } else {
         localStorage.setItem(LOCAL_STORAGE_KEY_SPEED, JSON.stringify([record]));
       }
     } else {
       const record = {
-        date: new Date().toLocaleDateString(),
+        date: getDateString(),
         count: answers.length - 1 + 1,
         letter: totalLength + inputEl.current.value.length,
         start: answers[0].answer,
@@ -231,7 +242,17 @@ export default function Speed() {
       if (records) {
         localStorage.setItem(
           LOCAL_STORAGE_KEY_SPEED,
-          JSON.stringify(records.concat(record))
+          JSON.stringify(
+            records
+              .sort((a, b) => {
+                if (a.count === b.count) {
+                  return b.letter - a.letter;
+                }
+                return b.count - a.count;
+              })
+              .slice(0, 10)
+              .concat(record)
+          )
         );
       } else {
         localStorage.setItem(LOCAL_STORAGE_KEY_SPEED, JSON.stringify([record]));
@@ -243,7 +264,7 @@ export default function Speed() {
     const addDataRef = doc(collection(db, "records_speed"));
     if (endsWithValidLetter) {
       await setDoc(addDataRef, {
-        date: new Date().toLocaleDateString(),
+        date: getDateString(),
         count: answers.length - 1,
         letter: totalLength,
         start: answers[0].answer,
@@ -253,7 +274,7 @@ export default function Speed() {
       });
     } else {
       await setDoc(addDataRef, {
-        date: new Date().toLocaleDateString(),
+        date: getDateString(),
         count: answers.length - 1 + 1,
         letter: totalLength + inputEl.current.value.length,
         start: answers[0].answer,
@@ -388,9 +409,10 @@ export default function Speed() {
           <Button value="スタート" keybind="Space" onClick={handleGameStart} />
           <div className="h-12"></div>
           <Link href="/speed/help">
-            <a>
+            <span className="flex justify-start space-x-3 items-center">
               <Image width={30} height={30} src={help} alt="help" />
-            </a>
+              <span className="underline">ルール</span>
+            </span>
           </Link>
         </div>
       )}

@@ -48,6 +48,9 @@ export default function SignIn() {
           alert(
             "何度も間違えたため、アカウントがロックされました。しばらくしてから再度お試しください"
           );
+        } else if (error.code === "auth/invalid-credential") {
+          // メールアドレスの形式がおかしい
+          alert("メールアドレスの形式が正しくありません");
         } else {
           // その他
           alert(error.message);

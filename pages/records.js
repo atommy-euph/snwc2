@@ -3,27 +3,38 @@ import { useState, useEffect } from "react";
 import Page from "../components/Page";
 import RankingEndless from "../components/RankingEndless";
 
-import { LOCAL_STORAGE_KEY_ENDLESS } from "../constant/config_endless";
-import { LOCAL_STORAGE_KEY_SPEED } from "../constant/config_speed";
 import RankingSpeed from "../components/RankingSpeed";
 
 export default function Records() {
-  const [recordsSpeed, setRecordsSpeed] = useState([]);
-
-  useEffect(() => {
-    const recordsSpeed = localStorage.getItem(LOCAL_STORAGE_KEY_SPEED);
-    if (recordsSpeed) {
-      setRecordsSpeed(JSON.parse(recordsSpeed));
-    } else {
-      setRecordsSpeed([]);
-    }
-  }, []);
+  const [which, setWhich] = useState("endless");
 
   return (
     <Page title="ランキング">
+      <div className="flex justify-end mt-2">
+        <button
+          className={`px-4 py-2 ${
+            which === "endless"
+              ? "bg-gray-300 border-2 border-black"
+              : "bg-gray-200"
+          }`}
+          onClick={() => setWhich("endless")}
+        >
+          エンドレス
+        </button>
+        <button
+          className={`px-4 py-2 ${
+            which === "speed"
+              ? "bg-gray-300 border-2 border-black"
+              : "bg-gray-200"
+          }`}
+          onClick={() => setWhich("speed")}
+        >
+          スピード
+        </button>
+      </div>
       <div className="pt-4">
-        <RankingEndless />
-        <RankingSpeed />
+        {which == "endless" && <RankingEndless />}
+        {which == "speed" && <RankingSpeed />}
       </div>
     </Page>
   );

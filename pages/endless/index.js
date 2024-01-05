@@ -31,6 +31,7 @@ import {
   getSameGroup,
   getFirstStation,
   getLastLetter,
+  getDateString,
 } from "../../lib/functions.js";
 
 import { ALERT_TIME, COUNTDOWN_TIME, GAME_URL } from "../../constant/config.js";
@@ -184,7 +185,7 @@ export default function Endless() {
     const records = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_ENDLESS));
     if (endsWithValidLetter) {
       const record = {
-        date: new Date().toLocaleDateString(),
+        date: getDateString(),
         count: answers.length - 1,
         time: totalTime,
         start: answers[0].answer,
@@ -193,7 +194,17 @@ export default function Endless() {
       if (records) {
         localStorage.setItem(
           LOCAL_STORAGE_KEY_ENDLESS,
-          JSON.stringify(records.concat(record))
+          JSON.stringify(
+            records
+              .sort((a, b) => {
+                if (a.count === b.count) {
+                  return a.time - b.time;
+                }
+                return b.count - a.count;
+              })
+              .slice(0, 10)
+              .concat(record)
+          )
         );
       } else {
         localStorage.setItem(
@@ -203,7 +214,7 @@ export default function Endless() {
       }
     } else {
       const record = {
-        date: new Date().toLocaleDateString(),
+        date: getDateString(),
         count: answers.length - 1 + 1,
         time: totalTime + TIME_LIMIT_ENDLESS - timer,
         start: answers[0].answer,
@@ -212,7 +223,17 @@ export default function Endless() {
       if (records) {
         localStorage.setItem(
           LOCAL_STORAGE_KEY_ENDLESS,
-          JSON.stringify(records.concat(record))
+          JSON.stringify(
+            records
+              .sort((a, b) => {
+                if (a.count === b.count) {
+                  return a.time - b.time;
+                }
+                return b.count - a.count;
+              })
+              .slice(0, 10)
+              .concat(record)
+          )
         );
       } else {
         localStorage.setItem(
@@ -228,7 +249,7 @@ export default function Endless() {
     const addDataRef = doc(collection(db, "records_endless"));
     if (endsWithValidLetter) {
       await setDoc(addDataRef, {
-        date: new Date().toLocaleDateString(),
+        date: getDateString(),
         count: answers.length - 1,
         time: totalTime,
         start: answers[0].answer,
@@ -238,7 +259,7 @@ export default function Endless() {
       });
     } else {
       await setDoc(addDataRef, {
-        date: new Date().toLocaleDateString(),
+        date: getDateString(),
         count: answers.length - 1 + 1,
         time: totalTime + TIME_LIMIT_ENDLESS - timer,
         start: answers[0].answer,
@@ -367,9 +388,10 @@ export default function Endless() {
           <Button value="スタート" keybind="Space" onClick={handleGameStart} />
           <div className="h-12"></div>
           <Link href="/endless/help">
-            <a>
+            <span className="flex justify-start space-x-3 items-center">
               <Image width={30} height={30} src={help} alt="help" />
-            </a>
+              <span className="underline">ルール</span>
+            </span>
           </Link>
         </div>
       )}

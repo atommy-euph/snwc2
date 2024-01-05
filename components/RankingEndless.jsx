@@ -31,7 +31,7 @@ const RankingEndless = () => {
       collection(db, "records_endless"),
       orderBy("count", "desc"),
       orderBy("time", "asc"),
-      limit(5)
+      limit(10)
     );
     const querySnapshot = await getDocs(q);
     const records = [];
