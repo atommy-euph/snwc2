@@ -37,7 +37,6 @@ export default function Home() {
           <title>尻鉄 | しりとりで知る鉄道駅</title>
         </Head>
         <Header />
-        <button onClick={() => setIsFirstVisit(true)}>モーダル</button>
         <p className="mt-8 text-[1.62rem]">しりとりで知る鉄道駅</p>
         <Image
           loading="lazy"

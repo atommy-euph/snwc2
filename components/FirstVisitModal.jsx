@@ -1,5 +1,5 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/splide/css";
+import "@splidejs/react-splide/css";
 
 import Image from "next/image";
 
@@ -98,6 +98,9 @@ const FirstVisitModal = ({ onClose }) => {
               </button>
             </div>
           </SplideSlide>
+          <div className="splide__progress">
+            <div className="splide__progress__bar" />
+          </div>
         </Splide>
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function SineUp() {
 
     const auth = getAuth();
     const actionCodeSettings = {
-      url: "http://localhost:3000/signin",
+      url: "https://65989525d7dc4200089c979f--gregarious-faun-97653c.netlify.app/signin",
       handleCodeInApp: false,
     };
 
