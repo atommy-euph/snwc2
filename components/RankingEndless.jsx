@@ -94,6 +94,7 @@ const RankingEndless = () => {
           start="出発駅"
           end="終着駅"
           isHeading={true}
+          mode="endless"
         />
         {recordsEndlessAll.map((record, index) => (
           <RankingRow
@@ -106,11 +107,12 @@ const RankingEndless = () => {
             start={record.start}
             end={record.end}
             isHeading={false}
+            mode="endless"
           />
         ))}
         {currentUser && (
           <>
-            <p className="font-bold mt-5 mb-0">あなたのベストスコア</p>
+            <p className="font-bold mt-6 mb-0">あなたのベストスコア</p>
             {topRecord.map((record, index) => (
               <RankingRow
                 key={index}
@@ -121,6 +123,7 @@ const RankingEndless = () => {
                 date={record.date}
                 start={record.start}
                 end={record.end}
+                mode="endless"
               />
             ))}
           </>
@@ -137,6 +140,7 @@ const RankingEndless = () => {
           start="出発駅"
           end="終着駅"
           isHeading={true}
+          mode="endless"
         />
         {recordsEndless
           .sort((a, b) => {
@@ -155,6 +159,7 @@ const RankingEndless = () => {
               date={record.date}
               start={record.start}
               end={record.end}
+              mode="endless"
             />
           ))
           .slice(0, 5)}
