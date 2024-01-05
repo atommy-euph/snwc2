@@ -19,20 +19,26 @@ export default function Home() {
   // ブラウザ環境でのみ実行
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if (localStorage.getItem("isModalChecked") === "true") return;
+      if (localStorage.getItem("isModalChecked") === null) {
+        setIsModalOpen(true);
+      } else if (localStorage.getItem("isModalChecked") === "true") return;
       else {
         setIsModalOpen(true);
-        localStorage.setItem("isModalChecked", isModalChecked);
         return;
       }
     }
   }, [isModalChecked]);
 
+  const onCloseModal = () => {
+    setIsModalOpen(false);
+    localStorage.setItem("isModalChecked", isModalChecked);
+  };
+
   return (
     <>
       {isModalOpen && (
         <FirstVisitModal
-          onClose={() => setIsModalOpen(false)}
+          onClose={() => onCloseModal()}
           onChange={() => setIsModalChecked((i) => !i)}
           isChecked={isModalChecked}
         />
