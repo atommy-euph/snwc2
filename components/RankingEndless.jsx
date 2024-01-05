@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+import RankingRow from "../components/RankingRow";
+
 import Link from "next/link";
 
 import {
@@ -57,6 +59,7 @@ const RankingEndless = () => {
   }, []);
 
   const getUsersTopRecordFromFirestore = async () => {
+    if (!currentUser) return;
     const q = query(
       collection(db, "records_endless"),
       where("uid", "==", currentUser.uid),
@@ -75,137 +78,87 @@ const RankingEndless = () => {
   return (
     <div className="mt-4 border-t-2 py-2">
       <h2 className="mt-2 mb-2">エンドレス (総合)</h2>
-      {!currentUser ? (
+      {!currentUser && (
         <p className="">
           総合ランキングに参加するためには<Link href="/signin">ログイン</Link>
           してください
         </p>
-      ) : (
-        <></>
       )}
-      <div className="flex items-center mb-1 text-sm">
-        <span className="font-bold text-lg  mr-5  w-6 h-6 "></span>
-        <span className="w-20 mr-2 text-right whitespace-nowrap  font-bold">
-          プレイヤー
-        </span>
-        <span className="w-10 mr-2 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-          記録
-        </span>
-        <span className="w-14 mr-2 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-          タイム
-        </span>
-        <span className="w-20 mr-2 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-          日付
-        </span>
-        <span className="w-24 mr-2 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-          出発駅
-        </span>
-        <span className="w-24 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-          終着駅
-        </span>
+      <div className="overflow-x-scroll">
+        <RankingRow
+          rank=""
+          name="プレイヤー"
+          count="記録"
+          timeOrLetter="タイム"
+          date="日付"
+          start="出発駅"
+          end="終着駅"
+          isHeading={true}
+        />
+        {recordsEndlessAll.map((record, index) => (
+          <RankingRow
+            key={index}
+            rank={index + 1}
+            name={record.name}
+            count={record.count}
+            timeOrLetter={record.time}
+            date={record.date}
+            start={record.start}
+            end={record.end}
+            isHeading={false}
+          />
+        ))}
+        {currentUser && (
+          <>
+            <p className="font-bold mt-5 mb-0">あなたのベストスコア</p>
+            {topRecord.map((record, index) => (
+              <RankingRow
+                key={index}
+                rank=""
+                name={record.name}
+                count={record.count}
+                timeOrLetter={record.time}
+                date={record.date}
+                start={record.start}
+                end={record.end}
+              />
+            ))}
+          </>
+        )}
       </div>
-      {recordsEndlessAll.map((record, index) => (
-        <div className="flex items-center mb-3 text-sm" key={index}>
-          <span className="font-bold text-md mr-5 border-2 border-black w-6 h-6 text-center">
-            {index + 1}
-          </span>
-          <span className="w-20 mr-2 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-            {record.name}
-          </span>
-          <span className="w-10 mr-2 whitespace-nowrap  text-right overflow-x-scroll hidden-scrollbar">
-            {record.count} 駅
-          </span>
-          <span className="w-14 mr-2 whitespace-nowrap  text-right overflow-x-scroll hidden-scrollbar">
-            {record.time} 秒
-          </span>
-          <span className="w-20 mr-2 whitespace-nowrap  text-right overflow-x-scroll hidden-scrollbar">
-            {record.date}
-          </span>
-          <span className="whitespace-nowrap w-24 mr-2 text-right overflow-x-scroll hidden-scrollbar">
-            {record.start}
-          </span>
-          <span className="whitespace-nowrap w-24 text-right overflow-x-scroll hidden-scrollbar">
-            {record.end}
-          </span>
-        </div>
-      ))}
-      {currentUser && (
-        <>
-          <p className="font-bold mt-5 mb-0">あなたのベストスコア</p>
-          {topRecord.map((record, index) => (
-            <div className="flex items-center mb-3 text-sm" key={index}>
-              <span className="font-bold text-md mr-5 border-2 border-transparent w-6 h-6 text-center"></span>
-              <span className="w-20 mr-2 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-                {record.name}
-              </span>
-              <span className="w-10 mr-2 whitespace-nowrap  text-right overflow-x-scroll hidden-scrollbar">
-                {record.count} 駅
-              </span>
-              <span className="w-14 mr-2 whitespace-nowrap  text-right overflow-x-scroll hidden-scrollbar">
-                {record.time} 秒
-              </span>
-              <span className="w-20 mr-2 whitespace-nowrap  text-right overflow-x-scroll hidden-scrollbar">
-                {record.date}
-              </span>
-              <span className="whitespace-nowrap w-24 mr-2 text-right overflow-x-scroll hidden-scrollbar">
-                {record.start}
-              </span>
-              <span className="whitespace-nowrap w-24 text-right overflow-x-scroll hidden-scrollbar">
-                {record.end}
-              </span>
-            </div>
-          ))}
-        </>
-      )}
       <h2 className="mt-10 mb-2">エンドレス (個人)</h2>
-      <div className="flex items-center mb-1 text-sm">
-        <span className="font-bold text-lg  mr-5  w-6 h-6 mb-2"></span>
-        <span className="w-10 mr-2 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-          記録
-        </span>
-        <span className="w-14 mr-2 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-          タイム
-        </span>
-        <span className="w-20 mr-2 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-          日付
-        </span>
-        <span className="w-24 mr-2 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-          出発駅
-        </span>
-        <span className="w-24 text-right whitespace-nowrap  font-bold overflow-x-scroll hidden-scrollbar">
-          終着駅
-        </span>
+      <div className="overflow-x-scroll">
+        <RankingRow
+          rank=""
+          name="プレイヤー"
+          count="記録"
+          timeOrLetter="タイム"
+          date="日付"
+          start="出発駅"
+          end="終着駅"
+          isHeading={true}
+        />
+        {recordsEndless
+          .sort((a, b) => {
+            if (a.count === b.count) {
+              return a.time - b.time;
+            }
+            return b.count - a.count;
+          })
+          .map((record, index) => (
+            <RankingRow
+              key={index}
+              rank={index + 1}
+              name="あなた"
+              count={record.count}
+              timeOrLetter={record.time}
+              date={record.date}
+              start={record.start}
+              end={record.end}
+            />
+          ))
+          .slice(0, 5)}
       </div>
-      {recordsEndless
-        .sort((a, b) => {
-          if (a.count === b.count) {
-            return a.time - b.time;
-          }
-          return b.count - a.count;
-        })
-        .map((record, index) => (
-          <div className="flex items-center mb-3 text-sm" key={index}>
-            <span className="font-bold text-md mr-5 border-2 border-black w-6 h-6 text-center">
-              {index + 1}
-            </span>
-            <span className="w-10 mr-2 whitespace-nowrap  text-right overflow-x-scroll hidden-scrollbar">
-              {record.count} 駅
-            </span>
-            <span className="w-14 mr-2 whitespace-nowrap  text-right overflow-x-scroll hidden-scrollbar">
-              {record.time} 秒
-            </span>
-            <span className="w-20 mr-2 whitespace-nowrap  text-right overflow-x-scroll hidden-scrollbar">
-              {record.date}
-            </span>
-            <span className="whitespace-nowrap w-24 mr-2 text-right overflow-x-scroll hidden-scrollbar">
-              {record.start}
-            </span>
-            <span className="whitespace-nowrap w-24 text-right overflow-x-scroll hidden-scrollbar">
-              {record.end}
-            </span>
-          </div>
-        ))
-        .slice(0, 5)}
     </div>
   );
 };
