@@ -25,7 +25,7 @@ const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
           classes={{
             arrows: "splide__arrows ",
             arrow: "splide__arrow z-50",
-            prev: "splide__arrow--prev",
+            prev: "splide__arrow--prev left-20",
             next: "splide__arrow--next",
           }}
           hasTrack={false}
@@ -106,8 +106,8 @@ const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
               <div className="flex flex-col items-center w-full h-full px-3 text-center">
                 <h2>Wikipediaで駅を知る</h2>
                 <Image
-                  width={589 / 2.3}
-                  height={423 / 2.3}
+                  width={589 / 2.7}
+                  height={423 / 2.7}
                   src={answeredList}
                   alt="回答駅のリンクからWikipediaの記事を見ることができます"
                 />
@@ -120,8 +120,8 @@ const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
               <div className="flex flex-col items-center w-full h-full px-3 text-center">
                 <h2>ランキング</h2>
                 <Image
-                  width={551 / 2}
-                  height={310 / 2}
+                  width={551 / 2.5}
+                  height={310 / 2.5}
                   src={ranking}
                   alt="ランキング"
                 />

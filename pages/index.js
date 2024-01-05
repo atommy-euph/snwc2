@@ -16,21 +16,24 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalChecked, setIsModalChecked] = useState(false);
 
-  // ブラウザ環境でのみ実行
   useEffect(() => {
     if (typeof window !== "undefined") {
       if (localStorage.getItem("isModalChecked") === null) {
         setIsModalOpen(true);
       } else if (localStorage.getItem("isModalChecked") === "true") return;
       else {
-        setIsModalOpen(true);
+        if (sessionStorage.getItem("session") === "true") return;
+        else setIsModalOpen(true); // isModalChecked === false
         return;
       }
     }
   }, [isModalChecked]);
 
+  // Do not redisplay the modal for one session
+
   const onCloseModal = () => {
     setIsModalOpen(false);
+    sessionStorage.setItem("session", "true");
     localStorage.setItem("isModalChecked", isModalChecked);
   };
 
