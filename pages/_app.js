@@ -4,6 +4,7 @@ import { AuthProvider } from "../context/AuthContext";
 import { DbProvider } from "../context/DbContext";
 
 import "../styles/globals.css";
+import "@splidejs/react-splide/css";
 import Head from "next/head";
 
 import * as gtag from "../lib/gtag";

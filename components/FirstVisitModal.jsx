@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
 
 import Image from "next/image";
 
@@ -22,10 +21,12 @@ const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
           <Image width={25} height={25} src={close} alt="Close Button" />
         </button>
         <Splide
-          options={{
-            rewind: true,
-            width: 800,
-            gap: "1rem",
+          options={{}}
+          classes={{
+            arrows: "splide__arrows ",
+            arrow: "splide__arrow z-50",
+            prev: "splide__arrow--prev",
+            next: "splide__arrow--next",
           }}
           hasTrack={false}
           aria-label="尻鉄の紹介"

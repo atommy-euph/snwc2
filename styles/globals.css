@@ -90,6 +90,11 @@ pre {
 }
 
 @tailwind components;
+
+.splide__arrow--prev {
+  @apply left-32;
+}
+
 @tailwind utilities;
 
 .link-button {
