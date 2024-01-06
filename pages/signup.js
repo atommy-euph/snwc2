@@ -23,7 +23,7 @@ export default function SignUp() {
 
   const router = useRouter();
   const actionCodeSettings = {
-    url: "https://gregarious-faun-97653c.netlify.app/signin",
+    url: "https://shiritetsu.railword.com//signin",
     handleCodeInApp: false,
   };
   const register = async () => {

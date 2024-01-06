@@ -15,7 +15,7 @@ export default function SineUp() {
 
     const auth = getAuth();
     const actionCodeSettings = {
-      url: "https://gregarious-faun-97653c.netlify.app/signin",
+      url: "https://shiritetsu.railword.com//signin",
       handleCodeInApp: false,
     };
 
