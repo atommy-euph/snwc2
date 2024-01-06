@@ -78,7 +78,7 @@ export default function SignUp() {
     }
   };
   return (
-    <Page title="">
+    <Page title="サインアップ">
       <h1>サインアップ</h1>
       <div className="flex flex-col space-y-4">
         <Input

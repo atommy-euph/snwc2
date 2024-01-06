@@ -40,7 +40,7 @@ export default function SineUp() {
       });
   };
   return (
-    <Page title="">
+    <Page title="パスワードの再設定">
       <h1>パスワードの再設定</h1>
       <div className="flex flex-col space-y-4">
         <Input

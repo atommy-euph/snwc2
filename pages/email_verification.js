@@ -2,7 +2,7 @@ import Page from "../components/Page";
 
 export default function SignIn() {
   return (
-    <Page title="" backButton={false}>
+    <Page title="メール認証" backButton={false}>
       <h1>アカウント認証メールを送信しました</h1>
       <div className="flex flex-col space-y-4">
         <p></p>

@@ -10,27 +10,30 @@ export default function Records() {
 
   return (
     <Page title="ランキング">
-      <div className="flex justify-end mt-5">
-        <button
-          className={`px-2 py-1 text-sm font-bold ${
-            which === "endless"
-              ? "bg-gray-300 border-2 border-black"
-              : "bg-gray-200"
-          }`}
-          onClick={() => setWhich("endless")}
-        >
-          エンドレス
-        </button>
-        <button
-          className={`px-2 py-1 text-sm font-bold ${
-            which === "speed"
-              ? "bg-gray-300 border-2 border-black"
-              : "bg-gray-200"
-          }`}
-          onClick={() => setWhich("speed")}
-        >
-          スピード
-        </button>
+      <div className="mt-6 flex justify-between items-center">
+        <h1 className="m-0">ランキング</h1>
+        <div className="flex justify-end mt-5">
+          <button
+            className={`px-2 py-1 text-sm font-bold ${
+              which === "endless"
+                ? "bg-gray-300 border-2 border-black"
+                : "bg-gray-200"
+            }`}
+            onClick={() => setWhich("endless")}
+          >
+            エンドレス
+          </button>
+          <button
+            className={`px-2 py-1 text-sm font-bold ${
+              which === "speed"
+                ? "bg-gray-300 border-2 border-black"
+                : "bg-gray-200"
+            }`}
+            onClick={() => setWhich("speed")}
+          >
+            スピード
+          </button>
+        </div>
       </div>
       <div className="pt-0">
         {which == "endless" && <RankingEndless />}

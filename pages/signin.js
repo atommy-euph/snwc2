@@ -58,7 +58,7 @@ export default function SignIn() {
       });
   };
   return (
-    <Page title="">
+    <Page title="ログイン">
       <h1>ログイン</h1>
       <div className="flex flex-col space-y-4">
         <Input

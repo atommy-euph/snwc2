@@ -17,7 +17,6 @@ const Page = ({ children, title, backButton = true }) => {
             <Image src={back} width={28} height={28} alt="back" />
           </button>
         )}
-        <h1 className="m-0">{title}</h1>
       </div>
       <main>{children}</main>
     </div>
