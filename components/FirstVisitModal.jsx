@@ -13,7 +13,7 @@ import answeredList from "../public/icons/answeredList.png";
 const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
   return (
     <div className="fixed w-full h-screen z-10 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="overflow-hidden relative w-5/6 h-4/5 text-sm bg-white rounded-lg flex flex-col justify-center items-center">
+      <div className="overflow-hidden relative w-11/12 h-[30rem] text-sm bg-white rounded-lg flex flex-col justify-center items-center">
         <button
           className="z-50 absolute flex items-center justify-center top-6 right-6 border-black border-2 p-1"
           onClick={() => onClose()}
@@ -24,15 +24,15 @@ const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
           options={{}}
           classes={{
             arrows: "splide__arrows ",
-            arrow: "splide__arrow z-50",
-            prev: "splide__arrow--prev left-20",
+            arrow: "splide__arrow z-50 bg-none",
+            prev: "splide__arrow--prev",
             next: "splide__arrow--next",
+            pagination: "splide__pagination",
           }}
           hasTrack={false}
           aria-label="尻鉄の紹介"
         >
           <SplideTrack>
-            {" "}
             <SplideSlide>
               <div className="flex flex-col items-center w-full h-full text-center">
                 <h2>はじめに</h2>
@@ -126,8 +126,9 @@ const FirstVisitModal = ({ onClose, onChange, isChecked }) => {
                   alt="ランキング"
                 />
                 <p className="leading-snug mt-6 mb-0 max-w-[66%]">
-                  個人ランキングが記録されます。また、ログインすると総合ランキングに参加できます。
+                  個人ランキングがブラウザに記録されます。また、ログインすると総合ランキングに参加できます。
                 </p>
+                <p></p>
                 <div className="flex items-center space-x-2 mt-1">
                   <input
                     type="checkbox"

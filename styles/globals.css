@@ -92,9 +92,14 @@ pre {
 @tailwind components;
 
 .splide__arrow--prev {
-  @apply left-32;
+  @apply !left-5 !bg-transparent;
 }
-
+.splide__arrow--next {
+  @apply !right-5 !bg-transparent;
+}
+.splide__pagination__page.is-active {
+  @apply !bg-blue-600;
+}
 @tailwind utilities;
 
 .link-button {
