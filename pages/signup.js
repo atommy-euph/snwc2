@@ -100,6 +100,13 @@ export default function SignUp() {
         />
         <SubmitButton onClick={() => register()}>確認メールを送信</SubmitButton>
       </div>
+      <p className="mt-10">
+        ※ メールアドレスは Gmail(@gmail.com)のものがおすすめです。
+      </p>
+      <p>
+        ※
+        確認メールが届かない場合は、迷惑メールフォルダをご確認ください。それでも、確認メールが見当たらない場合は、別のアドレスをお試しください。
+      </p>
     </Page>
   );
 }
