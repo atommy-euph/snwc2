@@ -184,13 +184,17 @@ export default function Speed() {
     saveRecordToFirestore(endedWithValidLetter);
   };
   const restartGame = useCallback(() => {
-    setAnswers([{ answer: getFirstStation(), time: 0 }]);
+    const firstStation = getFirstStation();
+    setAnswers([{ answer: firstStation, time: 0 }]);
     setAnswer("");
-    setRR(getRandomRange(answers.slice(-1)[0].answer, answers, ALPHA));
+    setRR(
+      getRandomRange(firstStation, [{ answer: firstStation, time: 0 }], ALPHA)
+    );
     setIsGameStart(false);
     setIsGameOver(false);
     setTimer(TIME_LIMIT_SPEED);
     handleGameStart();
+    console.log("restarted");
   }, [handleGameStart, answers]);
   const resetGame = useCallback(() => {
     setAnswers([{ answer: getFirstStation(), time: 0 }]);
