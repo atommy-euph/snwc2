@@ -383,7 +383,7 @@ export default function Speed() {
   return (
     <div className="flex flex-col items-center h-screen caret-transparent px-6 overflow-y-scroll">
       <Head>
-        <title>エンドレス | 尻鉄</title>
+        <title>スピード | 尻鉄</title>
       </Head>
       {/* Alerts */}
       <div className="flex justify-center">
