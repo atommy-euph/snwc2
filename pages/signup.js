@@ -6,6 +6,8 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 
+import Link from "next/link";
+
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../lib/firebase";
 
@@ -101,11 +103,17 @@ export default function SignUp() {
         <SubmitButton onClick={() => register()}>確認メールを送信</SubmitButton>
       </div>
       <p className="mt-10">
-        ※ メールアドレスは Gmail(@gmail.com)のものがおすすめです。
+        ※ メールアドレスは Gmail(@gmail.com)を推奨いたします。
       </p>
       <p>
         ※
         確認メールが届かない場合は、迷惑メールフォルダをご確認ください。それでも、確認メールが見当たらない場合は、別のアドレスをお試しください。
+      </p>
+      <p>
+        ※
+        ご入力いただいた個人情報は、本サイトの機能を提供するためにのみ利用し、第三者に提供されることはありません。詳しくは
+        <Link href="/info#privacy-policy">プライバシーポリシー</Link>
+        をご覧ください。
       </p>
     </Page>
   );

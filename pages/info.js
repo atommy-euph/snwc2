@@ -70,8 +70,16 @@ export default function Info() {
         <li>総合ランキング表示機能</li>
         <li>ハードモード</li>
       </ul>
-      <h2>プライバシーポリシー</h2>
-      <p>当サイトでは、以下の方法でユーザーのデータを扱います。</p>
+      <h2 id="privacy-policy">プライバシーポリシー</h2>
+      <h3>データの主な利用目的</h3>
+      <p>当サイトでは、収集したデータを以下の目的で利用します。</p>
+      <ul>
+        <li>本サイトのログイン認証のため</li>
+        <li>本サイトの利用状況の把握</li>
+        <li>本サイトにおけるランキング表示のため</li>
+      </ul>
+
+      <p>当サイトでは、ユーザーのデータを以下に記載するように扱います。</p>
 
       <h3>Google Analytics の使用について</h3>
       <ul>
@@ -86,7 +94,12 @@ export default function Info() {
         <li>
           収集されるデータは匿名であり、個人を特定するものではありません。
         </li>
-        <li>Googleのプライバシーポリシーに従って情報が処理されます。</li>
+        <li>
+          <a href="https://support.google.com/analytics/answer/6004245?hl=ja#zippy=%2Cgoogle-%E3%81%AE%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC-%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC">
+            Googleのプライバシーポリシー
+          </a>
+          に従って情報が処理されます。
+        </li>
       </ul>
 
       <h3>Local Storage の使用について</h3>
@@ -102,6 +115,24 @@ export default function Info() {
         <li>
           プレイヤーはブラウザの設定を通じて Local Storage
           の使用を制御できますが、その場合ゲームの一部機能が正常に動作しない可能性があります。
+        </li>
+      </ul>
+      <h3>ログイン機能について</h3>
+      <ul>
+        <li>
+          本サイトでは、Google が提供する
+          Webアプリケーションバックエンドサービス Firebase
+          を用いてアカウントを管理しています。
+        </li>
+        <li>
+          ご入力いただいた個人情報は、Firebase を通じて管理されます。詳しくは、
+          <a href="https://firebase.google.com/support/privacy?hl=ja">
+            Firebase のプライバシーとセキュリティ
+          </a>
+          をご覧ください
+        </li>
+        <li>
+          本サイトにより収集された情報は、上記「データの主な利用目的」のためにのみ利用し、個人を特定する目的では使用しません。
         </li>
       </ul>
       {/* <h2>クレジット</h2> */}
