@@ -37,7 +37,6 @@ const RankingSpeed = () => {
   }, []);
 
   const getRecordsSpeedFromFirestore = async () => {
-    if (!currentUser) return;
     const q = query(
       collection(db, "records_speed"),
       orderBy("count", "desc"),
