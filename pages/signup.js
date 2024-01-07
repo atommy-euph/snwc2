@@ -43,13 +43,16 @@ export default function SignUp() {
       const user = userCredential.user;
       // ユーザー情報をfirestoreに保存
       const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
 
-      await setDoc(docRef, {
-        uid: user.uid,
-        name: name,
-        email: user.email,
-        createdAt: new Date(),
-      });
+      if (!docSnap.exists()) {
+        await setDoc(docRef, {
+          uid: user.uid,
+          name: name,
+          email: user.email,
+          createdAt: new Date(),
+        });
+      }
 
       sendEmailVerification(user, actionCodeSettings);
       router.push("/email_verification");
