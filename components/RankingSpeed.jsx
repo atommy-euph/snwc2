@@ -41,7 +41,7 @@ const RankingSpeed = () => {
       collection(db, "records_speed"),
       orderBy("count", "desc"),
       orderBy("letter", "desc"),
-      limit(5)
+      limit(10)
     );
     const querySnapshot = await getDocs(q);
     const records = [];
