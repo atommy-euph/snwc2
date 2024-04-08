@@ -38,6 +38,8 @@ export default function Info() {
         </li>
       </ul>
       <h2>寄付</h2>
+      <p>本ゲームは個人開発により運営しています。ゲームの維持と改善のため、寄付を募集しています。ご支援いただける場合は、以下のリンクからお願いいたします。</p>
+      <p>皆さんの温かいご支援を心より感謝いたします。</p>
       <a className="w-2 h-2" href="https://buymeacoffee.com/atommy">
         <Image width={182} height={51} src={bmcButton} alt="Buy me a coffee" />
       </a>
@@ -141,6 +143,6 @@ export default function Info() {
         </li>
       </ul>
       {/* <h2>クレジット</h2> */}
-    </Page>
+    </Page >
   );
 }
