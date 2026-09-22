@@ -35,8 +35,8 @@ const Header = () => {
         <div className="flex justify-end items-center space-x-4">
           <span>ゲスト</span>
           <div className="border-2 border-black px-2 py-1 font-bold">
-            <Link className="font-black" href="/signin">
-              <a className="no-underline text-black">ログイン</a>
+            <Link className="font-black no-underline text-black" href="/signin">
+              ログイン
             </Link>
           </div>
         </div>

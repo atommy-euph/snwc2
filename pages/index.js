@@ -63,11 +63,11 @@ export default function Home() {
 
         <h3>モード選択</h3>
         <div className="flex flex-col justify-between items-center space-y-4">
-          <Link href="/endless/">
-            <a className="link-button">エンドレス</a>
+          <Link href="/endless/" className="link-button">
+            エンドレス
           </Link>
-          <Link href="/speed/">
-            <a className="link-button">スピード</a>
+          <Link href="/speed/" className="link-button">
+            スピード
           </Link>
         </div>
         <div className="mt-12 flex flex-col justify-start space-y-2">
