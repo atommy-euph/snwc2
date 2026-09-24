@@ -75,7 +75,7 @@ export default function Info() {
       </ul>
       <h2>駅名データの最終更新日</h2>
       <ul>
-        <li>2024/08/12</li>
+        <li>2026/09/24</li>
       </ul>
       ※ 今回の更新で、ロープウェイやBRTの駅が多数削除されました。
       <h2 id="privacy-policy">プライバシーポリシー</h2>
