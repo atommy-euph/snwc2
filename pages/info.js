@@ -76,7 +76,7 @@ export default function Info() {
       </ul>
       <h2>駅名データの最終更新日</h2>
       <ul>
-        <li>2026/09/24</li>
+        <li>2026/09/28</li>
       </ul>
       <h2 id="privacy-policy">プライバシーポリシー</h2>
       <h3>データの主な利用目的</h3>
