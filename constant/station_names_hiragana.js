@@ -6838,7 +6838,7 @@ export const STATION_DATA = {
 "ふきあげ": [{"url": "https://ja.wikipedia.org/wiki/%E5%90%B9%E4%B8%8A%E9%A7%85_(%E5%9F%BC%E7%8E%89%E7%9C%8C)", "title": "吹上駅 (埼玉県)"}, {"url": "https://ja.wikipedia.org/wiki/%E5%90%B9%E4%B8%8A%E9%A7%85_(%E6%84%9B%E7%9F%A5%E7%9C%8C)", "title": "吹上駅 (愛知県)"}],
 "ふく": [{"url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E9%A7%85", "title": "福駅"}],
 "ふくい": [{"url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E4%BA%95%E9%A7%85_(%E5%B2%A1%E5%B1%B1%E7%9C%8C)", "title": "福井駅 (岡山県)"}, {"url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E4%BA%95%E9%A7%85_(%E7%A6%8F%E4%BA%95%E7%9C%8C)", "title": "福井駅 (福井県)"}, {"url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E5%B1%85%E9%A7%85", "title": "福居駅"}],
-"ふくいえき": [{"url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E4%BA%95%E9%A7%85_(%E7%A6%8F%E4%BA%95%E7%9C%8C)", "title": "福井駅停留場"}],
+"ふくいえき": [{"url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E4%BA%95%E9%A7%85_(%E7%A6%8F%E4%BA%95%E7%9C%8C)", "title": "福井駅駅"}],
 "ふくいぐち": [{"url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E4%BA%95%E5%8F%A3%E9%A7%85", "title": "福井口駅"}],
 "ふくいじょうしだいみょうまち": [{"url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E4%BA%95%E5%9F%8E%E5%9D%80%E5%A4%A7%E5%90%8D%E7%94%BA%E9%A7%85", "title": "福井城址大名町駅"}],
 "ふくうら": [{"url": "https://ja.wikipedia.org/wiki/%E7%A6%8F%E6%B5%A6%E9%A7%85", "title": "福浦駅"}],
